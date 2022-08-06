@@ -1,4 +1,4 @@
-![Logo](admin/hausbus_de.png)
+![Logo](admin/hausbusde.png)
 # ioBroker.hausbus_de
 
 ## hausbus_de adapter for ioBroker
