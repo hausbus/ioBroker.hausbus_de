@@ -6,7 +6,7 @@
 Adapter to control haus-bus.de components.
 
 
-
+ 
 ## Changelog
 <!--
     Placeholder for the next version (at the beginning of the line):
