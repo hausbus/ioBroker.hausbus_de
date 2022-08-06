@@ -55,7 +55,7 @@
         "main": "main.js",
         "icon": "hausbusde.png",
         "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/hausbusde/ioBroker.hausbus_de/main/admin/hausbusde.png",
+        "extIcon": "https://github.com/hausbus/ioBroker.hausbus_de/blob/main/admin/hausbusde.png",
         "readme": "https://github.com/hausbusde/ioBroker.hausbus_de/blob/main/README.md",
         "loglevel": "info",
         "mode": "daemon",
