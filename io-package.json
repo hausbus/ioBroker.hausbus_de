@@ -1,0 +1,101 @@
+{
+    "common": {
+        "name": "hausbus_de",
+        "version": "0.0.1",
+        "news": {
+            "0.0.1": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung",
+                "ru": "Начальная версия",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "zh-cn": "首次出版"
+            }
+        },
+        "title": "Haus-Bus.de",
+        "titleLang": {
+            "en": "Haus-Bus.de",
+            "de": "Haus-Bus.de",
+            "ru": "Haus-Bus.de",
+            "pt": "Haus-Bus.de",
+            "nl": "Haus-Bus.de",
+            "fr": "Haus-Bus.de",
+            "it": "Haus-Bus.de",
+            "es": "Haus-Bus.de",
+            "pl": "Haus-Bus.de",
+            "zh-cn": "豪斯巴士公司"
+        },
+        "desc": {
+            "en": "Adapter to control haus-bus.de components.",
+            "de": "Adapter zur Steuerung von haus-bus.de Komponenten.",
+            "ru": "Адаптер для управления компонентами haus-bus.de.",
+            "pt": "Adaptador para controlar os componentes haus-bus.de.",
+            "nl": "Adapter voor het aansturen van haus-bus.de componenten.",
+            "fr": "Adaptateur pour contrôler les composants haus-bus.de.",
+            "it": "Adattatore per controllare i componenti haus-bus.de.",
+            "es": "Adaptador para controlar los componentes de haus-bus.de.",
+            "pl": "Adapter do sterowania komponentami haus-bus.de.",
+            "zh-cn": "用于控制 haus-bus.de 组件的适配器。"
+        },
+        "authors": [
+            "Hermann Hoeschen <info@haus-bus.de>"
+        ],
+        "keywords": [
+            "haus-bus.de",
+            "homeserver",
+            "relaimodule",
+            "pushbuttons"
+        ],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "main": "main.js",
+        "icon": "hausbus_de.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/hausbusde/ioBroker.hausbus_de/main/admin/hausbus_de.png",
+        "readme": "https://github.com/hausbusde/ioBroker.hausbus_de/blob/main/README.md",
+        "loglevel": "info",
+        "mode": "daemon",
+        "type": "iot-systems",
+        "compact": true,
+        "connectionType": "local",
+        "dataSource": "push",
+        "materialize": true,
+        "dependencies": [
+            {
+                "js-controller": ">=2.0.0"
+            }
+        ]
+    },
+    "native": {
+        "option1": true,
+        "option2": "42"
+    },
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "info",
+            "type": "channel",
+            "common": {
+                "name": "Information"
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "role": "indicator.connected",
+                "name": "Device or service connected",
+                "type": "boolean",
+                "read": true,
+                "write": false,
+                "def": false
+            },
+            "native": {}
+        }
+    ]
+}
