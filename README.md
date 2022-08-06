@@ -8,9 +8,12 @@ Adapter to control haus-bus.de components.
 
 
 ## Changelog
-### **WORK IN PROGRESS**
+<!--
+    Placeholder for the next version (at the beginning of the line):
+    ### **WORK IN PROGRESS**
+-->
 
-### 0.0.2 (2022-08-06)
+### **WORK IN PROGRESS**
 * (Hermann Hoeschen) initial release
 
 ## License
