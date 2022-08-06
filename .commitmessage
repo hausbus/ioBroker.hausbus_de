@@ -1,17 +1,6 @@
-![Logo](admin/hausbusde.png)
-# ioBroker.hausbus_de
+chore: release v0.0.2
 
-## hausbus_de adapter for ioBroker
-
-Adapter to control haus-bus.de components.
-
-
-
-## Changelog
-### **WORK IN PROGRESS**
-
-### 0.0.2 (2022-08-06)
-* (Hermann Hoeschen) initial release
+* initial release
 
 ## License
 MIT License
