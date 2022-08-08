@@ -89,8 +89,6 @@ function startAdapter(options) {
 
 async function main() {
 
-    // Reset the connection indicator during startup
-    await this.setStateAsync("info.connection", false, true);
 
     // The adapters config (in the instance object everything under the attribute "native") is accessible via
     // adapter.config:
