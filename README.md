@@ -9,6 +9,7 @@ Adapter to control haus-bus.de components.
 
 ## Changelog
 ### **WORK IN PROGRESS**
+* test
 
 ### 0.0.11 (2022-08-08)
 * (Hermann Hoeschen) initial release
