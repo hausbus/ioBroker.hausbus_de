@@ -8,10 +8,8 @@ Adapter to control haus-bus.de components.
 
 
 ## Changelog
-<!--
-    Placeholder for the next version (at the beginning of the line):
-    ### **WORK IN PROGRESS**
--->
+### **WORK IN PROGRESS**
+
 ### 0.0.11 (2022-08-08)
 * (Hermann Hoeschen) initial release
 
