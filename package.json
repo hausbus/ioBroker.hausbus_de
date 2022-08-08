@@ -19,7 +19,9 @@
     "url": "https://github.com/hausbusde/ioBroker.hausbus_de"
   },
   "dependencies": {
-    "@iobroker/adapter-core": "^2.6.0"
+    "@iobroker/adapter-core": "^2.6.0",
+	"dgram": "^1.0.1",
+    "os": "^0.1.1"
   },
   "devDependencies": {
     "@alcalzone/release-script": "^3.5.9",
