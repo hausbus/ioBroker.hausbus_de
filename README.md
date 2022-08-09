@@ -10,7 +10,7 @@ It's recommended to install it directly from the catalog within ioBroker.<br>
 If you are facing any problems or bugs please contact info@haus-bus.de<br>
 
 ## Setup
-The HausBusDe adapter is ready to use without further configurations. It is automatically searching for haus-bus.de components using UDP broadcast requests. Its mandatory to have at least one haus-bus.de component with a network interface (for example any relay module) that is connected to the same network like io broker. Any further components can be connected by RS485 to the module with ethernet gateway.
+The HausBus.de adapter is ready to use without further configurations. It is automatically searching for haus-bus.de components using UDP broadcast requests. Its mandatory to have at least one haus-bus.de component with a network interface (for example any relay module) that is connected to the same network like io broker. Any further components can be connected by RS485 to the module with ethernet gateway.
 
 <br>
 <br>
