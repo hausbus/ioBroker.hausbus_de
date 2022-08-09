@@ -8,7 +8,7 @@ Adapter to control haus-bus.de components.
 
 
 ## Changelog
-### 0.0.24 (2022-08-09)
+### **WORK IN PROGRESS**
 * test
 
 ### 0.0.11 (2022-08-08)
