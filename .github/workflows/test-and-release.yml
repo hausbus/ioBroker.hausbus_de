@@ -72,7 +72,7 @@ jobs:
           # Then uncomment and customize the following block:
           #sentry: true
           #sentry-token: ${{ secrets.SENTRY_AUTH_TOKEN }}
-          #sentry-project: "iobroker-hausbus_de"
-          #sentry-version-prefix: "iobroker.hausbus_de"
+          #sentry-project: "iobroker-hausbusde"
+          #sentry-version-prefix: "iobroker.hausbusde"
           # If your sentry project is linked to a GitHub repository, you can enable the following option
           # sentry-github-integration: true

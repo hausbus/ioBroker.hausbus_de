@@ -3,15 +3,15 @@
 
 systemDictionary = {
     "hausbus_de adapter settings": {
-        "en": "Adapter settings for hausbus_de",
-        "de": "Adaptereinstellungen für hausbus_de",
-        "ru": "Настройки адаптера для hausbus_de",
-        "pt": "Configurações do adaptador para hausbus_de",
-        "nl": "Adapterinstellingen voor hausbus_de",
-        "fr": "Paramètres d'adaptateur pour hausbus_de",
-        "it": "Impostazioni dell'adattatore per hausbus_de",
-        "es": "Ajustes del adaptador para hausbus_de",
-        "pl": "Ustawienia adaptera dla hausbus_de",
+        "en": "Adapter settings for hausbusde",
+        "de": "Adaptereinstellungen für hausbusde",
+        "ru": "Настройки адаптера для hausbusde",
+        "pt": "Configurações do adaptador para hausbusde",
+        "nl": "Adapterinstellingen voor hausbusde",
+        "fr": "Paramètres d'adaptateur pour hausbusde",
+        "it": "Impostazioni dell'adattatore per hausbusde",
+        "es": "Ajustes del adaptador para hausbusde",
+        "pl": "Ustawienia adaptera dla hausbusde",
         "zh-cn": "hausbus_de的适配器设置"
     },
     "option1": {
