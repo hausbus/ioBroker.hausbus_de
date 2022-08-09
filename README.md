@@ -17,7 +17,7 @@ The HausBus.de adapter is ready to use without further configurations. It is aut
 <br>
 
 ## Changelog
-### **WORK IN PROGRESS*
+### **WORK IN PROGRESS**
 * (hausbusde) first stable release and publish in ioBroker catalog.
 
 ### 0.1.18 (2022-03-13) 
