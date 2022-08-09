@@ -1,6 +1,6 @@
 {
   "name": "iobroker.hausbus_de",
-  "version": "0.0.23",
+  "version": "0.0.24",
   "description": "Adapter to control haus-bus.de components.",
   "author": {
     "name": "Hermann Hoeschen",
