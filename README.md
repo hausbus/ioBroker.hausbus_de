@@ -17,7 +17,7 @@ The HausBus.de adapter is ready to use without further configurations. It is aut
 <br>
 
 ## Changelog
-### **WORK IN PROGRESS**
+### 1.0.2 (2022-08-09)
 * (hausbusde) first stable release and publish in ioBroker catalog.
 
 ### 0.1.18 (2022-03-13) 
@@ -68,7 +68,6 @@ The HausBus.de adapter is ready to use without further configurations. It is aut
 
 ### 0.1.2 (2020-09-06)
 * (hausbusde) first public version
-
 
 ## License
 MIT License
