@@ -13,7 +13,7 @@ var http = require('http');
 var fs = require('fs');
 
 // create the adapter object
-var adapter = utils.Adapter('hausbusde');
+var adapter = utils.Adapter('hausbus_de');
 
 var DEFAULT_UDP_PORT = 5855;
 var BROADCAST_SEND_IP = "192.255.255.255";

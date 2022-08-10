@@ -12,7 +12,7 @@ systemDictionary = {
         "it": "Impostazioni dell'adattatore per hausbusde",
         "es": "Ajustes del adaptador para hausbusde",
         "pl": "Ustawienia adaptera dla hausbusde",
-        "zh-cn": "hausbus_de的适配器设置"
+        "zh-cn": "hausbusde的适配器设置"
     },
     "option1": {
         "en": "option1",
