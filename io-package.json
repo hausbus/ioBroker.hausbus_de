@@ -1,8 +1,20 @@
 {
     "common": {
         "name": "hausbus_de",
-        "version": "1.0.12",
+        "version": "1.0.11",
         "news": {
+			"1.0.12": {
+                "en": "stable release",
+                "de": "stabiler release",
+                "ru": "стабильный релиз",
+                "pt": "liberação estável",
+                "nl": "stabiele vrijlating",
+                "fr": "libération stable",
+                "it": "rilascio stabile",
+                "es": "liberación estable",
+                "pl": "stabilizacja",
+                "zh-cn": "稳定释放"
+            },
             "0.0.1": {
                 "en": "initial release",
                 "de": "Erstveröffentlichung",
