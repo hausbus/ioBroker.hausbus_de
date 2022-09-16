@@ -28,19 +28,6 @@
                 "zh-cn": "首次出版"
             }
         },
-        "title": "Haus-Bus.de",
-        "titleLang": {
-            "en": "Haus-Bus.de",
-            "de": "Haus-Bus.de",
-            "ru": "Haus-Bus.de",
-            "pt": "Haus-Bus.de",
-            "nl": "Haus-Bus.de",
-            "fr": "Haus-Bus.de",
-            "it": "Haus-Bus.de",
-            "es": "Haus-Bus.de",
-            "pl": "Haus-Bus.de",
-            "zh-cn": "豪斯巴士公司"
-        },
         "desc": {
             "en": "Adapter to control haus-bus.de components.",
             "de": "Adapter zur Steuerung von haus-bus.de Komponenten.",
