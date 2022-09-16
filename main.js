@@ -224,8 +224,8 @@ adapter.on('unload', function (callback)
 {
     try 
 	{
-        if (checkAliveTimeoutTimer) clearInterval(checkAliveTimeoutTimer);
-        if (checkAliveTimer) clearInterval(checkAliveTimer);
+        if (checkAliveTimeoutTimer) clearTimeout(checkAliveTimeoutTimer);
+        if (checkAliveTimer) clearTimeout(checkAliveTimer);
         if (sendDelayTimer) clearInterval(sendDelayTimer);
         if (udpSocket) udpSocket.close();
     } 
