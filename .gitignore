@@ -12,6 +12,8 @@ iobroker.*.tgz
 
 *.cmd
 
+howto.txt
+
 Thumbs.db
 
 # i18n intermediate files
