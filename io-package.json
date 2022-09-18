@@ -71,7 +71,7 @@
         "loglevel": "info",
         "mode": "daemon",
         "type": "iot-systems",
-        "compact": true,
+        "compact": false,
         "connectionType": "local",
         "dataSource": "push",
         "materialize": true,
