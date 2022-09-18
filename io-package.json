@@ -1,9 +1,9 @@
 {
     "common": {
         "name": "hausbus_de",
-        "version": "1.0.12",
+        "version": "1.0.14",
         "news": {
-			"1.0.12": {
+			"1.0.14": {
                 "en": "stable release",
                 "de": "stabiler release",
                 "ru": "стабильный релиз",
