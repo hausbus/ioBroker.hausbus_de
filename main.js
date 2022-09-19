@@ -13,7 +13,7 @@ var http = require('http');
 var fs = require('fs');
 
 // create the adapter object
-var adapter = utils.Adapter('hausbus_de');
+var adapter; // = utils.Adapter('hausbus_de');
 
 var DEFAULT_UDP_PORT = 5855;
 var BROADCAST_SEND_IP = "192.255.255.255";
@@ -219,30 +219,67 @@ var stateTypes = {};
 var configurations = {};
 var pongCallback = {};
 
-// unloading
-adapter.on('unload', function (callback) 
+function startAdapter(options) 
 {
-    try 
-	{
-        if (checkAliveTimeoutTimer) clearTimeout(checkAliveTimeoutTimer);
-        if (checkAliveTimer) clearTimeout(checkAliveTimer);
-        if (sendDelayTimer) clearInterval(sendDelayTimer);
-        if (udpSocket) udpSocket.close();
-    } 
-	catch (e) 
-	{
-       warn('Error during unload: ' + e);
-    }
+    options = options || {};
+    Object.assign(options, {name: 'hausbus_de'});
+    adapter = new utils.Adapter(options);
 
-    callback();
-});
+    // unloading
+    adapter.on('unload', function (callback) 
+    {
+       try 
+       {
+         if (checkAliveTimeoutTimer) clearTimeout(checkAliveTimeoutTimer);
+         if (checkAliveTimer) clearTimeout(checkAliveTimer);
+         if (sendDelayTimer) clearInterval(sendDelayTimer);
+         if (udpSocket) udpSocket.close();
+       } 
+       catch (e) 
+       {
+         warn('Error during unload: ' + e);
+       }
+
+       callback();
+    });
 
 
-// startup
-adapter.on('ready', function () 
-{
-    main();
-});
+    // startup
+    adapter.on('ready', function () 
+    {
+       main();
+    });
+	
+    // is called if a subscribed state changes
+    adapter.on('stateChange', function (id, state) 
+    {
+      // Warning: state can be null if it was deleted!
+      if (!id || !state) return;
+    
+      //debug('stateChange ' + id + ' ' + state+" ack = "+state.ack);
+    
+      //stateChange hausbusde.0.1136.CONTROLLER.1.online
+      if (id.startsWith(adapter.namespace + '.')) 
+      {
+	  var newValue = state.val;	
+		
+	  var stateName = getStateFromIoBrokerId(id);
+	  if (stateName!="")
+	  {
+		  debug('stateChange ' + id + ' - ' + stateName+": "+ioBrokerStates[id]+" -> "+newValue);
+		  ioBrokerStates[id]=newValue;
+	  }
+	  else warn("Unbekannter Name "+id);
+	 
+   	  if (state.ack) return;
+	
+	  // Hier Methodenaufrufe
+	  aFunctionCall(id, newValue);
+      }
+    });
+	
+  return adapter;
+}
 
 function main() 
 {
@@ -443,34 +480,6 @@ function checkAliveOk(deviceId)
 	 clearInterval(checkAliveTimeoutTimer);
    }
 }
-
-// is called if a subscribed state changes
-adapter.on('stateChange', function (id, state) 
-{
-    // Warning: state can be null if it was deleted!
-    if (!id || !state) return;
-    
-    //debug('stateChange ' + id + ' ' + state+" ack = "+state.ack);
-    
-	//stateChange hausbusde.0.1136.CONTROLLER.1.online
-    if (id.startsWith(adapter.namespace + '.')) 
-    {
-	  var newValue = state.val;	
-		
-	  var stateName = getStateFromIoBrokerId(id);
-	  if (stateName!="")
-	  {
-		  debug('stateChange ' + id + ' - ' + stateName+": "+ioBrokerStates[id]+" -> "+newValue);
-		  ioBrokerStates[id]=newValue;
-	  }
-	  else warn("Unbekannter Name "+id);
-	 
-   	  if (state.ack) return;
-	
-	  // Hier Methodenaufrufe
-	  aFunctionCall(id, newValue);
-    }
-});
 
 function sendUdpDatagram(message) 
 {
@@ -4717,3 +4726,8 @@ function initModulesClassesInstances()
  	    FIRMWARE_IDS[firmwareName]=firmwareId;
     }
 }
+
+// If started as allInOne/compact mode => return function to create instance
+if (module && module.parent) module.exports = startAdapter;
+// or start the instance directly
+else startAdapter();
