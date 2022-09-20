@@ -1,9 +1,21 @@
 {
     "common": {
         "name": "hausbus_de",
-        "version": "1.0.18",
+        "version": "1.0.20",
         "news": {
-			"1.0.18": {
+            "1.0.20": {
+                "en": "fixed error from adapter checker",
+                "de": "fester fehler beim adapter-checker",
+                "ru": "исправлена ошибка от адаптера checker",
+                "pt": "erro fixo do verificador do adaptador",
+                "nl": "vergissing van adapter checker",
+                "fr": "erreur fixe de l'adaptateur",
+                "it": "errore fisso dall'adattatore checker",
+                "es": "error fijo del adaptador",
+                "pl": "błędy adaptacyjne",
+                "zh-cn": "适应检查的固定错误"
+            },
+            "1.0.18": {
                 "en": "stable release",
                 "de": "stabiler release",
                 "ru": "стабильный релиз",
@@ -80,14 +92,13 @@
                 "js-controller": ">=2.0.0"
             }
         ],
-		"globalDependencies": [
+        "globalDependencies": [
             {
                 "admin": ">=5.1.28"
             }
         ]
     },
-    "native": {
-    },
+    "native": {},
     "objects": [],
     "instanceObjects": []
 }

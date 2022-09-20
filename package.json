@@ -1,6 +1,6 @@
 {
   "name": "iobroker.hausbus_de",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "Adapter to control haus-bus.de components.",
   "author": {
     "name": "Hermann Hoeschen",
@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@alcalzone/release-script": "^3.5.9",
-	"@alcalzone/release-script-plugin-iobroker": "^3.5.7",
+    "@alcalzone/release-script-plugin-iobroker": "^3.5.7",
     "@alcalzone/release-script-plugin-license": "^3.5.3",
     "@iobroker/adapter-dev": "^1.0.0",
     "@iobroker/testing": "^3.0.2",
