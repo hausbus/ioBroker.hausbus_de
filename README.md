@@ -17,7 +17,7 @@ The HausBus.de adapter is ready to use without further configurations. It is aut
 <br>
 
 ## Changelog
-### 1.0.19 (2022-09-20)
+### **WORK IN PROGRESS**
 * (hausbusde) fixed error from adapter checker
 
 ### 1.0.12 (2022-08-10)
