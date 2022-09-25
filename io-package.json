@@ -1,104 +1,116 @@
 {
-    "common": {
-        "name": "hausbus_de",
-        "version": "1.0.20",
-        "news": {
-            "1.0.20": {
-                "en": "fixed error from adapter checker",
-                "de": "fester fehler beim adapter-checker",
-                "ru": "исправлена ошибка от адаптера checker",
-                "pt": "erro fixo do verificador do adaptador",
-                "nl": "vergissing van adapter checker",
-                "fr": "erreur fixe de l'adaptateur",
-                "it": "errore fisso dall'adattatore checker",
-                "es": "error fijo del adaptador",
-                "pl": "błędy adaptacyjne",
-                "zh-cn": "适应检查的固定错误"
-            },
-            "1.0.18": {
-                "en": "stable release",
-                "de": "stabiler release",
-                "ru": "стабильный релиз",
-                "pt": "liberação estável",
-                "nl": "stabiele vrijlating",
-                "fr": "libération stable",
-                "it": "rilascio stabile",
-                "es": "liberación estable",
-                "pl": "stabilizacja",
-                "zh-cn": "稳定释放"
-            },
-            "0.0.1": {
-                "en": "initial release",
-                "de": "Erstveröffentlichung",
-                "ru": "Начальная версия",
-                "pt": "lançamento inicial",
-                "nl": "Eerste uitgave",
-                "fr": "Première version",
-                "it": "Versione iniziale",
-                "es": "Versión inicial",
-                "pl": "Pierwsze wydanie",
-                "zh-cn": "首次出版"
-            }
-        },
-        "titleLang": {
-            "en": "Haus-Bus.de",
-            "de": "Haus-Bus.de",
-            "ru": "Haus-Bus.de",
-            "pt": "Haus-Bus.de",
-            "nl": "Haus-Bus.de",
-            "fr": "Haus-Bus.de",
-            "it": "Haus-Bus.de",
-            "es": "Haus-Bus.de",
-            "pl": "Haus-Bus.de",
-            "zh-cn": "豪斯巴士公司"
-        },
-        "desc": {
-            "en": "Adapter to control haus-bus.de components.",
-            "de": "Adapter zur Steuerung von haus-bus.de Komponenten.",
-            "ru": "Адаптер для управления компонентами haus-bus.de.",
-            "pt": "Adaptador para controlar os componentes haus-bus.de.",
-            "nl": "Adapter voor het aansturen van haus-bus.de componenten.",
-            "fr": "Adaptateur pour contrôler les composants haus-bus.de.",
-            "it": "Adattatore per controllare i componenti haus-bus.de.",
-            "es": "Adaptador para controlar los componentes de haus-bus.de.",
-            "pl": "Adapter do sterowania komponentami haus-bus.de.",
-            "zh-cn": "用于控制 haus-bus.de 组件的适配器。"
-        },
-        "authors": [
-            "Hermann Hoeschen <info@haus-bus.de>"
-        ],
-        "keywords": [
-            "haus-bus.de",
-            "homeserver",
-            "relaimodule",
-            "pushbuttons"
-        ],
-        "license": "MIT",
-        "platform": "Javascript/Node.js",
-        "main": "main.js",
-        "icon": "hausbusde.png",
-        "enabled": true,
-        "extIcon": "https://github.com/hausbus/ioBroker.hausbus_de/blob/main/admin/hausbusde.png",
-        "readme": "https://github.com/hausbusde/ioBroker.hausbus_de/blob/main/README.md",
-        "loglevel": "info",
-        "mode": "daemon",
-        "type": "iot-systems",
-        "compact": true,
-        "connectionType": "local",
-        "dataSource": "push",
-        "materialize": true,
-        "dependencies": [
-            {
-                "js-controller": ">=2.0.0"
-            }
-        ],
-        "globalDependencies": [
-            {
-                "admin": ">=5.1.28"
-            }
-        ]
+  "common": {
+    "name": "hausbus_de",
+    "version": "1.0.21",
+    "news": {
+      "1.0.21": {
+        "en": "fixed error from adapter checker",
+        "de": "fester fehler beim adapter-checker",
+        "ru": "исправлена ошибка от адаптера checker",
+        "pt": "erro fixo do verificador do adaptador",
+        "nl": "vergissing van adapter checker",
+        "fr": "erreur fixe de l'adaptateur",
+        "it": "errore fisso dall'adattatore checker",
+        "es": "error fijo del adaptador",
+        "pl": "błędy adaptacyjne",
+        "zh-cn": "适应检查的固定错误"
+      },
+      "1.0.20": {
+        "en": "fixed error from adapter checker",
+        "de": "fester fehler beim adapter-checker",
+        "ru": "исправлена ошибка от адаптера checker",
+        "pt": "erro fixo do verificador do adaptador",
+        "nl": "vergissing van adapter checker",
+        "fr": "erreur fixe de l'adaptateur",
+        "it": "errore fisso dall'adattatore checker",
+        "es": "error fijo del adaptador",
+        "pl": "błędy adaptacyjne",
+        "zh-cn": "适应检查的固定错误"
+      },
+      "1.0.18": {
+        "en": "stable release",
+        "de": "stabiler release",
+        "ru": "стабильный релиз",
+        "pt": "liberação estável",
+        "nl": "stabiele vrijlating",
+        "fr": "libération stable",
+        "it": "rilascio stabile",
+        "es": "liberación estable",
+        "pl": "stabilizacja",
+        "zh-cn": "稳定释放"
+      },
+      "0.0.1": {
+        "en": "initial release",
+        "de": "Erstveröffentlichung",
+        "ru": "Начальная версия",
+        "pt": "lançamento inicial",
+        "nl": "Eerste uitgave",
+        "fr": "Première version",
+        "it": "Versione iniziale",
+        "es": "Versión inicial",
+        "pl": "Pierwsze wydanie",
+        "zh-cn": "首次出版"
+      }
     },
-    "native": {},
-    "objects": [],
-    "instanceObjects": []
+    "titleLang": {
+      "en": "Haus-Bus.de",
+      "de": "Haus-Bus.de",
+      "ru": "Haus-Bus.de",
+      "pt": "Haus-Bus.de",
+      "nl": "Haus-Bus.de",
+      "fr": "Haus-Bus.de",
+      "it": "Haus-Bus.de",
+      "es": "Haus-Bus.de",
+      "pl": "Haus-Bus.de",
+      "zh-cn": "豪斯巴士公司"
+    },
+    "desc": {
+      "en": "Adapter to control haus-bus.de components.",
+      "de": "Adapter zur Steuerung von haus-bus.de Komponenten.",
+      "ru": "Адаптер для управления компонентами haus-bus.de.",
+      "pt": "Adaptador para controlar os componentes haus-bus.de.",
+      "nl": "Adapter voor het aansturen van haus-bus.de componenten.",
+      "fr": "Adaptateur pour contrôler les composants haus-bus.de.",
+      "it": "Adattatore per controllare i componenti haus-bus.de.",
+      "es": "Adaptador para controlar los componentes de haus-bus.de.",
+      "pl": "Adapter do sterowania komponentami haus-bus.de.",
+      "zh-cn": "用于控制 haus-bus.de 组件的适配器。"
+    },
+    "authors": [
+      "Hermann Hoeschen <info@haus-bus.de>"
+    ],
+    "keywords": [
+      "haus-bus.de",
+      "homeserver",
+      "relaimodule",
+      "pushbuttons"
+    ],
+    "license": "MIT",
+    "platform": "Javascript/Node.js",
+    "main": "main.js",
+    "icon": "hausbusde.png",
+    "enabled": true,
+    "extIcon": "https://github.com/hausbus/ioBroker.hausbus_de/blob/main/admin/hausbusde.png",
+    "readme": "https://github.com/hausbusde/ioBroker.hausbus_de/blob/main/README.md",
+    "loglevel": "info",
+    "mode": "daemon",
+    "type": "iot-systems",
+    "compact": true,
+    "connectionType": "local",
+    "dataSource": "push",
+    "materialize": true,
+    "dependencies": [
+      {
+        "js-controller": ">=2.0.0"
+      }
+    ],
+    "globalDependencies": [
+      {
+        "admin": ">=5.1.28"
+      }
+    ]
+  },
+  "native": {},
+  "objects": [],
+  "instanceObjects": []
 }
