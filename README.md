@@ -17,8 +17,8 @@ The HausBus.de adapter is ready to use without further configurations. It is aut
 <br>
 
 ## Changelog
+### **WORK IN PROGRESS** 
 
-### **WORK IN PROGRESS** - removed dynamical broadcast udp addresse due to docker subnet mask problems
 
 ### 1.0.21 (2022-09-25)
 * (hausbusde) fixed error from adapter checker
