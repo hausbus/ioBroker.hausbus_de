@@ -21,8 +21,8 @@ The HausBus.de adapter is ready to use without further configurations. It is aut
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### 1.1.0 (2022-10-22)
-* test
+### **WORK IN PROGRESS**
+* removed dynamic upd broadcast address due to problems with docker submask
 
 ### 1.0.21 (2022-09-25)
 * (hausbusde) fixed error from adapter checker
