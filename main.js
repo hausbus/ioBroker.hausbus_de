@@ -315,9 +315,10 @@ function main()
     });
   });
   
-  if (mask=="255.255.0.0") BROADCAST_SEND_IP = parts[0]+"."+parts[1]+".255.255";
+  /*if (mask=="255.255.0.0") BROADCAST_SEND_IP = parts[0]+"."+parts[1]+".255.255";
   else if (mask=="255.0.0.0") BROADCAST_SEND_IP = parts[0]+".255.255.255";
-  else BROADCAST_SEND_IP = parts[0]+"."+parts[1]+"."+parts[2]+".255";
+  else */
+  BROADCAST_SEND_IP = parts[0]+"."+parts[1]+"."+parts[2]+".255";
   debug( "BROADCAST_SEND_IP: "+BROADCAST_SEND_IP );
 
   adapter.getStates('*', function (err, obj) 
