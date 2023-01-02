@@ -3242,6 +3242,7 @@ function hwControllerReceivedConfiguration(sender, receiver, message, dataLength
 		else if (fcke==0x8) moduleId = MODUL_ID_8_RELAIS;
 		else if (fcke==0xC) moduleId = MODUL_ID_16_RELAIS_V2;
 		else if (fcke==0x10) moduleId = MODUL_ID_24_UP_IO;
+		else if (fcke==0x12) moduleId = MODUL_ID_8_ROLLO;
 		else if (fcke==0x18) moduleId = MODUL_ID_6_TASTER;
 		else if (fcke==0x19) moduleId = MODUL_ID_4_TASTER;
 		else if (fcke==0x1A) moduleId = MODUL_ID_2_TASTER;

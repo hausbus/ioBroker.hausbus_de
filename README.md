@@ -21,6 +21,10 @@ The HausBus.de adapter is ready to use without further configurations. It is aut
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+* support for new rollo module
+
 ### 1.1.2 (2022-10-22)
 * removed dynamic upd broadcast address due to problems with docker submask
 
