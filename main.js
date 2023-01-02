@@ -3150,6 +3150,7 @@ function hwControllerReceivedRemoteObjects(sender, receiver, message, dataLength
       else if ((nrTaster==2 && nrLeds==2) || (nrTaster==8 && nrLeds==8)) moduleType=MODUL_ID_2_TASTER;
       else if ((nrTaster==1 && nrLeds==1) || (nrTaster==7 && nrLeds==7)) moduleType=MODUL_ID_1_TASTER;
       else if (nrRelais==9) moduleType = MODUL_ID_8_RELAIS;
+      else if (nrRollos==8) moduleType = MODUL_ID_8_ROLLO;
       else if (nrDimmer==8 && nrRelais==1) moduleType=MODUL_ID_8_DIMMER;
       else if (nrRgbDimmer==2) moduleType=MODUL_ID_RGB_DIMMER;
 	
@@ -4721,6 +4722,7 @@ function initModulesClassesInstances()
 	FIRMWARE_IDS[6]=FIRMWARE_ID_S0_Reader;
 	FIRMWARE_IDS[7]=FIRMWARE_ID_ESP;
 	FIRMWARE_IDS[8]=FIRMWARE_ID_HBC;
+	FIRMWARE_IDS[9]=FIRMWARE_ID_HBC;
 
     for (var firmwareId in FIRMWARE_IDS) 
 	{
