@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "hausbus_de",
-    "version": "1.1.2",
+    "version": "1.1.3",
     "news": {
+      "1.1.3": {
+        "en": "support for new rollo module",
+        "de": "unterstützung für neues rollomodul",
+        "ru": "поддержка нового модуля rollo",
+        "pt": "suporte para novo módulo rollo",
+        "nl": "steun voor nieuwe rollo module",
+        "fr": "support pour le nouveau module rollo",
+        "it": "supporto per il nuovo modulo rollo",
+        "es": "soporte para nuevo módulo de carga",
+        "pl": "wsparcie dla nowego modułu",
+        "uk": "підтримка нового модуля",
+        "zh-cn": "支持新的滚动单元"
+      },
       "1.1.2": {
         "en": "removed dynamic upd broadcast address due to problems with docker submask",
         "de": "entfernte dynamische upd-broadcast-adresse aufgrund von problemen mit docking submask",
@@ -77,18 +90,6 @@
         "es": "liberación estable",
         "pl": "stabilizacja",
         "zh-cn": "稳定释放"
-      },
-      "0.0.1": {
-        "en": "initial release",
-        "de": "Erstveröffentlichung",
-        "ru": "Начальная версия",
-        "pt": "lançamento inicial",
-        "nl": "Eerste uitgave",
-        "fr": "Première version",
-        "it": "Versione iniziale",
-        "es": "Versión inicial",
-        "pl": "Pierwsze wydanie",
-        "zh-cn": "首次出版"
       }
     },
     "titleLang": {
