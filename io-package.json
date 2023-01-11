@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "hausbus_de",
-    "version": "1.1.4",
+    "version": "1.1.5",
     "news": {
+      "1.1.5": {
+        "en": "support for GIRA multi pushbuttons",
+        "de": "unterstützung für GIRA Multi-Tasten",
+        "ru": "поддержка GIRA multi pushbuttons",
+        "pt": "suporte para vários botões GIRA",
+        "nl": "quality over Quantity (QoQ) Releases Vertaling:",
+        "fr": "support pour les boutons multi-poussoirs GIRA",
+        "it": "supporto per GIRA multi pulsanti",
+        "es": "soporte para pulsadores GIRA multi",
+        "pl": "wsparcie dla GIRA multi pushbutton",
+        "uk": "підтримка GIRA мультисульттонів",
+        "zh-cn": "gIRA多方推动者"
+      },
       "1.1.4": {
         "en": "support for new rollo module",
         "de": "unterstützung für neues rollomodul",
@@ -69,18 +82,6 @@
         "zh-cn": "试验"
       },
       "1.0.21": {
-        "en": "fixed error from adapter checker",
-        "de": "fester fehler beim adapter-checker",
-        "ru": "исправлена ошибка от адаптера checker",
-        "pt": "erro fixo do verificador do adaptador",
-        "nl": "vergissing van adapter checker",
-        "fr": "erreur fixe de l'adaptateur",
-        "it": "errore fisso dall'adattatore checker",
-        "es": "error fijo del adaptador",
-        "pl": "błędy adaptacyjne",
-        "zh-cn": "适应检查的固定错误"
-      },
-      "1.0.20": {
         "en": "fixed error from adapter checker",
         "de": "fester fehler beim adapter-checker",
         "ru": "исправлена ошибка от адаптера checker",
