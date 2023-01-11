@@ -3248,6 +3248,7 @@ function hwControllerReceivedConfiguration(sender, receiver, message, dataLength
 		else if (fcke==0x19) moduleId = MODUL_ID_4_TASTER;
 		else if (fcke==0x1A) moduleId = MODUL_ID_2_TASTER;
 		else if (fcke==0x1B) moduleId = MODUL_ID_1_TASTER;
+		else if (fcke==0x1C) moduleId = MODUL_ID_6_TASTER;
 		else if (fcke==0x20) moduleId = MODUL_ID_32_IO;
 		else if (fcke==0x27 || fcke==0x28 || fcke==0x29) moduleId = MODUL_ID_8_DIMMER;
 		else if (fcke==0x30) moduleId = MODUL_ID_RGB_DIMMER;
@@ -4249,7 +4250,8 @@ function initModulesClassesInstances()
 	INSTANCES[MODUL_ID_6_TASTER]["*"][CLASS_ID_LED][67]="Extern_Led_3";
 	INSTANCES[MODUL_ID_6_TASTER]["*"][CLASS_ID_LED][68]="Extern_Led_4";
 	INSTANCES[MODUL_ID_6_TASTER]["*"][CLASS_ID_LED][69]="Extern_Led_5";
-        INSTANCES[MODUL_ID_6_TASTER]["*"][CLASS_ID_LED][70]="Extern_Led_6";
+    INSTANCES[MODUL_ID_6_TASTER]["*"][CLASS_ID_LED][70]="Extern_Led_6";
+    INSTANCES[MODUL_ID_6_TASTER]["*"][CLASS_ID_LED][99]="Hintergrundbeleuchtung Beschriftung";
 
 	INSTANCES[MODUL_ID_6_TASTER]["*"][CLASS_ID_LOGICAL_BUTTON]={};
 	INSTANCES[MODUL_ID_6_TASTER]["*"][CLASS_ID_LOGICAL_BUTTON][1]="Hintergrundbeleuchtung";

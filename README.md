@@ -21,6 +21,9 @@ The HausBus.de adapter is ready to use without further configurations. It is aut
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* support for GIRA multi pushbuttons
+
 ### 1.1.4 (2023-01-02)
 * support for new rollo module
 
