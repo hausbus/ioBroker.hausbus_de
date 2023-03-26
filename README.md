@@ -21,7 +21,7 @@ The HausBus.de adapter is ready to use without further configurations. It is aut
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 1.2.1 (2023-03-26)
 * support for new ESP32 modules
 
 ### 1.1.5 (2023-01-11)
