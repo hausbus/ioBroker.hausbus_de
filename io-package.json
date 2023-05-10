@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "hausbus_de",
-    "version": "1.2.5",
+    "version": "1.2.6",
     "news": {
+      "1.2.6": {
+        "en": "updated latest iobroker catalog version",
+        "de": "aktuelle iobroker katalogversion",
+        "ru": "обновлена последняя версия каталога iobroker",
+        "pt": "atualização mais recente versão do catálogo iobroker",
+        "nl": "vertaling:",
+        "fr": "mise à jour la dernière version du catalogue iobroker",
+        "it": "versione aggiornata del catalogo iobroker",
+        "es": "versión actualizada del catálogo iobroker",
+        "pl": "najnowsza wersja katalogowa",
+        "uk": "оновлена версія каталогу iobroker",
+        "zh-cn": "最新版本"
+      },
       "1.2.5": {
         "en": "updated latest iobroker catalog version",
         "de": "aktuelle iobroker katalogversion",
@@ -80,19 +93,6 @@
         "pl": "nowy moduł ESP32",
         "uk": "підтримка нових модулів ESP32",
         "zh-cn": "支持新的ESP32单元"
-      },
-      "1.1.5": {
-        "en": "support for GIRA multi pushbuttons",
-        "de": "unterstützung für GIRA Multi-Tasten",
-        "ru": "поддержка GIRA multi pushbuttons",
-        "pt": "suporte para vários botões GIRA",
-        "nl": "quality over Quantity (QoQ) Releases Vertaling:",
-        "fr": "support pour les boutons multi-poussoirs GIRA",
-        "it": "supporto per GIRA multi pulsanti",
-        "es": "soporte para pulsadores GIRA multi",
-        "pl": "wsparcie dla GIRA multi pushbutton",
-        "uk": "підтримка GIRA мультисульттонів",
-        "zh-cn": "gIRA多方推动者"
       }
     },
     "titleLang": {
