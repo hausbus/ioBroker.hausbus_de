@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "hausbus_de",
-    "version": "1.2.4",
+    "version": "1.2.5",
     "news": {
+      "1.2.5": {
+        "en": "updated latest iobroker catalog version",
+        "de": "aktuelle iobroker katalogversion",
+        "ru": "обновлена последняя версия каталога iobroker",
+        "pt": "atualização mais recente versão do catálogo iobroker",
+        "nl": "vertaling:",
+        "fr": "mise à jour la dernière version du catalogue iobroker",
+        "it": "versione aggiornata del catalogo iobroker",
+        "es": "versión actualizada del catálogo iobroker",
+        "pl": "najnowsza wersja katalogowa",
+        "uk": "оновлена версія каталогу iobroker",
+        "zh-cn": "最新版本"
+      },
       "1.2.4": {
         "en": "updated latest iobroker catalog version",
         "de": "aktuelle iobroker katalogversion",
@@ -80,19 +93,6 @@
         "pl": "wsparcie dla GIRA multi pushbutton",
         "uk": "підтримка GIRA мультисульттонів",
         "zh-cn": "gIRA多方推动者"
-      },
-      "1.1.4": {
-        "en": "support for new rollo module",
-        "de": "unterstützung für neues rollomodul",
-        "ru": "поддержка нового модуля rollo",
-        "pt": "suporte para novo módulo rollo",
-        "nl": "steun voor nieuwe rollo module",
-        "fr": "support pour le nouveau module rollo",
-        "it": "supporto per il nuovo modulo rollo",
-        "es": "soporte para nuevo módulo de carga",
-        "pl": "wsparcie dla nowego modułu",
-        "uk": "підтримка нового модуля",
-        "zh-cn": "支持新的滚动单元"
       }
     },
     "titleLang": {
