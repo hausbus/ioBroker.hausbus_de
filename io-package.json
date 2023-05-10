@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "hausbus_de",
-    "version": "1.2.6",
+    "version": "1.2.7",
     "news": {
+      "1.2.7": {
+        "en": "updated latest iobroker catalog version",
+        "de": "aktuelle iobroker katalogversion",
+        "ru": "обновлена последняя версия каталога iobroker",
+        "pt": "atualização mais recente versão do catálogo iobroker",
+        "nl": "vertaling:",
+        "fr": "mise à jour la dernière version du catalogue iobroker",
+        "it": "versione aggiornata del catalogo iobroker",
+        "es": "versión actualizada del catálogo iobroker",
+        "pl": "najnowsza wersja katalogowa",
+        "uk": "оновлена версія каталогу iobroker",
+        "zh-cn": "最新版本"
+      },
       "1.2.6": {
         "en": "updated latest iobroker catalog version",
         "de": "aktuelle iobroker katalogversion",
@@ -69,19 +82,6 @@
         "zh-cn": "最新版本"
       },
       "1.2.1": {
-        "en": "support for new ESP32 modules",
-        "de": "unterstützung für neue ESP32 Module",
-        "ru": "поддержка новых модулей ESP32",
-        "pt": "suporte para novos módulos ESP32",
-        "nl": "steun voor nieuwe ESP32 modules",
-        "fr": "support pour les nouveaux modules ESP32",
-        "it": "supporto per nuovi moduli ESP32",
-        "es": "soporte para nuevos módulos ESP32",
-        "pl": "nowy moduł ESP32",
-        "uk": "підтримка нових модулів ESP32",
-        "zh-cn": "支持新的ESP32单元"
-      },
-      "1.2.0": {
         "en": "support for new ESP32 modules",
         "de": "unterstützung für neue ESP32 Module",
         "ru": "поддержка новых модулей ESP32",
