@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "hausbus_de",
-    "version": "1.2.1",
+    "version": "1.2.2",
     "news": {
+      "1.2.2": {
+        "en": "updated latest iobroker catalog version",
+        "de": "aktuelle iobroker katalogversion",
+        "ru": "обновлена последняя версия каталога iobroker",
+        "pt": "atualização mais recente versão do catálogo iobroker",
+        "nl": "vertaling:",
+        "fr": "mise à jour la dernière version du catalogue iobroker",
+        "it": "versione aggiornata del catalogo iobroker",
+        "es": "versión actualizada del catálogo iobroker",
+        "pl": "najnowsza wersja katalogowa",
+        "uk": "оновлена версія каталогу iobroker",
+        "zh-cn": "最新版本"
+      },
       "1.2.1": {
         "en": "support for new ESP32 modules",
         "de": "unterstützung für neue ESP32 Module",
@@ -69,19 +82,6 @@
         "zh-cn": "支持新的滚动单元"
       },
       "1.1.2": {
-        "en": "removed dynamic upd broadcast address due to problems with docker submask",
-        "de": "entfernte dynamische upd-broadcast-adresse aufgrund von problemen mit docking submask",
-        "ru": "удаленный динамический upd адрес вещания из-за проблем с докером субмаском",
-        "pt": "removido endereço de transmissão dinâmico upd devido a problemas com submasco docker",
-        "nl": "verwijderde dynamisch opgezette uitzendingsadres door problemen met docker submask",
-        "fr": "l'adresse de radiodiffusion dynamique supprimée en raison de problèmes avec la sous-mâche docker",
-        "it": "rimosso l'indirizzo di trasmissione upd dinamico a causa di problemi con submask docker",
-        "es": "removida dinamizada dinamizada por problemas con docker submask",
-        "pl": "usunąć dynamiczny adres z powodu problemów z podmaską dockera",
-        "uk": "видалити динамічну адресу мовлення через проблеми з docker submask",
-        "zh-cn": "d. 拆除动态广播,因为有几克分门的问题。"
-      },
-      "1.1.1": {
         "en": "removed dynamic upd broadcast address due to problems with docker submask",
         "de": "entfernte dynamische upd-broadcast-adresse aufgrund von problemen mit docking submask",
         "ru": "удаленный динамический upd адрес вещания из-за проблем с докером субмаском",
