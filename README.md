@@ -7,7 +7,7 @@ For a documentation about the supported hardware and IO Broker integration pleas
 ## Installation <a name="installation"></a>
 This adapter is available as stable release in the official ioBroker catalog.<br>
 It's recommended to install it directly from the catalog within ioBroker.<br>
-If you need a newer version than available in the official ioBroker catalog you can also directly install this version here from github<br>
+If you need a newer version than available in the official ioBroker catalog you can also directly install this version here from github.<br>
 If you are facing any problems or bugs please contact info@haus-bus.de<br>
 
 ## Setup
@@ -22,6 +22,9 @@ The HausBus.de adapter is ready to use without further configurations. It is aut
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* updated latest iobroker catalog version
+
 ### 1.2.1 (2023-03-26)
 * support for new ESP32 32 IO module
 
