@@ -346,7 +346,7 @@ function main()
 	  adapter.setObjectNotExists(adapter.namespace+"."+CONTROLLER_ADMIN_FUNCTION,{type: 'state',common: {name: CONTROLLER_ADMIN_FUNCTION,type: "string",role: "switch"},native: {}});
 
 	  searchAllDevices();
-	  setTimeout(readFirmwareVersions, 10000);
+	  //setTimeout(readFirmwareVersions, 10000);
 	  checkAliveTimer = setTimeout(checkAlive, 20000); // alle 20 Sekunden pingen wir einen Controller an
     }
   });
