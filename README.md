@@ -22,10 +22,7 @@ The HausBus.de adapter is ready to use without further configurations. It is aut
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS** 
 -->
-### 1.2.10 (2023-05-11) 
-* updated node dependencies
-
-### 1.2.9 (2023-05-10) 
+### **WORK IN PROGRESS** 
 * updated latest iobroker catalog version
 
 ### 1.2.1 (2023-03-26)
