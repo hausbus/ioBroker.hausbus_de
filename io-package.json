@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "hausbus_de",
-    "version": "1.2.9",
+    "version": "1.2.10",
     "news": {
+      "1.2.10": {
+        "en": "updated node dependencies",
+        "de": "aktualisierte knotenabhängigkeiten",
+        "ru": "обновленные зависимости от узлов",
+        "pt": "dependências de nó atualizadas",
+        "nl": "vertaling:",
+        "fr": "mises à jour des dépendances",
+        "it": "dipendenze aggiornate del nodo",
+        "es": "actualizados",
+        "pl": "zależności węzłów",
+        "uk": "оновлені залежності вузлів",
+        "zh-cn": "二. 最新无受扶养人"
+      },
       "1.2.9": {
         "en": "updated latest iobroker catalog version",
         "de": "aktuelle iobroker katalogversion",
@@ -69,19 +82,6 @@
         "zh-cn": "最新版本"
       },
       "1.2.4": {
-        "en": "updated latest iobroker catalog version",
-        "de": "aktuelle iobroker katalogversion",
-        "ru": "обновлена последняя версия каталога iobroker",
-        "pt": "atualização mais recente versão do catálogo iobroker",
-        "nl": "vertaling:",
-        "fr": "mise à jour la dernière version du catalogue iobroker",
-        "it": "versione aggiornata del catalogo iobroker",
-        "es": "versión actualizada del catálogo iobroker",
-        "pl": "najnowsza wersja katalogowa",
-        "uk": "оновлена версія каталогу iobroker",
-        "zh-cn": "最新版本"
-      },
-      "1.2.3": {
         "en": "updated latest iobroker catalog version",
         "de": "aktuelle iobroker katalogversion",
         "ru": "обновлена последняя версия каталога iobroker",
