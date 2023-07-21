@@ -1116,7 +1116,7 @@ function hwTemperatursensorReceivedConfiguration(sender, receiver, message, data
 	debug("temp configuration: "+dump(configurations[sender])+" <- "+objectIdToString(sender));
 }
 
-function hwTemperatursensorSetConfiguration(configKey, newValue, receiverObjectId)
+function hwTemperatursensorSetConfiguration(configKey, newValue, receiverObjectId, recovery="0")
 {
     var lowerThreshold = 0;
     var lowerThresholdFraction = 0;
@@ -1140,6 +1140,21 @@ function hwTemperatursensorSetConfiguration(configKey, newValue, receiverObjectI
 	  maxReportTime = parseInt(configuration.maxReportTime);
 	  hysteresis = parseInt(configuration.hysteresis);
 	  calibration = parseInt(configuration.calibration);
+	}
+	else
+	{
+		if (recovery=="1")
+		{
+		  error("configuration missing and recovery failed");
+		  return;
+		}
+		else
+		{
+		  warn("configuration missing -> recovery");
+		  hwTemperatursensorGetConfiguration(receiverObjectId);
+		  setTimeout(function() { hwTemperatursensorSetConfiguration(configKey, newValue, receiverObjectId, "1");}, 1000);
+		  return;
+		}
 	}
 			  
 	if (configKey == TEMP_CFG_CALIBRATION) calibration=parseInt(newValue*10);
@@ -1316,7 +1331,7 @@ function hwHelligkeitssensorReceivedConfiguration(sender, receiver, message, dat
 	debug("helligkeitssensorReceivedConfiguration: "+dump(configurations[sender])+" <- "+objectIdToString(sender));
 }
 
-function hwHelligkeitssensorSetConfiguration(configKey, newValue, receiverObjectId)
+function hwHelligkeitssensorSetConfiguration(configKey, newValue, receiverObjectId,recovery="0")
 {
     var lowerThreshold = 0;
     var lowerThresholdFraction = 0;
@@ -1340,6 +1355,21 @@ function hwHelligkeitssensorSetConfiguration(configKey, newValue, receiverObject
 	  maxReportTime = parseInt(configuration.maxReportTime);
 	  hysteresis = parseInt(configuration.hysteresis);
 	  calibration = parseInt(configuration.calibration);
+	}
+	else
+	{
+		if (recovery=="1")
+		{
+		  error("configuration missing and recovery failed");
+		  return;
+		}
+		else
+		{
+		  warn("configuration missing -> recovery");
+		  hwHelligkeitssensorGetConfiguration(receiverObjectId);
+		  setTimeout(function() { hwHelligkeitssensorSetConfiguration(configKey, newValue, receiverObjectId, "1");}, 1000);
+		  return;
+		}
 	}
 			  
 	if (configKey == BRIGHT_CFG_CALIBRATION) calibration=parseInt(newValue*10);
@@ -1511,7 +1541,7 @@ function hwFeuchteSensorReceivedConfiguration(sender, receiver, message, dataLen
 	debug("feuchteSensorReceivedConfiguration: "+dump(configurations[sender])+" <- "+objectIdToString(sender));
 }
 
-function hwFeuchteSensorSetConfiguration(configKey, newValue, receiverObjectId)
+function hwFeuchteSensorSetConfiguration(configKey, newValue, receiverObjectId, recovery="0")
 {
     var lowerThreshold = 0;
     var lowerThresholdFraction = 0;
@@ -1535,6 +1565,21 @@ function hwFeuchteSensorSetConfiguration(configKey, newValue, receiverObjectId)
 	  maxReportTime = parseInt(configuration.maxReportTime);
 	  hysteresis = parseInt(configuration.hysteresis);
 	  calibration = parseInt(configuration.calibration);
+	}
+	else
+	{
+		if (recovery=="1")
+		{
+		  error("configuration missing and recovery failed");
+		  return;
+		}
+		else
+		{
+		  warn("configuration missing -> recovery");
+		  hwFeuchteSensorGetConfiguration(receiverObjectId);
+		  setTimeout(function() { hwFeuchteSensorSetConfiguration(configKey, newValue, receiverObjectId, "1");}, 1000);
+		  return;
+		}
 	}
 			  
 	if (configKey == HUMIDITY_CFG_CALIBRATION) calibration=parseInt(newValue*10);
@@ -1735,7 +1780,7 @@ function hwTasterReceivedConfiguration(sender, receiver, message, dataLength)
 	debug("Taster Configuration "+sender+": "+dump(configurations[sender]));
 }
 
-function hwTasterSetConfiguration(configKey, newValue, receiverObjectId)
+function hwTasterSetConfiguration(configKey, newValue, receiverObjectId, recovery="0")
 {
 	var holdTimeout = 0;
 	var doubleClickTimeout = 0;
@@ -1744,6 +1789,7 @@ function hwTasterSetConfiguration(configKey, newValue, receiverObjectId)
 	var myConfigEventBits = 0;
 	var myConfigOptionsBits = 0;
 	
+
 	var configuration = configurations[receiverObjectId];
 	if (typeof configuration != "undefined")
 	{
@@ -1754,6 +1800,21 @@ function hwTasterSetConfiguration(configKey, newValue, receiverObjectId)
 	
 	  myConfigEventBits = CONFIG_BITS[CLASS_ID_TASTER]["events"];
 	  myConfigOptionsBits = CONFIG_BITS[CLASS_ID_TASTER]["options"];
+	}
+	else
+	{
+		if (recovery=="1")
+		{
+		  error("configuration missing and recovery failed");
+		  return;
+		}
+		else
+		{
+		  warn("configuration missing -> recovery");
+		  hwTasterGetConfiguration(receiverObjectId);
+		  setTimeout(function() { hwTasterSetConfiguration(configKey, newValue, receiverObjectId, "1");}, 1000);
+		  return;
+		}
 	}
 	
 	if (configKey == TASTER_CFG_HOLD_TIMEOUT) holdTimeout=parseInt(newValue);
@@ -2156,7 +2217,7 @@ function hwRolloReceivedConfiguration(sender, receiver, message, dataLength)
 	debug("blind configuration: "+dump(configurations[sender])+" "+sender);
 }
 
-function hwRolloSetConfiguration(configKey, newValue, receiverObjectId)
+function hwRolloSetConfiguration(configKey, newValue, receiverObjectId, recovery="0")
 {
 	var closeTime = 0;
 	var openTime = 0;
@@ -2170,6 +2231,21 @@ function hwRolloSetConfiguration(configKey, newValue, receiverObjectId)
 	  openTime = parseInt(configuration.openTime);
 	  options = parseInt(configuration.options);
 	  myConfigOptionsBits = CONFIG_BITS[CLASS_ID_ROLLLADEN]["options"];
+	}
+	else
+	{
+		if (recovery=="1")
+		{
+		  error("configuration missing and recovery failed");
+		  return;
+		}
+		else
+		{
+		  warn("configuration missing -> recovery");
+		  hwRolloGetConfiguration(receiverObjectId);
+		  setTimeout(function() { hwRolloSetConfiguration(configKey, newValue, receiverObjectId, "1");}, 1000);
+		  return;
+		}
 	}
 	
 	if (configKey == ROLLO_CFG_CLOSE_TIME) closeTime=parseInt(newValue);
@@ -2483,7 +2559,7 @@ function hwLedGetConfiguration(receiverObjectId)
 	sendHausbusUdpMessage(receiverObjectId, data, myObjectId);
 }
 
-function hwLedSetConfiguration(configKey, newValue, receiverObjectId)
+function hwLedSetConfiguration(configKey, newValue, receiverObjectId, recovery="0")
 {
 	var dimmOffset = 0;
 	var minBrightness = 0;
@@ -2499,6 +2575,21 @@ function hwLedSetConfiguration(configKey, newValue, receiverObjectId)
 	  timebase = parseInt(configuration.timebase);
 	  options = parseInt(configuration.options);
 	  myConfigOptionsBits = CONFIG_BITS[CLASS_ID_LED]["options"];
+	}
+	else
+	{
+		if (recovery=="1")
+		{
+		  error("configuration missing and recovery failed");
+		  return;
+		}
+		else
+		{
+		  warn("configuration missing -> recovery");
+		  hwLedGetConfiguration(receiverObjectId);
+		  setTimeout(function() { hwLedSetConfiguration(configKey, newValue, receiverObjectId, "1");}, 1000);
+		  return;
+		}
 	}
 	
 	if (configKey == LED_CFG_INVERTED)
@@ -2733,7 +2824,7 @@ function hwDimmerReceivedConfiguration(sender, receiver, message, dataLength)
 	debug("Dimmer Configuration "+sender+": "+dump(configurations[sender]));
 }
 
-function hwDimmerSetConfiguration(configKey, newValue, receiverObjectId)
+function hwDimmerSetConfiguration(configKey, newValue, receiverObjectId, recovery="0")
 {
 	var mode = 0;
 	var fadingTime = 0;
@@ -2749,6 +2840,21 @@ function hwDimmerSetConfiguration(configKey, newValue, receiverObjectId)
 	   dimmingTime = parseInt(configuration.dimmingTime);
 	   dimmingRangeStart = parseInt(configuration.dimmingRangeStart);
 	   dimmingRangeEnd = parseInt(configuration.dimmingRangeEnd);
+	}
+	else
+	{
+		if (recovery=="1")
+		{
+		  error("configuration missing and recovery failed");
+		  return;
+		}
+		else
+		{
+		  warn("configuration missing -> recovery");
+		  hwDimmerGetConfiguration(receiverObjectId);
+		  setTimeout(function() { hwDimmerSetConfiguration(configKey, newValue, receiverObjectId, "1");}, 1000);
+		  return;
+		}
 	}
 	
 	if (configKey == DIMMER_CFG_MODE)
@@ -2906,7 +3012,7 @@ function hwRgbDimmerReceivedConfiguration(sender, receiver, message, dataLength)
 	debug("rgbDimmerReceivedConfiguration "+sender+": "+dump(configurations[sender]));
 }
 
-function hwRgbDimmerSetConfiguration(configKey, newValue, receiverObjectId)
+function hwRgbDimmerSetConfiguration(configKey, newValue, receiverObjectId, recovery="0")
 {
 	var mode = 0;
 	var fadingTime = 0;
@@ -2922,6 +3028,21 @@ function hwRgbDimmerSetConfiguration(configKey, newValue, receiverObjectId)
 	   dimmingTime = parseInt(configuration.dimmingTime);
 	   dimmingRangeStart = parseInt(configuration.dimmingRangeStart);
 	   dimmingRangeEnd = parseInt(configuration.dimmingRangeEnd);
+	}
+	else
+	{
+		if (recovery=="1")
+		{
+		  error("configuration missing and recovery failed");
+		  return;
+		}
+		else
+		{
+		  warn("configuration missing -> recovery");
+		  hwRgbDimmerGetConfiguration(receiverObjectId);
+		  setTimeout(function() { hwRgbDimmerSetConfiguration(configKey, newValue, receiverObjectId, "1");}, 1000);
+		  return;
+		}
 	}
 	
 	if (configKey == RGB_DIMMER_CFG_FADING_TIME) fadingTime=parseInt(newValue);
@@ -2971,7 +3092,7 @@ function hwEthernetReceivedIp(sender, receiver, message, dataLength)
 	setStateIoBroker(myId, ip);
 }
 
-function hwEthernetSetConfiguration(newValue, receiverObjectId)
+function hwEthernetSetConfiguration(newValue, receiverObjectId, recovery="0")
 {
     newValue = String(newValue);
 	var myConfigBits = 0;
@@ -2989,7 +3110,22 @@ function hwEthernetSetConfiguration(newValue, receiverObjectId)
 	   port = parseInt(configuration.port);
 	   loxoneIp = configuration.loxoneIp;
 	}
-
+    else
+	{
+		if (recovery=="1")
+		{
+		  error("configuration missing and recovery failed");
+		  return;
+		}
+		else
+		{
+		  warn("configuration missing -> recovery");
+		  hwEthernetGetConfiguration(receiverObjectId);
+		  setTimeout(function() { hwEthernetSetConfiguration(configKey, newValue, receiverObjectId, "1");}, 1000);
+		  return;
+		}
+	}
+	
     var changes=false;
 	
     if (newValue.toUpperCase()=="DHCP")
@@ -4012,6 +4148,11 @@ function getIoBrokerId(deviceId,classId,instanceId,propertyName, subChannel="")
 	if (subChannel!="") subChannel+=".";
 	return adapter.namespace+"."+deviceId+"."+CLASSES[classId].name+"."+getInstanceName(deviceId, moduleType, classId, instanceId)+"."+subChannel+propertyName;
 }
+
+function delay(time) 
+{
+  return new Promise(resolve => setTimeout(resolve, time));
+} 
 
 function initModulesClassesInstances()
 {
