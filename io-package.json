@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "hausbus_de",
-    "version": "1.2.11",
+    "version": "1.2.12",
     "news": {
+      "1.2.12": {
+        "en": "configuration recovery",
+        "de": "konfigurationswiederherstellung",
+        "ru": "восстановление конфигурации",
+        "pt": "recuperação de configuração",
+        "nl": "verontrusting herstel",
+        "fr": "configuration récupération",
+        "it": "configurazione di recupero",
+        "es": "recuperación",
+        "pl": "rehabilitacja",
+        "uk": "відновлення конфігурації",
+        "zh-cn": "恢复原状"
+      },
       "1.2.11": {
         "en": "updated latest iobroker catalog version",
         "de": "aktuelle iobroker katalogversion",
@@ -69,19 +82,6 @@
         "zh-cn": "最新版本"
       },
       "1.2.6": {
-        "en": "updated latest iobroker catalog version",
-        "de": "aktuelle iobroker katalogversion",
-        "ru": "обновлена последняя версия каталога iobroker",
-        "pt": "atualização mais recente versão do catálogo iobroker",
-        "nl": "vertaling:",
-        "fr": "mise à jour la dernière version du catalogue iobroker",
-        "it": "versione aggiornata del catalogo iobroker",
-        "es": "versión actualizada del catálogo iobroker",
-        "pl": "najnowsza wersja katalogowa",
-        "uk": "оновлена версія каталогу iobroker",
-        "zh-cn": "最新版本"
-      },
-      "1.2.5": {
         "en": "updated latest iobroker catalog version",
         "de": "aktuelle iobroker katalogversion",
         "ru": "обновлена последняя версия каталога iobroker",

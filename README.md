@@ -22,8 +22,7 @@ The HausBus.de adapter is ready to use without further configurations. It is aut
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS** 
 -->
-
-### **WORK IN PROGRESS** 
+### 1.2.12 (2023-07-21) 
 * configuration recovery
 
 ### 1.2.11 (2023-05-11) 
