@@ -13,13 +13,6 @@
     semver "^7.3.7"
     tiny-glob "^0.2.9"
 
-"@alcalzone/release-script-core@3.5.9":
-  version "3.5.9"
-  resolved "https://registry.yarnpkg.com/@alcalzone/release-script-core/-/release-script-core-3.5.9.tgz#78ef15e91317cfcdf30404eb0879f5088efbd86f"
-  integrity sha512-rRxosfZMtpDcIm+sPTdwP5oVRBLX1WLYImrp0nUhqOPNN/UD5l9TxNVXDhGUsstXhaRXXBYS2BnOQwR308OfyA==
-  dependencies:
-    execa "^5.1.1"
-
 "@alcalzone/release-script-core@3.7.0":
   version "3.7.0"
   resolved "https://registry.yarnpkg.com/@alcalzone/release-script-core/-/release-script-core-3.7.0.tgz#3de428a83819abee409878081531a0a1da88cdce"
@@ -63,12 +56,12 @@
     fs-extra "^10.1.0"
     semver "^7.5.2"
 
-"@alcalzone/release-script-plugin-license@^3.5.3":
-  version "3.5.9"
-  resolved "https://registry.yarnpkg.com/@alcalzone/release-script-plugin-license/-/release-script-plugin-license-3.5.9.tgz#b7a462bdbfca081a55ef6b1353f7eac459d119d8"
-  integrity sha512-Wa+RN968zYK0ZNkkaIRfD3Ru2ndWLD5e+VNbah4krtoeHqvQDiOPlfcWM0McU8q3ud+AMPwhYEwR1mh2lwi0gg==
+"@alcalzone/release-script-plugin-license@^3.7.0":
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/@alcalzone/release-script-plugin-license/-/release-script-plugin-license-3.7.0.tgz#71404b2a6c6d6bd41e73eb258653ed43972d8333"
+  integrity sha512-HLnKHr3pc6NJJ7zAa8S/SdC305oEurnkRa9XNP5F6rgrixsxUiynBVh0tpPsVsOTdndm7fNIBRfR66IGnw0cag==
   dependencies:
-    "@alcalzone/release-script-core" "3.5.9"
+    "@alcalzone/release-script-core" "3.7.0"
     fs-extra "^10.1.0"
     tiny-glob "^0.2.9"
 
