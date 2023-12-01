@@ -52,14 +52,14 @@
     "@alcalzone/release-script-core" "3.7.0"
     fs-extra "^10.1.0"
 
-"@alcalzone/release-script-plugin-iobroker@^3.6.0":
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/@alcalzone/release-script-plugin-iobroker/-/release-script-plugin-iobroker-3.6.0.tgz#eb3c4b7501efd7191ad04a9322d279232497da56"
-  integrity sha512-VnozQx9f+Ov5hsJbZgfh4CapwsSrLBghvRIQaiovupVwbhcF+2Z+XsJIuwafBCCxwZ4+mSNjEstf7sCc9cvb8g==
+"@alcalzone/release-script-plugin-iobroker@^3.7.0":
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/@alcalzone/release-script-plugin-iobroker/-/release-script-plugin-iobroker-3.7.0.tgz#2a0ac7a88d59aee7ab8fee4b329847a6e9899c80"
+  integrity sha512-6nkLIDZ4qvZ21f3ozjPJ//x+hqkaiTfkDcYnyw6SWOIUbCa5v7Xj0cAZY7INguSfjv18UOTlU1J8xdzqHxtREg==
   dependencies:
-    "@alcalzone/release-script-core" "3.5.9"
+    "@alcalzone/release-script-core" "3.7.0"
     alcalzone-shared "^4.0.1"
-    axios "^0.27.1"
+    axios "^1.6.2"
     fs-extra "^10.1.0"
     semver "^7.5.2"
 
@@ -534,7 +534,7 @@ asynckit@^0.4.0:
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
   integrity sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==
 
-axios@^0.27.1, axios@^0.27.2:
+axios@^0.27.2:
   version "0.27.2"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.27.2.tgz#207658cc8621606e586c85db4b41a750e756d972"
   integrity sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==
