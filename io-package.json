@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "hausbus_de",
-    "version": "1.2.12",
+    "version": "1.3.0",
     "news": {
+      "1.3.0": {
+        "en": "support for new analog inputs (0-10V or 4-20mA)",
+        "de": "unterstützung für neue analoge Eingänge (0-10V oder 4-20mA)",
+        "ru": "поддержка новых аналоговых входов (0-10V или 4-20mA)",
+        "pt": "suporte para novas entradas analógicas (0-10V ou 4-20mA)",
+        "nl": "steun voor nieuwe analog inputs (0-10V of 4-20mA)",
+        "fr": "support pour les nouvelles entrées analogiques (0-10V ou 4-20mA)",
+        "it": "supporto per nuovi ingressi analogici (0-10V o 4-20mA)",
+        "es": "soporte para nuevas entradas analógicas (0-10V o 4-20mA)",
+        "pl": "obsługuje nowe sygnały analogowe (0-10V lub 4-20mA)",
+        "uk": "підтримка нових аналогових входів (0-10V або 4-20mA)",
+        "zh-cn": "支持新的类似投入(0-10V或4-20A)"
+      },
       "1.2.12": {
         "en": "configuration recovery",
         "de": "konfigurationswiederherstellung",
@@ -69,19 +82,6 @@
         "zh-cn": "最新版本"
       },
       "1.2.7": {
-        "en": "updated latest iobroker catalog version",
-        "de": "aktuelle iobroker katalogversion",
-        "ru": "обновлена последняя версия каталога iobroker",
-        "pt": "atualização mais recente versão do catálogo iobroker",
-        "nl": "vertaling:",
-        "fr": "mise à jour la dernière version du catalogue iobroker",
-        "it": "versione aggiornata del catalogo iobroker",
-        "es": "versión actualizada del catálogo iobroker",
-        "pl": "najnowsza wersja katalogowa",
-        "uk": "оновлена версія каталогу iobroker",
-        "zh-cn": "最新版本"
-      },
-      "1.2.6": {
         "en": "updated latest iobroker catalog version",
         "de": "aktuelle iobroker katalogversion",
         "ru": "обновлена последняя версия каталога iobroker",
