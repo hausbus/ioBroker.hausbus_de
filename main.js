@@ -48,6 +48,7 @@ var MODUL_ID_8_ROLLO=2;
 var MODUL_ID_8_RELAIS=5;
 var MODUL_ID_LAN_BRIDGE=15;
 var MODUL_ID_RGB_DIMMER=16;
+var MODUL_ID_12_RELAIS=17;
 
 var MODULES = {}; // Alle Haus-Bus Module
 var CLASSES = {}; // Alle Haus-Bus Klassen
@@ -3510,6 +3511,7 @@ function hwControllerReceivedRemoteObjects(sender, receiver, message, dataLength
       else if ((nrTaster==2 && nrLeds==2) || (nrTaster==8 && nrLeds==8)) moduleType=MODUL_ID_2_TASTER;
       else if ((nrTaster==1 && nrLeds==1) || (nrTaster==7 && nrLeds==7)) moduleType=MODUL_ID_1_TASTER;
       else if (nrRelais==9) moduleType = MODUL_ID_8_RELAIS;
+      else if (nrRelais==12) moduleType = MODUL_ID_12_RELAIS;
       else if (nrRollos==8) moduleType = MODUL_ID_8_ROLLO;
       else if (nrDimmer==8 && nrRelais==1) moduleType=MODUL_ID_8_DIMMER;
       else if (nrRgbDimmer==2) moduleType=MODUL_ID_RGB_DIMMER;
@@ -3626,6 +3628,7 @@ function hwControllerReceivedConfiguration(sender, receiver, message, dataLength
 		else if (fcke==0x20) moduleId = MODUL_ID_32_IO;
 		else if (fcke==0x27 || fcke==0x28 || fcke==0x29) moduleId = MODUL_ID_8_DIMMER;
 		else if (fcke==0x30) moduleId = MODUL_ID_RGB_DIMMER;
+		else if (fcke==0x0A) moduleId = MODUL_ID_12_RELAIS;
 	}
 	else if (firmwareType == FIRMWARE_ID_SD485)
 	{
@@ -4429,6 +4432,7 @@ function initModulesClassesInstances()
 	MODULES[MODUL_ID_RGB_DIMMER]={id:MODUL_ID_RGB_DIMMER, name:"RGB Dimmermodul"};
 	MODULES[MODUL_ID_8_ROLLO]={id:MODUL_ID_8_ROLLO, name:"8 Kanal Rollomodul"};
 	MODULES[MODUL_ID_8_RELAIS]={id:MODUL_ID_8_RELAIS, name:"8 Kanal 16A Relaismodul"};
+	MODULES[MODUL_ID_12_RELAIS]={id:MODUL_ID_12_RELAIS, name:"12 Kanal 16A Relaismodul"};
 	
 	for (var key in MODULES) 
 	{
@@ -4595,6 +4599,36 @@ function initModulesClassesInstances()
 	INSTANCES[MODUL_ID_8_RELAIS][FIRMWARE_ID_ESP32][CLASS_ID_TASTER][102]="Eingang_06";
 	INSTANCES[MODUL_ID_8_RELAIS][FIRMWARE_ID_ESP32][CLASS_ID_TASTER][103]="Eingang_07";
 	INSTANCES[MODUL_ID_8_RELAIS][FIRMWARE_ID_ESP32][CLASS_ID_TASTER][104]="Eingang_08";
+	
+	// MODUL_ID_12_RELAIS
+    INSTANCES[MODUL_ID_12_RELAIS]={};
+	INSTANCES[MODUL_ID_12_RELAIS]["*"]={};
+	INSTANCES[MODUL_ID_12_RELAIS]["*"][CLASS_ID_CONTROLLER]={};
+	INSTANCES[MODUL_ID_12_RELAIS]["*"][CLASS_ID_CONTROLLER][1]="Maincontroller";
+
+	INSTANCES[MODUL_ID_12_RELAIS]["*"][CLASS_ID_SCHALTER]={};
+	INSTANCES[MODUL_ID_12_RELAIS]["*"][CLASS_ID_SCHALTER][17]="Relais_01";
+	INSTANCES[MODUL_ID_12_RELAIS]["*"][CLASS_ID_SCHALTER][18]="Relais_02";
+	INSTANCES[MODUL_ID_12_RELAIS]["*"][CLASS_ID_SCHALTER][19]="Relais_03";
+	INSTANCES[MODUL_ID_12_RELAIS]["*"][CLASS_ID_SCHALTER][20]="Relais_04";
+	INSTANCES[MODUL_ID_12_RELAIS]["*"][CLASS_ID_SCHALTER][21]="Relais_05";
+	INSTANCES[MODUL_ID_12_RELAIS]["*"][CLASS_ID_SCHALTER][22]="Relais_06";
+	INSTANCES[MODUL_ID_12_RELAIS]["*"][CLASS_ID_SCHALTER][23]="Relais_07";
+	INSTANCES[MODUL_ID_12_RELAIS]["*"][CLASS_ID_SCHALTER][24]="Relais_08";
+	INSTANCES[MODUL_ID_12_RELAIS]["*"][CLASS_ID_SCHALTER][33]="Relais_09";
+	INSTANCES[MODUL_ID_12_RELAIS]["*"][CLASS_ID_SCHALTER][34]="Relais_10";
+	INSTANCES[MODUL_ID_12_RELAIS]["*"][CLASS_ID_SCHALTER][35]="Relais_11";
+	INSTANCES[MODUL_ID_12_RELAIS]["*"][CLASS_ID_SCHALTER][36]="Relais_12";
+
+    INSTANCES[MODUL_ID_12_RELAIS]["*"][CLASS_ID_TASTER]={};
+	INSTANCES[MODUL_ID_12_RELAIS]["*"][CLASS_ID_TASTER][97]="Eingang_01";
+	INSTANCES[MODUL_ID_12_RELAIS]["*"][CLASS_ID_TASTER][98]="Eingang_02";
+	INSTANCES[MODUL_ID_12_RELAIS]["*"][CLASS_ID_TASTER][99]="Eingang_03";
+	INSTANCES[MODUL_ID_12_RELAIS]["*"][CLASS_ID_TASTER][100]="Eingang_04";
+	INSTANCES[MODUL_ID_12_RELAIS]["*"][CLASS_ID_TASTER][101]="Eingang_05";
+	INSTANCES[MODUL_ID_12_RELAIS]["*"][CLASS_ID_TASTER][102]="Eingang_06";
+	INSTANCES[MODUL_ID_12_RELAIS]["*"][CLASS_ID_TASTER][103]="Eingang_07";
+	INSTANCES[MODUL_ID_12_RELAIS]["*"][CLASS_ID_TASTER][104]="Eingang_08";
 	
 	// MODUL_ID_8_ROLLO
         INSTANCES[MODUL_ID_8_ROLLO]={};
