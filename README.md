@@ -18,10 +18,9 @@ The HausBus.de adapter is ready to use without further configurations. It is aut
 <br>
 
 ## Changelog
-<!--
-  Placeholder for the next version (at the beginning of the line):
-  ### **WORK IN PROGRESS** 
--->
+### 1.4.2 (2024-08-06)
+* support for new 12 channel relay module
+
 ### 1.3.0 (2023-12-31) 
 * support for new analog inputs (0-10V or 4-20mA)
 
