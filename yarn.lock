@@ -699,6 +699,11 @@ chai-as-promised@^7.1.1:
   dependencies:
     check-error "^1.0.2"
 
+chai@^4.3.7, chai@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/chai/-/chai-4.5.0.tgz#707e49923afdd9b13a8b0b47d33d732d13812fd8"
+  integrity sha512-RITGBfijLkBddZvnn8jdqoTypxvqbOLYQkGGxXzeFjVHvudaPw0HNFD9x928/eUwYWd2dPCugVqspGALTZZQKw==
+
 chai-as-promised@^8.0.0:
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/chai-as-promised/-/chai-as-promised-8.0.0.tgz#7eda823f2a6fe9fd3a76bc76878886e955232e6f"
@@ -717,7 +722,7 @@ chai@^4.3.6, chai@^4.4.1:
     get-func-name "^2.0.2"
     loupe "^2.3.6"
     pathval "^1.1.1"
-    type-detect "^4.0.8"
+    type-detect "^4.1.0"
 
 chalk@^4.0.0, chalk@^4.1.0:
   version "4.1.2"
@@ -833,6 +838,11 @@ delayed-stream@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/delayed-stream/-/delayed-stream-1.0.0.tgz#df3ae199acadfb7d440aaae0b29e2272b24ec619"
   integrity sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==
+
+diff@5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/diff/-/diff-5.0.0.tgz#7ed6ad76d859d030787ec35855f5b1daf31d852b"
+  integrity sha512-/VTCrvm5Z0JGty/BWHljh+BAiw3IK+2j87NGMu8Nwc/f48WoDAC395uomO9ZD117ZOBaHmkX1oyLvkVM/aIT3w==
 
 diff@^5.1.0:
   version "5.1.0"
@@ -2079,10 +2089,15 @@ type-check@~0.3.2:
   dependencies:
     prelude-ls "~1.1.2"
 
-type-detect@4.0.8, type-detect@^4.0.0, type-detect@^4.0.8:
+type-detect@4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/type-detect/-/type-detect-4.0.8.tgz#7646fb5f18871cfbb7749e69bd39a6388eb7450c"
   integrity sha512-0fr/mIH1dlO+x7TlcMy+bIDqKPsw/70tVyeHW787goQjhmqaZe10uwLujubK9q9Lg6Fiho1KUKDYz0Z7k7g5/g==
+
+type-detect@^4.0.0, type-detect@^4.0.8, type-detect@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/type-detect/-/type-detect-4.1.0.tgz#deb2453e8f08dcae7ae98c626b13dddb0155906c"
+  integrity sha512-Acylog8/luQ8L7il+geoSxhEkazvkslg7PSNKOX59mbB9cOveP5aq9h74Y7YU8yDpJwetzQQrfIwtf4Wp4LKcw==
 
 uc.micro@^1.0.1, uc.micro@^1.0.5:
   version "1.0.6"
