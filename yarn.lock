@@ -37,18 +37,18 @@
     "@alcalzone/release-script-core" "3.7.0"
     alcalzone-shared "^4.0.1"
 
-"@alcalzone/release-script-plugin-git@3.7.0":
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/@alcalzone/release-script-plugin-git/-/release-script-plugin-git-3.7.0.tgz#169f42bc0e0ac73cea6c424a40967fe5f4e79526"
-  integrity sha512-4wA1XNnU7uyNnzXaLe4eBd1pfyk6VhVBuTzQ5EKraLNEXZ+JWWxeYMdcJGI6QdA1qAtld91gLRfLI1Ewye9ecQ==
+"@alcalzone/release-script-plugin-git@3.8.0":
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/@alcalzone/release-script-plugin-git/-/release-script-plugin-git-3.8.0.tgz#d9f72241b149e357afb7a9be679c25760060be0e"
+  integrity sha512-rI9EqSmvMWaNZ5xxOUBZjD4WOv1Enl+/ZxhUoTROq+K/9RYYHQaAXilGWNvnz2DYr14Q+Yx/fs54GXgAVf0scg==
   dependencies:
     "@alcalzone/release-script-core" "3.7.0"
     fs-extra "^10.1.0"
 
-"@alcalzone/release-script-plugin-iobroker@^3.7.0":
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/@alcalzone/release-script-plugin-iobroker/-/release-script-plugin-iobroker-3.7.0.tgz#2a0ac7a88d59aee7ab8fee4b329847a6e9899c80"
-  integrity sha512-6nkLIDZ4qvZ21f3ozjPJ//x+hqkaiTfkDcYnyw6SWOIUbCa5v7Xj0cAZY7INguSfjv18UOTlU1J8xdzqHxtREg==
+"@alcalzone/release-script-plugin-iobroker@^3.7.2":
+  version "3.7.2"
+  resolved "https://registry.yarnpkg.com/@alcalzone/release-script-plugin-iobroker/-/release-script-plugin-iobroker-3.7.2.tgz#4c17bf4b613586de475c6bb85392749917666a39"
+  integrity sha512-ezXFyxx2irq7my3BmlBUrzT+QHNsldR9MQYkXs7uyH6lXSkudmqq5EiDW9WckT0Cj9YqIUzoOJhhnZA9M+XTvQ==
   dependencies:
     "@alcalzone/release-script-core" "3.7.0"
     alcalzone-shared "^4.0.1"
@@ -65,10 +65,10 @@
     fs-extra "^10.1.0"
     tiny-glob "^0.2.9"
 
-"@alcalzone/release-script-plugin-package@3.7.0":
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/@alcalzone/release-script-plugin-package/-/release-script-plugin-package-3.7.0.tgz#fc69e104035cf833b3caf2edcb01a5f6b6bcedae"
-  integrity sha512-eZSzE+Hbt6otxleIGBSkXUwspKTlYdKrV8Bp9jDm0ZwSTZ/0jt6zPjL/HfCeX2hd5JtjGc/YEzuHuDVv1fHi8A==
+"@alcalzone/release-script-plugin-package@3.7.3":
+  version "3.7.3"
+  resolved "https://registry.yarnpkg.com/@alcalzone/release-script-plugin-package/-/release-script-plugin-package-3.7.3.tgz#da739bef25ff4a281874467ae486f1edbaf6315a"
+  integrity sha512-5oKSwbvHs9jRhARJ04eQ7xqig3a7NmPJlhtBxAqUM8+0cjs2g/V1xTxM6o8aZ09uRSdq80YGVxJm871SyszAWQ==
   dependencies:
     "@alcalzone/pak" "^0.10.1"
     "@alcalzone/release-script-core" "3.7.0"
@@ -87,16 +87,16 @@
     semver "^7.5.2"
     tiny-glob "^0.2.9"
 
-"@alcalzone/release-script@^3.7.0":
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/@alcalzone/release-script/-/release-script-3.7.0.tgz#5ab8c9479922ea9c52acc97c4ac9786d5a4a9724"
-  integrity sha512-+aDCbmDLxySKxKEoG/qnwLThj1uZWU1vRkNFeCKtNdf6DLOAevzwMcNGl/6a+CTih4M5CBSoi20orYrjHqsmLg==
+"@alcalzone/release-script@^3.8.0":
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/@alcalzone/release-script/-/release-script-3.8.0.tgz#a74207ad54e6da7cd0be81bf9d559ba1581c241e"
+  integrity sha512-9H3imn8o9n3Ekpkie9TMgPeJfgT6WmklCMtOZ1wuwvMw/obNA0Ao1ZZ8CJfHk1YNjiLGmWn0kQFEGTqz4DoD7w==
   dependencies:
     "@alcalzone/release-script-core" "3.7.0"
     "@alcalzone/release-script-plugin-changelog" "3.7.0"
     "@alcalzone/release-script-plugin-exec" "3.7.0"
-    "@alcalzone/release-script-plugin-git" "3.7.0"
-    "@alcalzone/release-script-plugin-package" "3.7.0"
+    "@alcalzone/release-script-plugin-git" "3.8.0"
+    "@alcalzone/release-script-plugin-package" "3.7.3"
     "@alcalzone/release-script-plugin-version" "3.7.0"
     alcalzone-shared "^4.0.1"
     axios "^1.6.2"
@@ -699,7 +699,14 @@ chai-as-promised@^7.1.1:
   dependencies:
     check-error "^1.0.2"
 
-chai@^4.3.7, chai@^4.4.1:
+chai-as-promised@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/chai-as-promised/-/chai-as-promised-8.0.0.tgz#7eda823f2a6fe9fd3a76bc76878886e955232e6f"
+  integrity sha512-sMsGXTrS3FunP/wbqh/KxM8Kj/aLPXQGkNtvE5wPfSToq8wkkvBpTZo1LIiEVmC4BwkKpag+l5h/20lBMk6nUg==
+  dependencies:
+    check-error "^2.0.0"
+
+chai@^4.3.6, chai@^4.4.1:
   version "4.4.1"
   resolved "https://registry.yarnpkg.com/chai/-/chai-4.4.1.tgz#3603fa6eba35425b0f2ac91a009fe924106e50d1"
   integrity sha512-13sOfMv2+DWduEU+/xbun3LScLoqN17nBeTLUsmDfKdoiC1fr0n9PU4guu4AhRcOVFk/sW8LyZWHuhWtQZiF+g==
@@ -726,6 +733,11 @@ check-error@^1.0.2, check-error@^1.0.3:
   integrity sha512-iKEoDYaRmd1mxM90a2OEfWhjsjPpYPuQ+lMYsoxB126+t8fw7ySEO48nmDg5COTjxDI65/Y2OWpeEHk3ZOe8zg==
   dependencies:
     get-func-name "^2.0.2"
+
+check-error@^2.0.0:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/check-error/-/check-error-2.1.1.tgz#87eb876ae71ee388fa0471fe423f494be1d96ccc"
+  integrity sha512-OAlb+T7V4Op9OwdkjmguYRqncdlx5JiofwOAUkmTF+jNdHwzTaTs4sRAGpzLF3oOz5xAyDGrPgeIDFQmDOTiJw==
 
 chokidar@^3.5.3:
   version "3.6.0"
@@ -822,7 +834,12 @@ delayed-stream@~1.0.0:
   resolved "https://registry.yarnpkg.com/delayed-stream/-/delayed-stream-1.0.0.tgz#df3ae199acadfb7d440aaae0b29e2272b24ec619"
   integrity sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==
 
-diff@^5.1.0, diff@^5.2.0:
+diff@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/diff/-/diff-5.1.0.tgz#bc52d298c5ea8df9194800224445ed43ffc87e40"
+  integrity sha512-D+mk+qE8VC/PAUrlAU34N+VfXev0ghe5ywmpqrawphmVZc1bEfn56uo9qpyGp1p4xpzOHkSW4ztBd6L7Xx4ACw==
+
+diff@^5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/diff/-/diff-5.2.0.tgz#26ded047cd1179b78b9537d5ef725503ce1ae531"
   integrity sha512-uIFDxqpRZGZ6ThOk84hEfqWoHx2devRFvpTZcTHur85vImfaxUbTW9Ryh4CpCuDnToOP1CEtXKIgytHBPVff5A==
