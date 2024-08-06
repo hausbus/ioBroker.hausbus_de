@@ -19,8 +19,8 @@
     "url": "https://github.com/hausbus/ioBroker.hausbus_de.git"
   },
   "dependencies": {
-    "@iobroker/adapter-core": "^2.6.8",
-    "ip": "^2.0.1"
+    "@iobroker/adapter-core": "^2.6.12",
+    "ip": "^1.1.8"
   },
   "devDependencies": {
     "@alcalzone/release-script": "^3.7.0",
