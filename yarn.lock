@@ -227,10 +227,12 @@
     "protobufjs" "^7.0.0"
     "yargs" "^17.7.2"
 
-"@iobroker/adapter-core@^3.1.6":
-  "integrity" "sha512-cArv8IzVsP3r8HivsYwO02e5WueboIH9v66PkHSGtadeUQQKUyxV32dzirM6YArWcI6+Iw5USQgVR9E+ryP3xg=="
-  "resolved" "https://registry.npmjs.org/@iobroker/adapter-core/-/adapter-core-3.1.6.tgz"
-  "version" "3.1.6"
+"@iobroker/adapter-core@^2.6.12":
+  "integrity" "sha512-vM3EO8ZvZFuIcRfNYOeoY+e4GP/BHBeMrrZNQegSwIywHZNZR3ZlFbkhSTwnf6qREIpLo8zJ2r1wHMJWD5ENkw=="
+  "resolved" "https://registry.npmjs.org/@iobroker/adapter-core/-/adapter-core-2.6.12.tgz"
+  "version" "2.6.12"
+  dependencies:
+    "@iobroker/types" "*"
 
 "@iobroker/adapter-dev@^1.3.0":
   "integrity" "sha512-mvh2whYkujRQ8WVxF64DrMfXitbhPvXhpgIooqzWS2OyND+iZqFBQYfy5n8Jk0cddgEXWegmg/G2m65OigSVpg=="
@@ -260,7 +262,7 @@
     "sinon" "^15.0.1"
     "sinon-chai" "^3.7.0"
 
-"@iobroker/types@^6.0.0":
+"@iobroker/types@*":
   "integrity" "sha512-BBtOT1smz5QHwcxqokgyMBw8aT46uZ/fe9DybHha+DjyTWIhrt0sogoGYFYSV64xKEPpFvSl+RpVh9GGnNUpGA=="
   "resolved" "https://registry.npmjs.org/@iobroker/types/-/types-6.0.0.tgz"
   "version" "6.0.0"
