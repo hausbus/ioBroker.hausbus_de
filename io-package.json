@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "hausbus_de",
-    "version": "1.4.0",
+    "version": "1.4.4",
     "news": {
       "1.4.0": {
         "en": "support for new 12 channel relay module",
