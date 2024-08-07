@@ -19,7 +19,7 @@
     "url": "https://github.com/hausbus/ioBroker.hausbus_de.git"
   },
   "dependencies": {
-    "@iobroker/adapter-core": "^3.1.6",
+    "@iobroker/adapter-core": "^2.6.12",
     "ip": "^1.1.8"
   },
   "devDependencies": {
