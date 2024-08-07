@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "hausbus_de",
-    "version": "1.4.4",
+    "version": "1.4.5",
     "news": {
+      "1.4.5": {
+        "en": "support for new 12 channel relay module",
+        "de": "unterstützung für neues 12-kanal-relaismodul",
+        "ru": "поддержка нового 12-канального ретрансляционного модуля",
+        "pt": "suporte para novo módulo de relé de 12 canais",
+        "nl": "ondersteuning voor nieuwe 12 kanaal relais module",
+        "fr": "prise en charge du nouveau module relais 12 canaux",
+        "it": "supporto per il nuovo modulo relè a 12 canali",
+        "es": "soporte para nuevo módulo de relé de 12 canales",
+        "pl": "obsługa nowego modułu przekaźnika 12 kanałów",
+        "uk": "підтримка нового модуля реле 12 каналів",
+        "zh-cn": "支持新的12个频道中继模块"
+      },
       "1.4.0": {
         "en": "support for new 12 channel relay module",
         "de": "unterstützung für neues 12-kanal-relaismodul",
@@ -69,19 +82,6 @@
         "zh-cn": "二. 最新无受扶养人"
       },
       "1.2.9": {
-        "en": "updated latest iobroker catalog version",
-        "de": "aktuelle iobroker katalogversion",
-        "ru": "обновлена последняя версия каталога iobroker",
-        "pt": "atualização mais recente versão do catálogo iobroker",
-        "nl": "vertaling:",
-        "fr": "mise à jour la dernière version du catalogue iobroker",
-        "it": "versione aggiornata del catalogo iobroker",
-        "es": "versión actualizada del catálogo iobroker",
-        "pl": "najnowsza wersja katalogowa",
-        "uk": "оновлена версія каталогу iobroker",
-        "zh-cn": "最新版本"
-      },
-      "1.2.8": {
         "en": "updated latest iobroker catalog version",
         "de": "aktuelle iobroker katalogversion",
         "ru": "обновлена последняя версия каталога iobroker",
