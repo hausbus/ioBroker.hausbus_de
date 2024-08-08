@@ -29,19 +29,6 @@
         "uk": "підтримка нового модуля реле 12 каналів",
         "zh-cn": "支持新的12个频道中继模块"
       },
-      "1.4.0": {
-        "en": "support for new 12 channel relay module",
-        "de": "unterstützung für neues 12-kanal-relaismodul",
-        "ru": "поддержка нового 12-канального ретрансляционного модуля",
-        "pt": "suporte para novo módulo de relé de 12 canais",
-        "nl": "ondersteuning voor nieuwe 12 kanaal relais module",
-        "fr": "prise en charge du nouveau module relais 12 canaux",
-        "it": "supporto per il nuovo modulo relè a 12 canali",
-        "es": "soporte para nuevo módulo de relé de 12 canales",
-        "pl": "obsługa nowego modułu przekaźnika 12 kanałów",
-        "uk": "підтримка нового модуля реле 12 каналів",
-        "zh-cn": "支持新的12个频道中继模块"
-      },
       "1.3.0": {
         "en": "support for new analog inputs (0-10V or 4-20mA)",
         "de": "unterstützung für neue analoge Eingänge (0-10V oder 4-20mA)",
@@ -144,7 +131,7 @@
     "materialize": true,
     "dependencies": [
       {
-        "js-controller": ">=2.0.0"
+        "js-controller": ">=5.0.19"
       }
     ],
     "globalDependencies": [
