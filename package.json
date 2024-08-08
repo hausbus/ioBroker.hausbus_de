@@ -18,6 +18,9 @@
     "type": "git",
     "url": "https://github.com/hausbus/ioBroker.hausbus_de.git"
   },
+  "engines": {
+    "node": ">=18"
+  },
   "dependencies": {
     "@iobroker/adapter-core": "^2.6.12",
     "ip": "^1.1.8"
