@@ -1,6 +1,6 @@
 ![Logo](admin/hausbusde.png)
 
-# iobroker.hausbusde
+# iobroker.hausbus_de
 IO Broker Adapter that supports all haus-bus.de components.<br>
 For a documentation about the supported hardware and IO Broker integration please check<br>www.haus-bus.de/iobroker
 
