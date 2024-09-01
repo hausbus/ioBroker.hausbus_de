@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "hausbus_de",
-    "version": "1.4.6",
+    "version": "1.4.7",
     "news": {
+      "1.4.7": {
+        "en": "fixed high bus traffic during startup phase",
+        "de": "fester hoher busverkehr während der startphase",
+        "ru": "фиксированный высокий автобусный трафик на этапе запуска",
+        "pt": "tráfego de alto ônibus fixo durante a fase de inicialização",
+        "nl": "vaste hoge busverkeer tijdens de opstartfase",
+        "fr": "trafic de bus fixe pendant la phase de démarrage",
+        "it": "traffico elevato fisso durante la fase di avvio",
+        "es": "tráfico fijo de autobús alto durante la fase de inicio",
+        "pl": "stały duży ruch autobusowy w fazie startowej",
+        "uk": "фіксований великий автобусний трафік під час запуску",
+        "zh-cn": "启动阶段的固定高班车流量"
+      },
       "1.4.6": {
         "en": "support for new 12 channel relay module",
         "de": "unterstützung für neues 12-kanal-relaismodul",
