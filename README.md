@@ -18,7 +18,7 @@ The HausBus.de adapter is ready to use without further configurations. It is aut
 <br>
 
 ## Changelog
-### 1.4.7 (2024-09-01)
+### **WORK IN PROGRESS**
 * fixed high bus traffic during startup phase
 
 ### 1.4.6 (2024-08-07)
