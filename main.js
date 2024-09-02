@@ -349,7 +349,7 @@ function main()
 		    // hausbusde.0.1000.online - object(7): { val: boolean: tru
 		    ioBrokerStates[key] = obj[key].val;
 		  }	
-		  else debug ("property with no value: "+key);
+		  //else debug ("property with no value: "+key);
 	    }
 	  }
 	  
@@ -510,6 +510,21 @@ function sendNextQueueDatagram()
 	// Wenn die Queue leer ist, löschen wir den Timer
     if (sendQueue.length === 0) 
     {
+		if (delayOnce!=0 && delayOnce!=1)
+		{
+		  // Ruhezeit ist vorbei
+		  if (new Date().getTime()>delayOnce)
+		  {
+  		    info("delay once reset in entry");
+		    delayOnce=0;
+		  }
+		  else
+		  {
+			  sendDelayTimer = setInterval(sendNextQueueDatagram, 100);
+			  return;
+		  }
+		}
+		
         clearInterval(sendDelayTimer);
         sendDelayTimer = null;
         return;

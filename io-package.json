@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "hausbus_de",
-    "version": "1.4.7",
+    "version": "1.4.8",
     "news": {
+      "1.4.8": {
+        "en": "fixed high bus traffic during startup phase",
+        "de": "fester hoher busverkehr während der startphase",
+        "ru": "фиксированный высокий автобусный трафик на этапе запуска",
+        "pt": "tráfego de alto ônibus fixo durante a fase de inicialização",
+        "nl": "vaste hoge busverkeer tijdens de opstartfase",
+        "fr": "trafic de bus fixe pendant la phase de démarrage",
+        "it": "traffico elevato fisso durante la fase di avvio",
+        "es": "tráfico fijo de autobús alto durante la fase de inicio",
+        "pl": "stały duży ruch autobusowy w fazie startowej",
+        "uk": "фіксований великий автобусний трафік під час запуску",
+        "zh-cn": "启动阶段的固定高班车流量"
+      },
       "1.4.7": {
         "en": "fixed high bus traffic during startup phase",
         "de": "fester hoher busverkehr während der startphase",
@@ -80,19 +93,6 @@
         "pl": "najnowsza wersja katalogowa",
         "uk": "оновлена версія каталогу iobroker",
         "zh-cn": "最新版本"
-      },
-      "1.2.10": {
-        "en": "updated node dependencies",
-        "de": "aktualisierte knotenabhängigkeiten",
-        "ru": "обновленные зависимости от узлов",
-        "pt": "dependências de nó atualizadas",
-        "nl": "vertaling:",
-        "fr": "mises à jour des dépendances",
-        "it": "dipendenze aggiornate del nodo",
-        "es": "actualizados",
-        "pl": "zależności węzłów",
-        "uk": "оновлені залежності вузлів",
-        "zh-cn": "二. 最新无受扶养人"
       }
     },
     "titleLang": {
