@@ -230,6 +230,8 @@ var stateTypes = {};
 var configurations = {};
 var pongCallback = {};
 
+var delayOnce=0; // 0 = Normal senden 1 = Start der Ruhezeit weil getModuleId gesendet wird  Else = andere Timestamp des Ruhezeitendes
+
 function startAdapter(options) 
 {
     options = options || {};
@@ -347,7 +349,7 @@ function main()
 		    // hausbusde.0.1000.online - object(7): { val: boolean: tru
 		    ioBrokerStates[key] = obj[key].val;
 		  }	
-		  else debug ("property with no value: "+key);
+		  //else debug ("property with no value: "+key);
 	    }
 	  }
 	  
@@ -497,8 +499,9 @@ function sendUdpDatagram(message)
 {
     sendQueue.push(message);
     
-	// Wenn die Queue leer ist, senden wir sofort, ansonsten übernimmt das der Timer
-    if (!sendDelayTimer) 
+	// Wenn die Queue leer ist und gerade keine Ruhezeit für die Gerätesuche, 
+	// senden wir sofort, ansonsten übernimmt das der Timer
+    if (!sendDelayTimer && (delayOnce==0 || delayOnce==1)) 
         sendNextQueueDatagram();
 }
 
@@ -507,6 +510,21 @@ function sendNextQueueDatagram()
 	// Wenn die Queue leer ist, löschen wir den Timer
     if (sendQueue.length === 0) 
     {
+		if (delayOnce!=0 && delayOnce!=1)
+		{
+		  // Ruhezeit ist vorbei
+		  if (new Date().getTime()>delayOnce)
+		  {
+  		    info("delay once reset in entry");
+		    delayOnce=0;
+		  }
+		  else
+		  {
+			  sendDelayTimer = setInterval(sendNextQueueDatagram, 100);
+			  return;
+		  }
+		}
+		
         clearInterval(sendDelayTimer);
         sendDelayTimer = null;
         return;
@@ -540,11 +558,30 @@ function sendNextQueueDatagram()
     // Altes Interval löschen, um es anschließend auf einen neuen Wert zu setzen
     clearInterval(sendDelayTimer);	
 	
-	// Bei mehr als 3 Nachrichten, machen wir eine 50ms Pause, sonst nur 10 ms
-	if (queueControl.length>3)
+	// Wir wollen für die Gerätesuche Ruhe reinbringen
+	if (delayOnce==1)
 	{
- 	    debug("controling bus speed");
-		sendDelayTimer = setInterval(sendNextQueueDatagram, 50);
+		info("delay once 2");
+		delayOnce=new Date().getTime()+10000;
+	}
+
+	if (delayOnce!=0)
+	{
+        // Ruhezeit ist vorbei
+		if (new Date().getTime()>delayOnce)
+		{
+		  info("delay once reset");
+		  delayOnce=0;
+		}
+		
+		// In der Ruhezeit immer mit 100ms Verzögerung senden
+		sendDelayTimer = setInterval(sendNextQueueDatagram, 100);
+	}
+    // Bei mehr als 3 Nachrichten, machen wir eine 50ms Pause, sonst nur 10 ms
+	else if (queueControl.length>3)
+	{
+ 	  debug("controling bus speed");
+	  sendDelayTimer = setInterval(sendNextQueueDatagram, 50);
 	}
    	else sendDelayTimer = setInterval(sendNextQueueDatagram, 10);
 
@@ -4017,6 +4054,8 @@ function sleep(time)
 function hwControllerGetModuleId(receiverObjectId)
 {
 	debug("getModuleId -> "+objectIdToString(receiverObjectId));
+	
+	if (delayOnce==0) delayOnce=1;
 	
 	var data = [];
 	data[0]=2; // Funktion ID

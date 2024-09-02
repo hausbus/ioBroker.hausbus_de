@@ -1,8 +1,34 @@
 {
   "common": {
     "name": "hausbus_de",
-    "version": "1.4.6",
+    "version": "1.4.8",
     "news": {
+      "1.4.8": {
+        "en": "fixed high bus traffic during startup phase",
+        "de": "fester hoher busverkehr während der startphase",
+        "ru": "фиксированный высокий автобусный трафик на этапе запуска",
+        "pt": "tráfego de alto ônibus fixo durante a fase de inicialização",
+        "nl": "vaste hoge busverkeer tijdens de opstartfase",
+        "fr": "trafic de bus fixe pendant la phase de démarrage",
+        "it": "traffico elevato fisso durante la fase di avvio",
+        "es": "tráfico fijo de autobús alto durante la fase de inicio",
+        "pl": "stały duży ruch autobusowy w fazie startowej",
+        "uk": "фіксований великий автобусний трафік під час запуску",
+        "zh-cn": "启动阶段的固定高班车流量"
+      },
+      "1.4.7": {
+        "en": "fixed high bus traffic during startup phase",
+        "de": "fester hoher busverkehr während der startphase",
+        "ru": "фиксированный высокий автобусный трафик на этапе запуска",
+        "pt": "tráfego de alto ônibus fixo durante a fase de inicialização",
+        "nl": "vaste hoge busverkeer tijdens de opstartfase",
+        "fr": "trafic de bus fixe pendant la phase de démarrage",
+        "it": "traffico elevato fisso durante la fase di avvio",
+        "es": "tráfico fijo de autobús alto durante la fase de inicio",
+        "pl": "stały duży ruch autobusowy w fazie startowej",
+        "uk": "фіксований великий автобусний трафік під час запуску",
+        "zh-cn": "启动阶段的固定高班车流量"
+      },
       "1.4.6": {
         "en": "support for new 12 channel relay module",
         "de": "unterstützung für neues 12-kanal-relaismodul",
@@ -17,19 +43,6 @@
         "zh-cn": "支持新的12个频道中继模块"
       },
       "1.4.5": {
-        "en": "support for new 12 channel relay module",
-        "de": "unterstützung für neues 12-kanal-relaismodul",
-        "ru": "поддержка нового 12-канального ретрансляционного модуля",
-        "pt": "suporte para novo módulo de relé de 12 canais",
-        "nl": "ondersteuning voor nieuwe 12 kanaal relais module",
-        "fr": "prise en charge du nouveau module relais 12 canaux",
-        "it": "supporto per il nuovo modulo relè a 12 canali",
-        "es": "soporte para nuevo módulo de relé de 12 canales",
-        "pl": "obsługa nowego modułu przekaźnika 12 kanałów",
-        "uk": "підтримка нового модуля реле 12 каналів",
-        "zh-cn": "支持新的12个频道中继模块"
-      },
-      "1.4.0": {
         "en": "support for new 12 channel relay module",
         "de": "unterstützung für neues 12-kanal-relaismodul",
         "ru": "поддержка нового 12-канального ретрансляционного модуля",
@@ -80,19 +93,6 @@
         "pl": "najnowsza wersja katalogowa",
         "uk": "оновлена версія каталогу iobroker",
         "zh-cn": "最新版本"
-      },
-      "1.2.10": {
-        "en": "updated node dependencies",
-        "de": "aktualisierte knotenabhängigkeiten",
-        "ru": "обновленные зависимости от узлов",
-        "pt": "dependências de nó atualizadas",
-        "nl": "vertaling:",
-        "fr": "mises à jour des dépendances",
-        "it": "dipendenze aggiornate del nodo",
-        "es": "actualizados",
-        "pl": "zależności węzłów",
-        "uk": "оновлені залежності вузлів",
-        "zh-cn": "二. 最新无受扶养人"
       }
     },
     "titleLang": {
@@ -144,7 +144,7 @@
     "materialize": true,
     "dependencies": [
       {
-        "js-controller": ">=2.0.0"
+        "js-controller": ">=5.0.19"
       }
     ],
     "globalDependencies": [
