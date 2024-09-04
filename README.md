@@ -18,6 +18,9 @@ The HausBus.de adapter is ready to use without further configurations. It is aut
 <br>
 
 ## Changelog
+### **WORK IN PROGRESS**
+* fixed wrong value of brightness sensor
+
 ### 1.4.8 (2024-09-02)
 * fixed high bus traffic during startup phase
 
