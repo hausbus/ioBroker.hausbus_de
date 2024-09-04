@@ -1311,11 +1311,7 @@ function hwHelligkeitssensorReceivedStatus(sender, receiver, message, dataLength
 	var pos = DATA_START;
 	
 	var brightness = message[pos++];
-	
-	var centiBrightness = message[pos++];
-	if (centiBrightness<10) centiBrightness="0"+centiBrightness;
-	
-	var brightness = brightness+"."+centiBrightness;
+	brightness = brightness + message[pos++]*256;
 
     var byteLastEvent = message[pos++];
 	
