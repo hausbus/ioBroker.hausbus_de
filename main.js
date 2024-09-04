@@ -735,6 +735,10 @@ function searchAllDevices()
 {
 	info("Searching all Haus-Bus.de devices");
 	hwControllerGetModuleId(getObjectId(0,CLASS_ID_CONTROLLER,1));
+
+         // eine Wiederholung	
+	setTimeout(function() { hwControllerGetModuleId(getObjectId(0,CLASS_ID_CONTROLLER,1));}, 25000);
+
 }
 
 function adminFunction(param)
