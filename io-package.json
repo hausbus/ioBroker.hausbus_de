@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "hausbus_de",
-    "version": "1.4.8",
+    "version": "1.4.9",
     "news": {
+      "1.4.9": {
+        "en": "fixed wrong value of brightness sensor",
+        "de": "fester falscher wert des helligkeitssensors",
+        "ru": "фиксированное неправильное значение датчика яркости",
+        "pt": "valor errado fixo do sensor de brilho",
+        "nl": "vaste foute waarde van de helderheidssensor",
+        "fr": "valeur correcte fixe du capteur de luminosité",
+        "it": "valore sbagliato fisso del sensore di luminosità",
+        "es": "valor incorrecto fijo del sensor de brillo",
+        "pl": "ustalona zła wartość czujnika jasności",
+        "uk": "фіксоване неправильне значення датчика яскравості",
+        "zh-cn": "亮度传感器的固定错误值"
+      },
       "1.4.8": {
         "en": "fixed high bus traffic during startup phase",
         "de": "fester hoher busverkehr während der startphase",
@@ -80,19 +93,6 @@
         "pl": "rehabilitacja",
         "uk": "відновлення конфігурації",
         "zh-cn": "恢复原状"
-      },
-      "1.2.11": {
-        "en": "updated latest iobroker catalog version",
-        "de": "aktuelle iobroker katalogversion",
-        "ru": "обновлена последняя версия каталога iobroker",
-        "pt": "atualização mais recente versão do catálogo iobroker",
-        "nl": "vertaling:",
-        "fr": "mise à jour la dernière version du catalogue iobroker",
-        "it": "versione aggiornata del catalogo iobroker",
-        "es": "versión actualizada del catálogo iobroker",
-        "pl": "najnowsza wersja katalogowa",
-        "uk": "оновлена версія каталогу iobroker",
-        "zh-cn": "最新版本"
       }
     },
     "titleLang": {
