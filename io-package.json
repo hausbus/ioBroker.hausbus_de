@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "hausbus_de",
-    "version": "1.4.9",
+    "version": "1.4.10",
     "news": {
+      "1.4.10": {
+        "en": "check health for devices that do not respond during search devices",
+        "de": "die gesundheit von geräten überprüfen, die während der suchgeräte nicht reagieren",
+        "ru": "проверить здоровье устройств, которые не реагируют во время поисковых устройств",
+        "pt": "verificar a saúde de dispositivos que não respondem durante os dispositivos de busca",
+        "nl": "de gezondheid controleren van hulpmiddelen die niet reageren tijdens zoekapparatuur",
+        "fr": "vérifier la santé des appareils qui ne répondent pas pendant les appareils de recherche",
+        "it": "controllare la salute dei dispositivi che non rispondono durante i dispositivi di ricerca",
+        "es": "check health for devices that do not respond during search devices",
+        "pl": "sprawdzić stan zdrowia urządzeń, które nie reagują podczas wyszukiwania",
+        "uk": "перевірити здоров'я для пристроїв, які не відповідають під час пошуку",
+        "zh-cn": "检查搜索设备中不响应的设备是否健康"
+      },
       "1.4.9": {
         "en": "fixed wrong value of brightness sensor",
         "de": "fester falscher wert des helligkeitssensors",
@@ -80,19 +93,6 @@
         "pl": "obsługuje nowe sygnały analogowe (0-10V lub 4-20mA)",
         "uk": "підтримка нових аналогових входів (0-10V або 4-20mA)",
         "zh-cn": "支持新的类似投入(0-10V或4-20A)"
-      },
-      "1.2.12": {
-        "en": "configuration recovery",
-        "de": "konfigurationswiederherstellung",
-        "ru": "восстановление конфигурации",
-        "pt": "recuperação de configuração",
-        "nl": "verontrusting herstel",
-        "fr": "configuration récupération",
-        "it": "configurazione di recupero",
-        "es": "recuperación",
-        "pl": "rehabilitacja",
-        "uk": "відновлення конфігурації",
-        "zh-cn": "恢复原状"
       }
     },
     "titleLang": {
