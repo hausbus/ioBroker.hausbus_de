@@ -2,8 +2,6 @@
 /* jslint node: true */
 "use strict";
 
-var herm=false;
-
 // always required: utils
 var utils = require('@iobroker/adapter-core');
 var ip = require("ip");
@@ -230,11 +228,74 @@ var stateTypes = {};
 var configurations = {};
 var pongCallback = {};
 
+var allDeviceIds = [];
+var searchModuleList = [];
+
+function saveAllDeviceIds()
+{
+  let content = allDeviceIds.join("\n");
+  fs.writeFile("allIds.txt", content, err => {
+    if (err) {
+        console.error(err);
+    }
+    debug("saved AllDeviceIds "+allDeviceIds.toString());
+  });
+}
+
+function loadAllDeviceIds()
+{
+   if (fs.existsSync('allIds.txt'))
+   {
+     let loadedAllDeviceIds = fs.readFileSync('allIds.txt').toString().split("\n");
+	 allDeviceIds = [...new Set(loadedAllDeviceIds)];
+     debug("loaded AllDeviceIds "+allDeviceIds.toString());
+   }
+}
+
+function checkUnknownDeviceId(senderDeviceId)
+{
+	if (isUnknownDeviceId(senderDeviceId))
+	{
+		debug("unknown deviceId "+senderDeviceId);
+		hwControllerGetModuleId(getObjectId(senderDeviceId,CLASS_ID_CONTROLLER,1));
+	}
+}
+
+function isUnknownDeviceId(deviceId)
+{
+	return !allDeviceIds.includes(""+deviceId);
+}
+
+function removeFromSearchModuleList(deviceId)
+{
+	if (searchModuleList.includes(""+deviceId))
+	{
+      searchModuleList = searchModuleList.filter(function(module) {
+        return module !== ""+deviceId;
+      });
+    
+      debug("removed " + deviceId + " from SearchModuleList: " + searchModuleList);
+	}
+}
+
+function checkSearchModuleList()
+{
+	var nextId = searchModuleList.shift();
+	if (nextId==undefined) debug("check health: nothing to do");
+	else
+	{
+		debug("check health for "+nextId+" after search modules");
+		hwControllerGetModuleId(getObjectId(nextId,CLASS_ID_CONTROLLER,1));
+		setTimeout(function() { checkSearchModuleList();}, 500);
+	}
+}
+	
 function startAdapter(options) 
 {
     options = options || {};
     Object.assign(options, {name: 'hausbus_de'});
     adapter = new utils.Adapter(options);
+
 
     // unloading
     adapter.on('unload', function (callback) 
@@ -294,6 +355,7 @@ function startAdapter(options)
 
 function main() 
 {
+  loadAllDeviceIds();
   initModulesClassesInstances();
 
   // Socket um Broadcast zu empfangen
@@ -593,16 +655,16 @@ function handleIncomingMessage(message, remote)
 		var dataLength = bytesToWord(message, 12)-1;
 		var functionId = message[14];
 		
-		var deviceIdSender = getDeviceId(sender);
-		if (herm && deviceIdSender!=21336 && deviceIdSender!=1136 && deviceIdSender!=1247 && deviceIdSender!=1271) return; // test
-
+		var senderDeviceId = getDeviceId(sender);
 		var classIdSender = getClassId(sender);
 
         // sender: 74453970, receiver: 801046529, functionId: 129, dataLength: 3, classIdSender: 19
 		debug('sender: '+sender+", receiver: "+receiver+", functionId: "+functionId+", dataLength: "+dataLength+", classIdSender: "+classIdSender);
 		
-		var senderDeviceId = getDeviceId(sender);
+		
 		checkAliveOk(senderDeviceId);
+		
+		if (classIdSender != CLASS_ID_CONTROLLER) checkUnknownDeviceId(senderDeviceId);
 		
 		setStateIoBroker(getIoBrokerId(senderDeviceId,CLASS_ID_CONTROLLER,1,CONTROLLER_FKT_STATE_ONLINE), true);
 		
@@ -698,11 +760,12 @@ function handleIncomingMessage(message, remote)
 function searchAllDevices()
 {
 	info("Searching all Haus-Bus.de devices");
+	searchModuleList = [...new Set(allDeviceIds)];
+	debug("searchModuleList = "+searchModuleList);
+	
 	hwControllerGetModuleId(getObjectId(0,CLASS_ID_CONTROLLER,1));
-
-    // eine Wiederholung	
-	setTimeout(function() { hwControllerGetModuleId(getObjectId(0,CLASS_ID_CONTROLLER,1));}, 25000);
-
+	
+	setTimeout(function() { checkSearchModuleList();}, 30000);
 }
 
 function adminFunction(param)
@@ -764,6 +827,8 @@ function aFunctionCall(ioBrokerId, newValue)
   if (typeof objectId=="undefined")
   {
 	  warn("Call on unknown id "+ioBrokerId);
+	  hwControllerGetModuleId(getObjectId(getDeviceIdFromIoBrokerId(ioBrokerId),CLASS_ID_CONTROLLER,1));
+	  
 	  return;
   }
   
@@ -3435,6 +3500,15 @@ function hwControllerReceivedModuleId(sender, receiver, message, dataLength)
 {
 	var instanceId = getInstanceId(sender);
 	var deviceId = getDeviceId(sender);
+	
+	if (isUnknownDeviceId(""+deviceId))
+	{
+		debug("adding unknown deviceId "+deviceId);
+		allDeviceIds.push(""+deviceId);
+		saveAllDeviceIds();
+	}
+	
+	removeFromSearchModuleList(deviceId);
 	
 	var name = "Controller "+deviceId;
 	
