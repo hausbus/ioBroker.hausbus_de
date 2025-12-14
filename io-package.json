@@ -130,7 +130,6 @@
     ],
     "license": "MIT",
     "platform": "Javascript/Node.js",
-    "main": "main.js",
     "icon": "hausbusde.png",
     "enabled": true,
     "extIcon": "https://haus-bus.de/iobroker/hausbusde.png",
