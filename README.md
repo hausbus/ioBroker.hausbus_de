@@ -18,7 +18,7 @@ The HausBus.de adapter is ready to use without further configurations. It is aut
 <br>
 
 ## Changelog
-### 1.5.0 (2025-12-22) 
+### **WORK IN PROGRESS** 
 * support for WLAN socket
 
 ### 1.4.11 (2024-10-01)
