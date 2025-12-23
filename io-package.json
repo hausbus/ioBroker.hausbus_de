@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "hausbus_de",
-    "version": "1.5.1",
+    "version": "1.5.2",
     "news": {
+      "1.5.2": {
+        "en": "support for WLAN socket",
+        "de": "unterstützung für WLAN-Sockel",
+        "ru": "поддержка WLAN Socket",
+        "pt": "suporte para o soquete WLAN",
+        "nl": "ondersteuning voor WLAN socket",
+        "fr": "prise en charge de la socket WLAN",
+        "it": "supporto per presa WLAN",
+        "es": "soporte para WLAN socket",
+        "pl": "obsługa gniazda WLAN",
+        "uk": "підтримка розетки WLAN",
+        "zh-cn": "支持 WLAN 套接字"
+      },
       "1.5.1": {
         "en": "support for WLAN socket",
         "de": "unterstützung für WLAN-Sockel",
@@ -69,19 +82,6 @@
         "zh-cn": "亮度传感器的固定错误值"
       },
       "1.4.8": {
-        "en": "fixed high bus traffic during startup phase",
-        "de": "fester hoher busverkehr während der startphase",
-        "ru": "фиксированный высокий автобусный трафик на этапе запуска",
-        "pt": "tráfego de alto ônibus fixo durante a fase de inicialização",
-        "nl": "vaste hoge busverkeer tijdens de opstartfase",
-        "fr": "trafic de bus fixe pendant la phase de démarrage",
-        "it": "traffico elevato fisso durante la fase di avvio",
-        "es": "tráfico fijo de autobús alto durante la fase de inicio",
-        "pl": "stały duży ruch autobusowy w fazie startowej",
-        "uk": "фіксований великий автобусний трафік під час запуску",
-        "zh-cn": "启动阶段的固定高班车流量"
-      },
-      "1.4.7": {
         "en": "fixed high bus traffic during startup phase",
         "de": "fester hoher busverkehr während der startphase",
         "ru": "фиксированный высокий автобусный трафик на этапе запуска",
