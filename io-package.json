@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "hausbus_de",
-    "version": "1.5.0",
+    "version": "1.5.1",
     "news": {
+      "1.5.1": {
+        "en": "support for WLAN socket",
+        "de": "unterstützung für WLAN-Sockel",
+        "ru": "поддержка WLAN Socket",
+        "pt": "suporte para o soquete WLAN",
+        "nl": "ondersteuning voor WLAN socket",
+        "fr": "prise en charge de la socket WLAN",
+        "it": "supporto per presa WLAN",
+        "es": "soporte para WLAN socket",
+        "pl": "obsługa gniazda WLAN",
+        "uk": "підтримка розетки WLAN",
+        "zh-cn": "支持 WLAN 套接字"
+      },
       "1.5.0": {
         "en": "support for WLAN socket",
         "de": "unterstützung für WLAN-Sockel",
@@ -80,19 +93,6 @@
         "pl": "stały duży ruch autobusowy w fazie startowej",
         "uk": "фіксований великий автобусний трафік під час запуску",
         "zh-cn": "启动阶段的固定高班车流量"
-      },
-      "1.4.6": {
-        "en": "support for new 12 channel relay module",
-        "de": "unterstützung für neues 12-kanal-relaismodul",
-        "ru": "поддержка нового 12-канального ретрансляционного модуля",
-        "pt": "suporte para novo módulo de relé de 12 canais",
-        "nl": "ondersteuning voor nieuwe 12 kanaal relais module",
-        "fr": "prise en charge du nouveau module relais 12 canaux",
-        "it": "supporto per il nuovo modulo relè a 12 canali",
-        "es": "soporte para nuevo módulo de relé de 12 canales",
-        "pl": "obsługa nowego modułu przekaźnika 12 kanałów",
-        "uk": "підтримка нового модуля реле 12 каналів",
-        "zh-cn": "支持新的12个频道中继模块"
       }
     },
     "titleLang": {
