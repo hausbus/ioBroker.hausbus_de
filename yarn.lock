@@ -432,13 +432,6 @@
   resolved "https://registry.npmjs.org/@protobufjs/utf8/-/utf8-1.1.0.tgz"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
-"@sinonjs/commons@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/@sinonjs/commons/-/commons-2.0.0.tgz"
-  integrity sha512-uLa0j859mMrg2slwQYdO/AkrOfmH+X6LTVmNTS9CqexuE2IvVORIkSpJLqePAbEnKJ77aMmCwr1NUZ57120Xcg==
-  dependencies:
-    type-detect "4.0.8"
-
 "@sinonjs/commons@^3.0.0", "@sinonjs/commons@^3.0.1":
   version "3.0.1"
   resolved "https://registry.npmjs.org/@sinonjs/commons/-/commons-3.0.1.tgz"
@@ -460,14 +453,20 @@
   dependencies:
     "@sinonjs/commons" "^3.0.0"
 
-"@sinonjs/samsam@^8.0.0":
-  version "8.0.0"
-  resolved "https://registry.npmjs.org/@sinonjs/samsam/-/samsam-8.0.0.tgz"
-  integrity sha512-Bp8KUVlLp8ibJZrnvq2foVhP0IVX2CIprMJPK0vqGqgrDa0OHVKeZyBykqskkrdxV6yKBPmGasO8LVjAKR3Gew==
+"@sinonjs/fake-timers@^15.1.0":
+  version "15.1.0"
+  resolved "https://registry.yarnpkg.com/@sinonjs/fake-timers/-/fake-timers-15.1.0.tgz#f42e713425d4eb1a7bc88ef5d7f76c4546586c25"
+  integrity sha512-cqfapCxwTGsrR80FEgOoPsTonoefMBY7dnUEbQ+GRcved0jvkJLzvX6F4WtN+HBqbPX/SiFsIRUp+IrCW/2I2w==
   dependencies:
-    "@sinonjs/commons" "^2.0.0"
-    lodash.get "^4.4.2"
-    type-detect "^4.0.8"
+    "@sinonjs/commons" "^3.0.1"
+
+"@sinonjs/samsam@^8.0.0", "@sinonjs/samsam@^8.0.3":
+  version "8.0.3"
+  resolved "https://registry.yarnpkg.com/@sinonjs/samsam/-/samsam-8.0.3.tgz#eb6ffaef421e1e27783cc9b52567de20cb28072d"
+  integrity sha512-hw6HbX+GyVZzmaYNh82Ecj1vdGZrqVIn/keDTg63IgAwiQPO+xCz99uG6Woqgb4tM0mUiFENKZ4cqd7IX94AXQ==
+  dependencies:
+    "@sinonjs/commons" "^3.0.1"
+    type-detect "^4.1.0"
 
 "@sinonjs/text-encoding@^0.7.2":
   version "0.7.2"
@@ -787,6 +786,11 @@ diff@^5.1.0, diff@^5.2.0:
   version "5.2.0"
   resolved "https://registry.npmjs.org/diff/-/diff-5.2.0.tgz"
   integrity sha512-uIFDxqpRZGZ6ThOk84hEfqWoHx2devRFvpTZcTHur85vImfaxUbTW9Ryh4CpCuDnToOP1CEtXKIgytHBPVff5A==
+
+diff@^8.0.2:
+  version "8.0.2"
+  resolved "https://registry.yarnpkg.com/diff/-/diff-8.0.2.tgz#712156a6dd288e66ebb986864e190c2fc9eddfae"
+  integrity sha512-sSuxWU5j5SR9QQji/o2qMvqRNYRDOcBTgsJ/DeCf4iSN4gW+gNMXM7wFIP+fdXZxoNiAnHUTGjCr+TSWXdRDKg==
 
 dunder-proto@^1.0.1:
   version "1.0.1"
@@ -1386,11 +1390,6 @@ lodash.camelcase@^4.3.0:
   resolved "https://registry.npmjs.org/lodash.camelcase/-/lodash.camelcase-4.3.0.tgz"
   integrity sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==
 
-lodash.get@^4.4.2:
-  version "4.4.2"
-  resolved "https://registry.npmjs.org/lodash.get/-/lodash.get-4.4.2.tgz"
-  integrity sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ==
-
 log-symbols@^4.1.0:
   version "4.1.0"
   resolved "https://registry.npmjs.org/log-symbols/-/log-symbols-4.1.0.tgz"
@@ -1502,17 +1501,6 @@ nise@^5.1.4:
   version "5.1.9"
   resolved "https://registry.npmjs.org/nise/-/nise-5.1.9.tgz"
   integrity sha512-qOnoujW4SV6e40dYxJOb3uvuoPHtmLzIk4TFo+j0jPJoC+5Z9xja5qH5JZobEPsa8+YYphMrOSwnrshEhG2qww==
-  dependencies:
-    "@sinonjs/commons" "^3.0.0"
-    "@sinonjs/fake-timers" "^11.2.2"
-    "@sinonjs/text-encoding" "^0.7.2"
-    just-extend "^6.2.0"
-    path-to-regexp "^6.2.1"
-
-nise@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.npmjs.org/nise/-/nise-6.0.0.tgz"
-  integrity sha512-K8ePqo9BFvN31HXwEtTNGzgrPpmvgciDsFz8aztFjt4LqKO/JeFD8tBOeuDiCMXrIl/m1YvfH8auSpxfaD09wg==
   dependencies:
     "@sinonjs/commons" "^3.0.0"
     "@sinonjs/fake-timers" "^11.2.2"
@@ -1745,17 +1733,16 @@ sinon@^15.0.1:
     nise "^5.1.4"
     supports-color "^7.2.0"
 
-sinon@^18.0.0:
-  version "18.0.0"
-  resolved "https://registry.npmjs.org/sinon/-/sinon-18.0.0.tgz"
-  integrity sha512-+dXDXzD1sBO6HlmZDd7mXZCR/y5ECiEiGCBSGuFD/kZ0bDTofPYc6JaeGmPSF+1j1MejGUWkORbYOLDyvqCWpA==
+sinon@^21.0.1:
+  version "21.0.1"
+  resolved "https://registry.yarnpkg.com/sinon/-/sinon-21.0.1.tgz#36b9126065a44906f7ba4a47b723b99315a8c356"
+  integrity sha512-Z0NVCW45W8Mg5oC/27/+fCqIHFnW8kpkFOq0j9XJIev4Ld0mKmERaZv5DMLAb9fGCevjKwaEeIQz5+MBXfZcDw==
   dependencies:
     "@sinonjs/commons" "^3.0.1"
-    "@sinonjs/fake-timers" "^11.2.2"
-    "@sinonjs/samsam" "^8.0.0"
-    diff "^5.2.0"
-    nise "^6.0.0"
-    supports-color "^7"
+    "@sinonjs/fake-timers" "^15.1.0"
+    "@sinonjs/samsam" "^8.0.3"
+    diff "^8.0.2"
+    supports-color "^7.2.0"
 
 source-map-support@^0.5.21:
   version "0.5.21"
@@ -1820,7 +1807,7 @@ stubs@^3.0.0:
   resolved "https://registry.npmjs.org/stubs/-/stubs-3.0.0.tgz"
   integrity sha512-PdHt7hHUJKxvTCgbKX9C1V/ftOcjJQgz8BZwNfV5c4B6dcGqlpelTbJ999jBGZ2jYiPAwcX5dP6oBwVlBlUbxw==
 
-supports-color@^7, supports-color@^7.1.0, supports-color@^7.2.0:
+supports-color@^7.1.0, supports-color@^7.2.0:
   version "7.2.0"
   resolved "https://registry.npmjs.org/supports-color/-/supports-color-7.2.0.tgz"
   integrity sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==
@@ -1875,7 +1862,7 @@ type-detect@4.0.8, type-detect@^4.0.0:
   resolved "https://registry.npmjs.org/type-detect/-/type-detect-4.0.8.tgz"
   integrity sha512-0fr/mIH1dlO+x7TlcMy+bIDqKPsw/70tVyeHW787goQjhmqaZe10uwLujubK9q9Lg6Fiho1KUKDYz0Z7k7g5/g==
 
-type-detect@^4.0.8, type-detect@^4.1.0:
+type-detect@^4.1.0:
   version "4.1.0"
   resolved "https://registry.npmjs.org/type-detect/-/type-detect-4.1.0.tgz"
   integrity sha512-Acylog8/luQ8L7il+geoSxhEkazvkslg7PSNKOX59mbB9cOveP5aq9h74Y7YU8yDpJwetzQQrfIwtf4Wp4LKcw==
