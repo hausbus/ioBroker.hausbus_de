@@ -9,6 +9,7 @@
   "homepage": "http://www.haus-bus.de",
   "license": "MIT",
   "keywords": [
+    "ioBroker",
     "haus-bus.de",
     "homeserver",
     "relaimodule",
