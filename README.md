@@ -18,7 +18,7 @@ The HausBus.de adapter is ready to use without further configurations. It is aut
 <br>
 
 ## Changelog
-### **WORK IN PROGRESS** 
+### 1.6.10 (2026-03-28) 
 * support for new 4 channel relay module and 2 channel shutter module
 
 ### 1.5.2 (2025-12-23)
