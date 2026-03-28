@@ -10,3 +10,8 @@ updates:
   assignees:
   - hausbusde
   versioning-strategy: increase
+
+- package-ecosystem: "github-actions"
+  directory: "/"
+  schedule:
+    interval: "weekly" # Überprüft wöchentlich auf neue Action-Versionen

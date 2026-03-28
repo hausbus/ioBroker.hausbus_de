@@ -18,6 +18,9 @@ The HausBus.de adapter is ready to use without further configurations. It is aut
 <br>
 
 ## Changelog
+### **WORK IN PROGRESS** 
+  * just a rebuild of 1.6.0 für IO-Broker stable release
+  
 ### 1.6.0 (2026-03-28) 
 * support for new 4 channel relay module and 2 channel shutter module
 
@@ -118,7 +121,7 @@ The HausBus.de adapter is ready to use without further configurations. It is aut
 ## License
 MIT License
 
-Copyright (c) 2024 Hermann Hoeschen <info@haus-bus.de>
+Copyright (c) 2026 Hermann Hoeschen <info@haus-bus.de>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

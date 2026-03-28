@@ -1,9 +1,14 @@
 {
   "common": {
     "name": "hausbus_de",
-    "version": "1.6.0",
+	"tier": 2,
+    "version": "1.6.1",
+	"licenseInformation": {
+      "license": "MIT",
+      "type": "free"
+    },
     "news": {
-      "1.6.0": {
+      "1.6.1": {
         "en": "support for new 4 channel relay module and 2 channel shutter module",
         "de": "unterstützung für neues 4 kanalrelaismodul und 2 kanal shuttermodul",
         "ru": "поддержка нового 4-канального ретрансляционного модуля и 2-канального затворного модуля",
@@ -144,12 +149,12 @@
     "materialize": true,
     "dependencies": [
       {
-        "js-controller": ">=5.0.19"
+        "js-controller": ">=6.0.11"
       }
     ],
     "globalDependencies": [
       {
-        "admin": ">=5.1.28"
+        "admin": ">=7.6.20"
       }
     ]
   },
