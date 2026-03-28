@@ -2,12 +2,25 @@
   "common": {
     "name": "hausbus_de",
     "tier": 2,
-    "version": "1.6.5",
+    "version": "1.6.6",
     "licenseInformation": {
       "license": "MIT",
       "type": "free"
     },
     "news": {
+      "1.6.6": {
+        "en": "support for new 4 channel relay module and 2 channel shutter module",
+        "de": "unterstützung für neues 4 kanalrelaismodul und 2 kanal shuttermodul",
+        "ru": "поддержка нового 4-канального ретрансляционного модуля и 2-канального затворного модуля",
+        "pt": "suporte para novo módulo de relé de 4 canais e módulo de obturador de 2 canais",
+        "nl": "ondersteuning voor nieuwe 4 kanaal relais module en 2 kanaal sluiter module",
+        "fr": "prise en charge du nouveau module relais 4 canaux et du module obturateur 2 canaux",
+        "it": "supporto per il nuovo modulo relè a 4 canali e modulo per l'otturatore a 2 canali",
+        "es": "soporte para nuevo módulo de relé de 4 canales y módulo de cierre de 2 canales",
+        "pl": "obsługa nowego 4-kanałowego modułu przekaźnika i 2-kanałowego modułu migawki",
+        "uk": "підтримка нового модуля реле 4 каналу та модуля 2 каналу",
+        "zh-cn": "支持新的4个频道中继模块和2个频道百叶窗模块"
+      },
       "1.6.5": {
         "en": "support for new 4 channel relay module and 2 channel shutter module",
         "de": "unterstützung für neues 4 kanalrelaismodul und 2 kanal shuttermodul",
