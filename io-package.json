@@ -2,13 +2,13 @@
   "common": {
     "name": "hausbus_de",
     "tier": 2,
-    "version": "1.6.3",
+    "version": "1.6.4",
     "licenseInformation": {
       "license": "MIT",
       "type": "free"
     },
     "news": {
-      "1.6.3": {
+      "1.6.4": {
         "en": "support for new 4 channel relay module and 2 channel shutter module",
         "de": "unterstützung für neues 4 kanalrelaismodul und 2 kanal shuttermodul",
         "ru": "поддержка нового 4-канального ретрансляционного модуля и 2-канального затворного модуля",
