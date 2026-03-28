@@ -49,6 +49,8 @@ var MODUL_ID_LAN_BRIDGE=15;
 var MODUL_ID_RGB_DIMMER=16;
 var MODUL_ID_12_RELAIS=17;
 var MODUL_ID_13_WLAN=18;
+var MODUL_ID_4_RELAIS=19;
+var MODUL_ID_2_ROLLOS=20;
 
 var MODULES = {}; // Alle Haus-Bus Module
 var CLASSES = {}; // Alle Haus-Bus Klassen
@@ -3781,6 +3783,8 @@ function hwControllerReceivedRemoteObjects(sender, receiver, message, dataLength
       else if (nrDimmer==8 && nrRelais==1) moduleType=MODUL_ID_8_DIMMER;
       else if (nrRgbDimmer==2) moduleType=MODUL_ID_RGB_DIMMER;
       else if (nrRelais==1 && nrTaster==1) moduleType = MODUL_ID_13_WLAN;
+      else if (nrRelais==5 && nrTaster==4) moduleType = MODUL_ID_4_RELAIS;
+      else if (nrRollos==2) moduleType = MODUL_ID_2_ROLLOS;
 	
 	  if (moduleType=="" || typeof MODULES[moduleType]=="undefined")
 	  {
@@ -3883,6 +3887,7 @@ function hwControllerReceivedConfiguration(sender, receiver, message, dataLength
 	else if (firmwareType == FIRMWARE_ID_ESP32)
 	{
 		if (fcke==0) moduleId = MODUL_ID_4_DIMMER;
+		//else if (fcke==0x4) moduleId = MODUL_ID_4_RELAIS kann 4-fach Relais oder 8-fach Rollo sein
 		else if (fcke==0x8) moduleId = MODUL_ID_8_RELAIS;
 		else if (fcke==0xC) moduleId = MODUL_ID_16_RELAIS_V2;
 		else if (fcke==0x10) moduleId = MODUL_ID_24_UP_IO;
@@ -4719,6 +4724,8 @@ function initModulesClassesInstances()
 	MODULES[MODUL_ID_RGB_DIMMER]={id:MODUL_ID_RGB_DIMMER, name:"RGB Dimmermodul"};
 	MODULES[MODUL_ID_8_ROLLO]={id:MODUL_ID_8_ROLLO, name:"8 Kanal Rollomodul"};
 	MODULES[MODUL_ID_8_RELAIS]={id:MODUL_ID_8_RELAIS, name:"8 Kanal 16A Relaismodul"};
+	MODULES[MODUL_ID_4_RELAIS]={id:MODUL_ID_4_RELAIS, name:"4 Kanal 7A Relaismodul"};
+	MODULES[MODUL_ID_2_ROLLOS]={id:MODUL_ID_2_ROLLOS, name:"2 Kanal Rollomodul"};
 	MODULES[MODUL_ID_12_RELAIS]={id:MODUL_ID_12_RELAIS, name:"12 Kanal 16A Relaismodul"};
 	MODULES[MODUL_ID_13_WLAN]={id:MODUL_ID_13_WLAN, name:"WLAN Steckdose"};
 	
@@ -4917,6 +4924,44 @@ function initModulesClassesInstances()
 	INSTANCES[MODUL_ID_12_RELAIS]["*"][CLASS_ID_TASTER][102]="Eingang_06";
 	INSTANCES[MODUL_ID_12_RELAIS]["*"][CLASS_ID_TASTER][103]="Eingang_07";
 	INSTANCES[MODUL_ID_12_RELAIS]["*"][CLASS_ID_TASTER][104]="Eingang_08";
+	
+	// MODUL_ID_4_RELAIS
+    INSTANCES[MODUL_ID_4_RELAIS]={};
+	INSTANCES[MODUL_ID_4_RELAIS]["*"]={};
+	INSTANCES[MODUL_ID_4_RELAIS]["*"][CLASS_ID_CONTROLLER]={};
+	INSTANCES[MODUL_ID_4_RELAIS]["*"][CLASS_ID_CONTROLLER][1]="Maincontroller";
+
+	INSTANCES[MODUL_ID_4_RELAIS]["*"][CLASS_ID_SCHALTER]={};
+	INSTANCES[MODUL_ID_4_RELAIS]["*"][CLASS_ID_SCHALTER][17]="Relais_01";
+	INSTANCES[MODUL_ID_4_RELAIS]["*"][CLASS_ID_SCHALTER][18]="Relais_02";
+	INSTANCES[MODUL_ID_4_RELAIS]["*"][CLASS_ID_SCHALTER][19]="Relais_03";
+	INSTANCES[MODUL_ID_4_RELAIS]["*"][CLASS_ID_SCHALTER][20]="Relais_04";
+	INSTANCES[MODUL_ID_4_RELAIS]["*"][CLASS_ID_SCHALTER][210]="Rote_Modul_LED";
+
+    INSTANCES[MODUL_ID_4_RELAIS]["*"][CLASS_ID_TASTER]={};
+	INSTANCES[MODUL_ID_4_RELAIS]["*"][CLASS_ID_TASTER][97]="Eingang_01";
+	INSTANCES[MODUL_ID_4_RELAIS]["*"][CLASS_ID_TASTER][98]="Eingang_02";
+	INSTANCES[MODUL_ID_4_RELAIS]["*"][CLASS_ID_TASTER][99]="Eingang_03";
+	INSTANCES[MODUL_ID_4_RELAIS]["*"][CLASS_ID_TASTER][100]="Eingang_04";
+	
+	// MODUL_ID_2_ROLLOS
+    INSTANCES[MODUL_ID_2_ROLLOS]={};
+	INSTANCES[MODUL_ID_2_ROLLOS]["*"]={};
+	INSTANCES[MODUL_ID_2_ROLLOS]["*"][CLASS_ID_CONTROLLER]={};
+	INSTANCES[MODUL_ID_2_ROLLOS]["*"][CLASS_ID_CONTROLLER][1]="Maincontroller";
+
+	INSTANCES[MODUL_ID_2_ROLLOS]["*"][CLASS_ID_SCHALTER]={};
+	INSTANCES[MODUL_ID_2_ROLLOS]["*"][CLASS_ID_SCHALTER][210]="Rote_Modul_LED";
+
+	INSTANCES[MODUL_ID_2_ROLLOS]["*"][CLASS_ID_ROLLLADEN]={};
+	INSTANCES[MODUL_ID_2_ROLLOS]["*"][CLASS_ID_ROLLLADEN][1]="Rollo_1";
+	INSTANCES[MODUL_ID_2_ROLLOS]["*"][CLASS_ID_ROLLLADEN][3]="Rollo_2";
+
+    INSTANCES[MODUL_ID_2_ROLLOS]["*"][CLASS_ID_TASTER]={};
+	INSTANCES[MODUL_ID_2_ROLLOS]["*"][CLASS_ID_TASTER][97]="Eingang_01";
+	INSTANCES[MODUL_ID_2_ROLLOS]["*"][CLASS_ID_TASTER][98]="Eingang_02";
+	INSTANCES[MODUL_ID_2_ROLLOS]["*"][CLASS_ID_TASTER][99]="Eingang_03";
+	INSTANCES[MODUL_ID_2_ROLLOS]["*"][CLASS_ID_TASTER][100]="Eingang_04";
 
 	// MODUL_ID_13_WLAN
     INSTANCES[MODUL_ID_13_WLAN]={};
