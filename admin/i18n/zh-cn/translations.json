@@ -1,5 +1,5 @@
 {
     "settings_label": "设置",
-    "address_label": "IP地址",
-    "port_label": "端口"
+    "config_free_text": "该适配器无需配置！",
+    "info_documentation_text": "有关所有受支持模块及其功能的文档，请访问 "
 }

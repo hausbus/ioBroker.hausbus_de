@@ -1,5 +1,5 @@
 {
-    "settings_label": "Configurações",
-    "address_label": "Endereço IP",
-    "port_label": "Porta"
+    "settings_label": "Ustawienia",
+    "config_free_text": "Ten adapter nie wymaga konfiguracji!",
+    "info_documentation_text": "Dokumentację dla wszystkich obsługiwanych modułów i ich funkcji można znaleźć na stronie "
 }

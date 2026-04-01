@@ -1,5 +1,5 @@
 {
     "settings_label": "Ajustes",
-    "address_label": "Dirección IP",
-    "port_label": "Puerto"
+    "config_free_text": "¡Este adaptador no requiere configuración!",
+    "info_documentation_text": "La documentación de todos los módulos compatibles und sus funciones se puede encontrar en "
 }

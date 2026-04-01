@@ -1,5 +1,5 @@
 {
-	"settings_label": "Settings",
-	"address_label": "IP Addresse",
-	"port_label": "Port"
+    "settings_label": "Einstellungen",
+    "config_free_text": "Dieser Adapter ist konfigurationsfrei!",
+    "info_documentation_text": "Eine Dokumentation zu allen unterstützen Modulen und deren Funktionen befindet sich auf "
 }

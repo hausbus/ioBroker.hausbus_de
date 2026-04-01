@@ -3,27 +3,50 @@
     "items": {
         "main": {
             "type": "panel",
-            "label": "settings_label", 
+            "label": "settings_label",
             "items": {
-                "address": {
-                    "type": "text",
-                    "label": "address_label",
-                    "sm": 12,
-                    "md": 6,
-                    "xs": 12,
-                    "lg": 6,
-                    "xl": 6
+                "_header": {
+                    "type": "row",
+                    "items": {
+                        "logo": {
+                            "type": "staticImage",
+                            "src": "hausbusde.png", 
+                            "sm": 2,
+                            "styles": { "width": "100px" }
+                        },
+                        "title": {
+                            "type": "staticText",
+                            "text": "config_free_text",
+                            "sm": 8,
+                            "styles": {
+                                "textAlign": "center",
+                                "fontWeight": "bold",
+                                "paddingTop": "40px" 
+                            }
+                        },
+                        "thumb": {
+                            "type": "staticImage",
+                            "src": "daumen.png",
+                            "sm": 2,
+                            "styles": { 
+                                "width": "100px",
+                                "textAlign": "right" 
+                            }
+                        }
+                    }
                 },
-                "port": {
-                    "type": "number",
-                    "label": "port_label",
-                    "min": 1,
-                    "max": 65535,
+                "spacer": {
+                    "type": "staticText",
+                    "text": " ",
                     "sm": 12,
-                    "md": 6,
-                    "xs": 12,
-                    "lg": 6,
-                    "xl": 6
+                    "styles": { "height": "40px" }
+                },
+                "description": {
+                    "type": "staticLink",
+                    "text": "info_documentation_text",
+                    "label": "www.haus-bus.de/iobroker",
+                    "href": "https://www.haus-bus.de/iobroker",
+                    "sm": 12
                 }
             }
         }

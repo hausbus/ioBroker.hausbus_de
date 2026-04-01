@@ -1,5 +1,5 @@
 {
     "settings_label": "Instellingen",
-    "address_label": "IP-adres",
-    "port_label": "Poort"
+    "config_free_text": "Deze adapter is configuratievrij!",
+    "info_documentation_text": "Documentatie voor alle ondersteunde modules en hun functies is te finden op "
 }
