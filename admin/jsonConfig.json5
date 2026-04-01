@@ -5,21 +5,27 @@
             "type": "panel",
             "label": "settings_label",
             "items": {
-                // Wir nutzen hier direkt die Grid-Spalten (sm, md) im Panel, 
-                // ohne das Wort "row" zu benutzen. Das Panel ist bereits ein Grid-Container.
                 "logo": {
                     "type": "staticImage",
-                    "src": "hausbusde.png", 
+                    "src": "hausbusde.png",
+                    "xs": 12,
                     "sm": 2,
-                    "styles": { 
+                    "md": 2,
+                    "lg": 2,
+                    "xl": 2,
+                    "styles": {
                         "width": "100%",
-                        "maxWidth": "100px" 
+                        "maxWidth": "100px"
                     }
                 },
                 "title": {
                     "type": "staticText",
                     "text": "config_free_text",
+                    "xs": 12,
                     "sm": 8,
+                    "md": 8,
+                    "lg": 8,
+                    "xl": 8,
                     "styles": {
                         "textAlign": "center",
                         "fontWeight": "bold",
@@ -30,16 +36,24 @@
                 "thumb": {
                     "type": "staticImage",
                     "src": "daumen.png",
+                    "xs": 12,
                     "sm": 2,
-                    "styles": { 
+                    "md": 2,
+                    "lg": 2,
+                    "xl": 2,
+                    "styles": {
                         "width": "100%",
                         "maxWidth": "80px",
-                        "float": "right" 
+                        "float": "right"
                     }
                 },
                 "_divider": {
                     "type": "divider",
-                    "sm": 12
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12
                 },
                 "description": {
                     "type": "staticLink",
@@ -47,7 +61,11 @@
                     "button": false,
                     "label": "www.haus-bus.de/iobroker",
                     "href": "https://www.haus-bus.de/iobroker",
+                    "xs": 12,
                     "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
                     "styles": {
                         "marginTop": "20px"
                     }
