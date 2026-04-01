@@ -58,7 +58,7 @@
         "es": "soporte para WLAN socket",
         "pl": "obsługa gniazda WLAN",
 		"uk": "підтримка Wi-Fi розетки",
-        "zh-cn": "支持 WLAN 套接字",
+        "zh-cn": "支持 WLAN 套接字"
       },
       "1.4.11": {
         "en": "removed js-controller as dependency",
