@@ -2,22 +2,28 @@
     "type": "tabs",
     "items": {
         "main": {
-            "title": "Settings",
             "type": "panel",
+            "label": "Settings", 
             "items": {
                 "address": {
-                  "type": "text",
-                  "label": "IP Address / Hostname",
-                  "sm": 12,
-                  "md": 6
+                    "type": "text",
+                    "label": "IP Address / Hostname",
+                    "sm": 12,
+                    "md": 6,
+                    "xs": 12,
+                    "lg": 6,
+                    "xl": 6
                 },
                 "port": {
-                  "type": "number",
-                  "label": "Port",
-                  "min": 1,
-                  "max": 65535,
-                  "sm": 12,
-                  "md": 6
+                    "type": "number",
+                    "label": "Port",
+                    "min": 1,
+                    "max": 65535,
+                    "sm": 12,
+                    "md": 6,
+                    "xs": 12,
+                    "lg": 6,
+                    "xl": 6
                 }
             }
         }
