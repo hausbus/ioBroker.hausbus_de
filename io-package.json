@@ -18,7 +18,7 @@
         "it": "supporto per il nuovo modulo relè a 4 canali e modulo per l'otturatore a 2 canali",
         "es": "soporte para nuevo módulo de relé de 4 canales y módulo de cierre de 2 canales",
         "pl": "obsługa nowego 4-kanałowego modułu przekaźnika i 2-kanałowego modułu migawki",
-		"uk": "підтримка нового 4-канального релейного модуля та 2-канального модуля жалюзі"
+		"uk": "підтримка нового 4-канального релейного модуля та 2-канального модуля жалюзі",
         "zh-cn": "支持新的4个频道中继模块和2个频道百叶窗模块"
       },
       "1.6.11": {
