@@ -32,6 +32,7 @@
     "@alcalzone/release-script-plugin-iobroker": "^5.1.2",
     "@alcalzone/release-script-plugin-license": "^5.1.1",
     "@iobroker/adapter-dev": "^1.5.0",
+    "@iobroker/eslint-config": "^2.2.0",
     "@iobroker/testing": "^5.2.2",
     "proxyquire": "^2.1.3"
   },
@@ -51,7 +52,7 @@
     "test:integration": "mocha test/integration --exit",
     "test": "npm run test:js && npm run test:package",
     "translate": "translate-adapter",
-    "lint": "eslint .",
+    "lint": "eslint -c eslint.config.mjs .",
     "release": "release-script"
   },
   "bugs": {
