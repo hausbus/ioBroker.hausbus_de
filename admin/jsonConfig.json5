@@ -3,7 +3,7 @@
     "items": {
         "main": {
             "type": "panel",
-            "label": "Settings", 
+            "label": "settings_label", 
             "items": {
                 "address": {
                     "type": "text",
