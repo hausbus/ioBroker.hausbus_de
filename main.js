@@ -5,10 +5,10 @@
 // always required: utils
 var utils = require('@iobroker/adapter-core');
 var ip = require("ip");
-var dgram = require('dgram');
-var os = require('os');
-var http = require('http');
-var fs = require('fs');
+var dgram = require('node:dgram');
+var os = require('node:os');
+var http = require('node:http');
+var fs = require('node:fs');
 
 // create the adapter object
 var adapter; // = utils.Adapter('hausbus_de');
@@ -380,7 +380,7 @@ function main()
   var parts = ip.address().split(".");
 
   var mask="";
-  const ifaces = require('os').networkInterfaces();
+  const ifaces = require('node:os').networkInterfaces();
 
   Object.keys(ifaces).forEach(dev => 
   {
@@ -432,7 +432,7 @@ function main()
 
 function readFirmwareVersions()
 {
-  require('dns').resolve('www.haus-bus.de', function(err) {
+  require('node:dns').resolve('www.haus-bus.de', function(err) {
     if (err) debug("no internet connection");
     else 
     {
