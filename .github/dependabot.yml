@@ -8,8 +8,9 @@ updates:
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
-      interval: 'monthly'
-      time: '04:00'
+      interval: 'cron'
+      time: '04:22'
+      day-of-week: "wed"
       timezone: 'Europe/Berlin'
     open-pull-requests-limit: 20
     assignees:
