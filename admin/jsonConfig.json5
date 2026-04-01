@@ -1,0 +1,25 @@
+{
+    "type": "tabs",
+    "items": {
+        "main": {
+            "title": "Settings",
+            "type": "panel",
+            "items": {
+                "address": {
+                  "type": "text",
+                  "label": "IP Address / Hostname",
+                  "sm": 12,
+                  "md": 6
+                },
+                "port": {
+                  "type": "number",
+                  "label": "Port",
+                  "min": 1,
+                  "max": 65535,
+                  "sm": 12,
+                  "md": 6
+                }
+            }
+        }
+    }
+}
