@@ -10,9 +10,10 @@
   "license": "MIT",
   "keywords": [
     "ioBroker",
+    "RS485",
     "haus-bus.de",
     "homeserver",
-    "relaymodule",
+    "relaymodules",
     "pushbuttons"
   ],
   "repository": {
