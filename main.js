@@ -5,10 +5,10 @@
 // always required: utils
 var utils = require('@iobroker/adapter-core');
 var ip = require("ip");
-var dgram = require('dgram');
-var os = require('os');
-var http = require('http');
-var fs = require('fs');
+var dgram = require('node:dgram');
+var os = require('node:os');
+var http = require('node:http');
+var fs = require('node:fs');
 
 // create the adapter object
 var adapter; // = utils.Adapter('hausbus_de');
@@ -31,6 +31,7 @@ var CLASS_ID_FEUCHTESENSOR = 34;
 var CLASS_ID_HELLIGKEITSSENSOR = 39;
 var CLASS_ID_ETHERNET = 162;
 var CLASS_ID_ANALOGEINGANG = 36;
+var CLASS_ID_POWER_METER = 41;
 
 var MODUL_ID_32_IO=11;
 var MODUL_ID_16_RELAIS_V2=10;
@@ -47,6 +48,9 @@ var MODUL_ID_8_RELAIS=5;
 var MODUL_ID_LAN_BRIDGE=15;
 var MODUL_ID_RGB_DIMMER=16;
 var MODUL_ID_12_RELAIS=17;
+var MODUL_ID_13_WLAN=18;
+var MODUL_ID_4_RELAIS=19;
+var MODUL_ID_2_ROLLOS=20;
 
 var MODULES = {}; // Alle Haus-Bus Module
 var CLASSES = {}; // Alle Haus-Bus Klassen
@@ -119,6 +123,7 @@ var ANALOG_CFG_REPORT_TIME_MULTIPLIER = "report_time_multiplier";
 var ANALOG_CFG_HYSTERESIS = "hysteresis";
 var ANALOG_CFG_CALIBRATION = "calibration";
 
+var POWER_METER_POWER = "power";
 
 var TASTER_FKT_ENABLE_DISABLE_EVENTS = "enable_disable_events";
 var TASTER_FKT_DISABLE_EVENTS_TIMEOUT = "disable_events_timeout";
@@ -204,6 +209,7 @@ var FIRMWARE_ID_S0_Reader = "S0_Reader";
 var FIRMWARE_ID_ESP = "ESP";
 var FIRMWARE_ID_HBC = "HBC";
 var FIRMWARE_ID_ESP32 = "ESP32";
+var FIRMWARE_ID_ESP32C3 = "ESP32C3";
 	
 var CHANNEL_CONFIG = "Konfiguration";
 
@@ -374,7 +380,7 @@ function main()
   var parts = ip.address().split(".");
 
   var mask="";
-  const ifaces = require('os').networkInterfaces();
+  const ifaces = require('node:os').networkInterfaces();
 
   Object.keys(ifaces).forEach(dev => 
   {
@@ -426,7 +432,7 @@ function main()
 
 function readFirmwareVersions()
 {
-  require('dns').resolve('www.haus-bus.de', function(err) {
+  require('node:dns').resolve('www.haus-bus.de', function(err) {
     if (err) debug("no internet connection");
     else 
     {
@@ -686,6 +692,12 @@ function handleIncomingMessage(message, remote)
 		{
 			if (functionId==128) hwAnalogInputReceivedConfiguration(sender, receiver, message, dataLength);		
 			else if (functionId==129 || functionId==203) hwAnalogInputReceivedStatus(sender, receiver, message, dataLength);
+			//else if (functionId>=200 && functionId<300) hwAnalogInputReceivedEvents(sender, receiver, functionId, message, dataLength);
+		}
+		else if (classIdSender == CLASS_ID_POWER_METER)
+		{
+			if (functionId==128) hwPowerMeterReceivedConfiguration(sender, receiver, message, dataLength);		
+			if (functionId==129 || functionId==203) hwPowerMeterReceivedStatus(sender, receiver, message, dataLength);
 			//else if (functionId>=200 && functionId<300) hwAnalogInputReceivedEvents(sender, receiver, functionId, message, dataLength);
 		}
         else if (classIdSender == CLASS_ID_HELLIGKEITSSENSOR)
@@ -1030,6 +1042,15 @@ function aFunctionCall(ioBrokerId, newValue)
 		state == ANALOG_CFG_MIN_REPORT_TIME || 
 		state == ANALOG_CFG_REPORT_TIME_MULTIPLIER)
 	 hwAnalogInputSetConfiguration(state, newValue, objectId);
+  }
+  else if (classId == CLASS_ID_POWER_METER)
+  {
+    if (state == ANALOG_CFG_CALIBRATION || 
+	    state == ANALOG_CFG_HYSTERESIS || 
+		state == ANALOG_CFG_MAX_REPORT_TIME || 
+		state == ANALOG_CFG_MIN_REPORT_TIME || 
+		state == ANALOG_CFG_REPORT_TIME_MULTIPLIER)
+	 hwPowerMeterSetConfiguration(state, newValue, objectId);
   }
   else if (classId == CLASS_ID_FEUCHTESENSOR)
   {
@@ -1911,6 +1932,177 @@ function hwAnalogInputSetConfiguration(configKey, newValue, receiverObjectId, re
 	calibration:calibration};	
 	
 	info("anlogInput setConfiguration: "+dump(configurations[receiverObjectId])+" -> "+objectIdToString(receiverObjectId));
+}
+
+// POWERMETER
+function hwPowerMeterGetStatus(receiverObjectId)
+{
+	debug("hwPowerMeterGetStatus -> "+objectIdToString(receiverObjectId));	
+	
+	var data = [];
+	var pos=0;
+	data[pos++]=2; // Funktion ID
+	
+	sendHausbusUdpMessage(receiverObjectId, data, myObjectId);
+}
+
+function hwPowerMeterReceivedStatus(sender, receiver, message, dataLength)
+{
+	var instanceId = getInstanceId(sender);
+	var deviceId = getDeviceId(sender);
+	
+	var pos = DATA_START;
+	var power = message[pos++];
+	var centiPower = message[pos++];
+	if (centiPower<10) centiPower="0"+centiPower;
+	
+	var thePower = power+"."+centiPower;
+
+	info("powerMeter power: "+thePower+" <- "+objectIdToString(sender));
+	
+    var myId = getIoBrokerId(deviceId, CLASS_ID_POWER_METER, instanceId, POWER_METER_POWER);
+	setStateIoBroker(myId, thePower);
+}
+
+function hwPowerMeterGetConfiguration(receiverObjectId)
+{
+	debug("hwPowerMeterGetConfiguration -> "+objectIdToString(receiverObjectId));	
+	
+	var data = [];
+	var pos=0;
+	data[pos++]=0; // Funktion ID
+	
+	sendHausbusUdpMessage(receiverObjectId, data, myObjectId);
+}
+
+function hwPowerMeterReceivedConfiguration(sender, receiver, message, dataLength)
+{
+	var instanceId = getInstanceId(sender);
+	var deviceId = getDeviceId(sender);
+	
+	var pos = DATA_START;
+
+    var lowerThreshold = byteToSByte(message[pos++]);
+	var lowerThresholdFraction = message[pos++];
+	
+	//var myId = getIoBrokerId(deviceId, CLASS_ID_FEUCHTESENSOR, instanceId, HUMIDITY_CFG_LOWER_THRESHOLD, CHANNEL_CONFIG);
+	//setStateIoBroker(myId, lowerThreshold+"."+lowerThresholdFraction);
+
+    var upperThreshold = byteToSByte(message[pos++]);
+	var upperThresholdFraction = message[pos++];
+	//var myId = getIoBrokerId(deviceId, CLASS_ID_FEUCHTESENSOR, instanceId, HUMIDITY_CFG_UPPER_THRESHOLD, CHANNEL_CONFIG);
+	//setStateIoBroker(myId, upperThreshold+"."+upperThresholdFraction);
+
+	var reportTimeBase = message[pos++];
+	var myId = getIoBrokerId(deviceId, CLASS_ID_POWER_METER, instanceId, ANALOG_CFG_REPORT_TIME_MULTIPLIER, CHANNEL_CONFIG);
+	setStateIoBroker(myId, reportTimeBase);
+	
+	var minReportTime = message[pos++];
+	var myId = getIoBrokerId(deviceId, CLASS_ID_POWER_METER, instanceId, ANALOG_CFG_MIN_REPORT_TIME, CHANNEL_CONFIG);
+	setStateIoBroker(myId, minReportTime);
+
+	var maxReportTime = message[pos++];
+	var myId = getIoBrokerId(deviceId, CLASS_ID_POWER_METER, instanceId, ANALOG_CFG_MAX_REPORT_TIME, CHANNEL_CONFIG);
+	setStateIoBroker(myId, maxReportTime);
+	
+	var hysteresis = message[pos++];
+	var myId = getIoBrokerId(deviceId, CLASS_ID_POWER_METER, instanceId, ANALOG_CFG_HYSTERESIS, CHANNEL_CONFIG);
+	setStateIoBroker(myId, hysteresis);
+
+	var calibration = byteToSByte(message[pos++]);
+	var myId = getIoBrokerId(deviceId, CLASS_ID_POWER_METER, instanceId, ANALOG_CFG_CALIBRATION, CHANNEL_CONFIG);
+	setStateIoBroker(myId, calibration);
+	
+    configurations[sender]={
+	lowerThreshold:lowerThreshold, 
+	lowerThresholdFraction:lowerThresholdFraction, 
+	upperThreshold:upperThreshold, 
+	upperThresholdFraction:upperThresholdFraction, 
+	reportTimeBase: reportTimeBase,
+	minReportTime: minReportTime,
+	maxReportTime: maxReportTime,
+	hysteresis: hysteresis,
+	calibration:calibration};
+	
+	debug("hwPowerMeterReceivedConfiguration: "+dump(configurations[sender])+" <- "+objectIdToString(sender));
+}
+
+function hwPowerMeterSetConfiguration(configKey, newValue, receiverObjectId, recovery="0")
+{
+    var lowerThreshold = 0;
+    var lowerThresholdFraction = 0;
+	var upperThreshold = 0;
+	var upperThresholdFraction = 0;
+	var reportTimeBase = 0;
+	var minReportTime = 0;
+	var maxReportTime = 0;
+	var hysteresis = 0;
+	var calibration = 0;
+	
+	var configuration = configurations[receiverObjectId];
+	if (typeof configuration != "undefined")
+	{
+      lowerThreshold = parseInt(configuration.lowerThreshold);
+	  lowerThresholdFraction = parseInt(configuration.lowerThresholdFraction);
+	  upperThreshold = parseInt(configuration.upperThreshold);
+	  upperThresholdFraction = parseInt(configuration.upperThresholdFraction);
+	  reportTimeBase = parseInt(configuration.reportTimeBase);
+	  minReportTime = parseInt(configuration.minReportTime);
+	  maxReportTime = parseInt(configuration.maxReportTime);
+	  hysteresis = parseInt(configuration.hysteresis);
+	  calibration = parseInt(configuration.calibration);
+	}
+	else
+	{
+		if (recovery=="1")
+		{
+		  error("configuration missing and recovery failed");
+		  return;
+		}
+		else
+		{
+		  warn("configuration missing -> recovery");
+		  hwPowerMeterGetConfiguration(receiverObjectId);
+		  setTimeout(function() { hwPowerMeterSetConfiguration(configKey, newValue, receiverObjectId, "1");}, 1000);
+		  return;
+		}
+	}
+			  
+	if (configKey == ANALOG_CFG_CALIBRATION) calibration=parseInt(newValue);
+	else if (configKey == ANALOG_CFG_HYSTERESIS) hysteresis=parseInt(newValue);
+	else if (configKey == ANALOG_CFG_MAX_REPORT_TIME) maxReportTime=parseInt(newValue);
+	else if (configKey == ANALOG_CFG_MIN_REPORT_TIME) minReportTime=parseInt(newValue);
+	else if (configKey == ANALOG_CFG_REPORT_TIME_MULTIPLIER) reportTimeBase=parseInt(newValue);
+
+
+    var data = [];
+	var pos=0;
+	data[pos++]=1; // Funktion ID
+	data[pos++]=sByteToByte(lowerThreshold);
+	data[pos++]=lowerThresholdFraction;
+	data[pos++]=sByteToByte(upperThreshold);
+	data[pos++]=upperThresholdFraction;
+	data[pos++]=reportTimeBase;
+	data[pos++]=minReportTime;
+	data[pos++]=maxReportTime;
+	data[pos++]=hysteresis;
+	data[pos++]=calibration;
+	data[pos++]=0; // deltaSensorId
+	
+	sendHausbusUdpMessage(receiverObjectId, data, myObjectId);
+	
+    configurations[receiverObjectId]={
+	lowerThreshold:lowerThreshold, 
+	lowerThresholdFraction:lowerThresholdFraction, 
+	upperThreshold:upperThreshold, 
+	upperThresholdFraction:upperThresholdFraction, 
+	reportTimeBase: reportTimeBase,
+	minReportTime: minReportTime,
+	maxReportTime: maxReportTime,
+	hysteresis: hysteresis,
+	calibration:calibration};	
+	
+	info("hwPowerMeterSetConfiguration setConfiguration: "+dump(configurations[receiverObjectId])+" -> "+objectIdToString(receiverObjectId));
 }
 
 // TASTER
@@ -3590,14 +3782,17 @@ function hwControllerReceivedRemoteObjects(sender, receiver, message, dataLength
       else if (nrRollos==8) moduleType = MODUL_ID_8_ROLLO;
       else if (nrDimmer==8 && nrRelais==1) moduleType=MODUL_ID_8_DIMMER;
       else if (nrRgbDimmer==2) moduleType=MODUL_ID_RGB_DIMMER;
+      else if (nrRelais==1 && nrTaster==1) moduleType = MODUL_ID_13_WLAN;
+      else if (nrRelais==5 && nrTaster==4) moduleType = MODUL_ID_4_RELAIS;
+      else if (nrRollos==2) moduleType = MODUL_ID_2_ROLLOS;
 	
 	  if (moduleType=="" || typeof MODULES[moduleType]=="undefined")
 	  {
-	      warn("unrecognized module type for deviceId "+deviceId+" aborting: nrRelais = "+nrRelais+", nrTaster = "+nrTaster+", nrLeds = "+nrLeds+", nrDimmer = "+nrDimmer+", analogInput = "+nrAnalogInput);
+	      warn("A unrecognized module type for deviceId "+deviceId+" aborting: nrRelais = "+nrRelais+", nrTaster = "+nrTaster+", nrLeds = "+nrLeds+", nrDimmer = "+nrDimmer+", analogInput = "+nrAnalogInput);
 		  return;
 	  }
 
-      warn("unrecognized module type for deviceId "+deviceId+" using autodetected type: "+MODULES[moduleType].name+" ("+moduleType+")");
+      warn("B unrecognized module type for deviceId "+deviceId+" using autodetected type: "+MODULES[moduleType].name+" ("+moduleType+")");
 	  
 	  moduleTypes[deviceId]=moduleType;
 	}
@@ -3692,6 +3887,7 @@ function hwControllerReceivedConfiguration(sender, receiver, message, dataLength
 	else if (firmwareType == FIRMWARE_ID_ESP32)
 	{
 		if (fcke==0) moduleId = MODUL_ID_4_DIMMER;
+		//else if (fcke==0x4) moduleId = MODUL_ID_4_RELAIS kann 4-fach Relais oder 8-fach Rollo sein
 		else if (fcke==0x8) moduleId = MODUL_ID_8_RELAIS;
 		else if (fcke==0xC) moduleId = MODUL_ID_16_RELAIS_V2;
 		else if (fcke==0x10) moduleId = MODUL_ID_24_UP_IO;
@@ -3704,6 +3900,10 @@ function hwControllerReceivedConfiguration(sender, receiver, message, dataLength
 		else if (fcke==0x27 || fcke==0x28 || fcke==0x29) moduleId = MODUL_ID_8_DIMMER;
 		else if (fcke==0x30) moduleId = MODUL_ID_RGB_DIMMER;
 		else if (fcke==0x0A) moduleId = MODUL_ID_12_RELAIS;
+	}
+	else if (firmwareType == FIRMWARE_ID_ESP32C3)
+	{
+		if (fcke==105) moduleId = MODUL_ID_13_WLAN;
 	}
 	else if (firmwareType == FIRMWARE_ID_SD485)
 	{
@@ -3798,6 +3998,12 @@ function readStatusForClasses(deviceId, foundClasses)
 	     debug("Status broadcast for class "+CLASSES[classId].name);
 		 hwAnalogInputGetConfiguration(getObjectId(deviceId, classId, 0));
 	     hwAnalogInputGetStatus(getObjectId(deviceId, classId, 0));
+	   }
+	   else if (classId == CLASS_ID_POWER_METER)
+	   {
+	     debug("Status broadcast for class "+CLASSES[classId].name);
+		 hwPowerMeterGetConfiguration(getObjectId(deviceId, classId, 0));
+	     hwPowerMeterGetStatus(getObjectId(deviceId, classId, 0));
 	   }
 	   else if (classId == CLASS_ID_FEUCHTESENSOR)
 	   {
@@ -3955,6 +4161,16 @@ function addIoBrokerStatesForInstance(deviceId, classId, instanceId)
    else if (classId == CLASS_ID_ANALOGEINGANG)
    {
 	  addStateIoBroker(ANALOG_FKT_VALUE, 'number', 'value', deviceId, classId, instanceId, false, true);
+	  
+  	  addStateIoBroker(ANALOG_CFG_MIN_REPORT_TIME, 'number', 'state ', deviceId, classId, instanceId, true, true, null,CHANNEL_CONFIG);
+  	  addStateIoBroker(ANALOG_CFG_MAX_REPORT_TIME, 'number', 'state ', deviceId, classId, instanceId, true, true, null,CHANNEL_CONFIG);
+  	  addStateIoBroker(ANALOG_CFG_REPORT_TIME_MULTIPLIER, 'number', 'state ', deviceId, classId, instanceId, true, true, null,CHANNEL_CONFIG);
+  	  addStateIoBroker(ANALOG_CFG_HYSTERESIS, 'number', 'state ', deviceId, classId, instanceId, true, true, null,CHANNEL_CONFIG);
+  	  addStateIoBroker(ANALOG_CFG_CALIBRATION, 'number', 'state ', deviceId, classId, instanceId, true, true, null,CHANNEL_CONFIG);
+   }
+   else if (classId == CLASS_ID_POWER_METER)
+   {
+	  addStateIoBroker(POWER_METER_POWER, 'number', 'power', deviceId, classId, instanceId, false, true);
 	  
   	  addStateIoBroker(ANALOG_CFG_MIN_REPORT_TIME, 'number', 'state ', deviceId, classId, instanceId, true, true, null,CHANNEL_CONFIG);
   	  addStateIoBroker(ANALOG_CFG_MAX_REPORT_TIME, 'number', 'state ', deviceId, classId, instanceId, true, true, null,CHANNEL_CONFIG);
@@ -4486,6 +4702,7 @@ function initModulesClassesInstances()
 	CLASSES[CLASS_ID_TEMPERATURSENSOR]={id:CLASS_ID_TEMPERATURSENSOR, name:"Temperatursensoren"};
 	CLASSES[CLASS_ID_IR_SENSOR]={id:CLASS_ID_IR_SENSOR, name:"IR-Sensoren"};
 	CLASSES[CLASS_ID_ANALOGEINGANG]={id:CLASS_ID_ANALOGEINGANG, name:"Analogeingänge"};
+	CLASSES[CLASS_ID_POWER_METER]={id:CLASS_ID_POWER_METER, name:"Strommessung"};
 	
 	for (var key in CLASSES) 
 	{
@@ -4507,7 +4724,10 @@ function initModulesClassesInstances()
 	MODULES[MODUL_ID_RGB_DIMMER]={id:MODUL_ID_RGB_DIMMER, name:"RGB Dimmermodul"};
 	MODULES[MODUL_ID_8_ROLLO]={id:MODUL_ID_8_ROLLO, name:"8 Kanal Rollomodul"};
 	MODULES[MODUL_ID_8_RELAIS]={id:MODUL_ID_8_RELAIS, name:"8 Kanal 16A Relaismodul"};
+	MODULES[MODUL_ID_4_RELAIS]={id:MODUL_ID_4_RELAIS, name:"4 Kanal 7A Relaismodul"};
+	MODULES[MODUL_ID_2_ROLLOS]={id:MODUL_ID_2_ROLLOS, name:"2 Kanal Rollomodul"};
 	MODULES[MODUL_ID_12_RELAIS]={id:MODUL_ID_12_RELAIS, name:"12 Kanal 16A Relaismodul"};
+	MODULES[MODUL_ID_13_WLAN]={id:MODUL_ID_13_WLAN, name:"WLAN Steckdose"};
 	
 	for (var key in MODULES) 
 	{
@@ -4704,6 +4924,57 @@ function initModulesClassesInstances()
 	INSTANCES[MODUL_ID_12_RELAIS]["*"][CLASS_ID_TASTER][102]="Eingang_06";
 	INSTANCES[MODUL_ID_12_RELAIS]["*"][CLASS_ID_TASTER][103]="Eingang_07";
 	INSTANCES[MODUL_ID_12_RELAIS]["*"][CLASS_ID_TASTER][104]="Eingang_08";
+	
+	// MODUL_ID_4_RELAIS
+    INSTANCES[MODUL_ID_4_RELAIS]={};
+	INSTANCES[MODUL_ID_4_RELAIS]["*"]={};
+	INSTANCES[MODUL_ID_4_RELAIS]["*"][CLASS_ID_CONTROLLER]={};
+	INSTANCES[MODUL_ID_4_RELAIS]["*"][CLASS_ID_CONTROLLER][1]="Maincontroller";
+
+	INSTANCES[MODUL_ID_4_RELAIS]["*"][CLASS_ID_SCHALTER]={};
+	INSTANCES[MODUL_ID_4_RELAIS]["*"][CLASS_ID_SCHALTER][17]="Relais_01";
+	INSTANCES[MODUL_ID_4_RELAIS]["*"][CLASS_ID_SCHALTER][18]="Relais_02";
+	INSTANCES[MODUL_ID_4_RELAIS]["*"][CLASS_ID_SCHALTER][19]="Relais_03";
+	INSTANCES[MODUL_ID_4_RELAIS]["*"][CLASS_ID_SCHALTER][20]="Relais_04";
+	INSTANCES[MODUL_ID_4_RELAIS]["*"][CLASS_ID_SCHALTER][210]="Rote_Modul_LED";
+
+    INSTANCES[MODUL_ID_4_RELAIS]["*"][CLASS_ID_TASTER]={};
+	INSTANCES[MODUL_ID_4_RELAIS]["*"][CLASS_ID_TASTER][97]="Eingang_01";
+	INSTANCES[MODUL_ID_4_RELAIS]["*"][CLASS_ID_TASTER][98]="Eingang_02";
+	INSTANCES[MODUL_ID_4_RELAIS]["*"][CLASS_ID_TASTER][99]="Eingang_03";
+	INSTANCES[MODUL_ID_4_RELAIS]["*"][CLASS_ID_TASTER][100]="Eingang_04";
+	
+	// MODUL_ID_2_ROLLOS
+    INSTANCES[MODUL_ID_2_ROLLOS]={};
+	INSTANCES[MODUL_ID_2_ROLLOS]["*"]={};
+	INSTANCES[MODUL_ID_2_ROLLOS]["*"][CLASS_ID_CONTROLLER]={};
+	INSTANCES[MODUL_ID_2_ROLLOS]["*"][CLASS_ID_CONTROLLER][1]="Maincontroller";
+
+	INSTANCES[MODUL_ID_2_ROLLOS]["*"][CLASS_ID_SCHALTER]={};
+	INSTANCES[MODUL_ID_2_ROLLOS]["*"][CLASS_ID_SCHALTER][210]="Rote_Modul_LED";
+
+	INSTANCES[MODUL_ID_2_ROLLOS]["*"][CLASS_ID_ROLLLADEN]={};
+	INSTANCES[MODUL_ID_2_ROLLOS]["*"][CLASS_ID_ROLLLADEN][1]="Rollo_1";
+	INSTANCES[MODUL_ID_2_ROLLOS]["*"][CLASS_ID_ROLLLADEN][3]="Rollo_2";
+
+    INSTANCES[MODUL_ID_2_ROLLOS]["*"][CLASS_ID_TASTER]={};
+	INSTANCES[MODUL_ID_2_ROLLOS]["*"][CLASS_ID_TASTER][97]="Eingang_01";
+	INSTANCES[MODUL_ID_2_ROLLOS]["*"][CLASS_ID_TASTER][98]="Eingang_02";
+	INSTANCES[MODUL_ID_2_ROLLOS]["*"][CLASS_ID_TASTER][99]="Eingang_03";
+	INSTANCES[MODUL_ID_2_ROLLOS]["*"][CLASS_ID_TASTER][100]="Eingang_04";
+
+	// MODUL_ID_13_WLAN
+    INSTANCES[MODUL_ID_13_WLAN]={};
+	INSTANCES[MODUL_ID_13_WLAN]["*"]={};
+	INSTANCES[MODUL_ID_13_WLAN]["*"][CLASS_ID_CONTROLLER]={};
+	INSTANCES[MODUL_ID_13_WLAN]["*"][CLASS_ID_CONTROLLER][1]="Maincontroller";
+
+	INSTANCES[MODUL_ID_13_WLAN]["*"][CLASS_ID_SCHALTER]={};
+	INSTANCES[MODUL_ID_13_WLAN]["*"][CLASS_ID_SCHALTER][97]="Relais_01";
+
+    INSTANCES[MODUL_ID_13_WLAN]["*"][CLASS_ID_TASTER]={};
+	INSTANCES[MODUL_ID_13_WLAN]["*"][CLASS_ID_TASTER][17]="Taster_01";
+	
 	
 	// MODUL_ID_8_ROLLO
         INSTANCES[MODUL_ID_8_ROLLO]={};
@@ -5350,6 +5621,7 @@ function initModulesClassesInstances()
 	FIRMWARE_IDS[8]=FIRMWARE_ID_HBC;
 	FIRMWARE_IDS[9]=FIRMWARE_ID_HBC;
 	FIRMWARE_IDS[10]=FIRMWARE_ID_ESP32;
+	FIRMWARE_IDS[11]=FIRMWARE_ID_ESP32C3;
 
     for (var firmwareId in FIRMWARE_IDS) 
 	{
