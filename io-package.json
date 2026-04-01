@@ -13,39 +13,39 @@
         "de": "unterstützung für neues 4 kanalrelaismodul und 2 kanal shuttermodul",
         "ru": "поддержка нового 4-канального ретрансляционного модуля и 2-канального затворного модуля",
         "pt": "suporte para novo módulo de relé de 4 canais e módulo de obturador de 2 canais",
-        "nl": "ondersteuning voor nieuwe 4 kanaal relais module en 2 kanaal sluiter module",
+        "nl": "ondersteuning voor neue 4 kanaal relais module en 2 kanaal sluiter module",
         "fr": "prise en charge du nouveau module relais 4 canaux et du module obturateur 2 canaux",
         "it": "supporto per il nuovo modulo relè a 4 canali e modulo per l'otturatore a 2 canali",
         "es": "soporte para nuevo módulo de relé de 4 canales y módulo de cierre de 2 canales",
         "pl": "obsługa nowego 4-kanałowego modułu przekaźnika i 2-kanałowego modułu migawki",
-		"uk": "підтримка нового 4-канального релейного модуля та 2-канального модуля жалюзі",
-        "zh-cn": "支持新的4个频道中继模块和2个频道百叶窗模块"
+        "uk": "підтримка нового 4-канального релейного модуля та 2-канального модуля жалюзі",
+        "zh-cn": "支持新的4个频道中继模块 e 和2个频道百叶窗模块"
       },
       "1.6.11": {
         "en": "support for new 4 channel relay module and 2 channel shutter module",
         "de": "unterstützung für neues 4 kanalrelaismodul und 2 kanal shuttermodul",
         "ru": "поддержка нового 4-канального ретрансляционного модуля и 2-канального затворного модуля",
         "pt": "suporte para novo módulo de relé de 4 canais e módulo de obturador de 2 canais",
-        "nl": "ondersteuning voor nieuwe 4 kanaal relais module en 2 kanaal sluiter module",
+        "nl": "ondersteuning voor neue 4 kanaal relais module en 2 kanaal sluiter module",
         "fr": "prise en charge du nouveau module relais 4 canaux et du module obturateur 2 canaux",
         "it": "supporto per il nuovo modulo relè a 4 canali e modulo per l'otturatore a 2 canali",
-        "es": "soporte para nuevo módulo de relé de 4 canales y módulo de cierre de 2 canales",
+        "es": "soporte para nuevo módulo de relé de 4 canales y mdulo de cierre de 2 canales",
         "pl": "obsługa nowego 4-kanałowego modułu przekaźnika i 2-kanałowego modułu migawki",
         "uk": "підтримка нового модуля реле 4 каналу та модуля 2 каналу",
-        "zh-cn": "支持新的4个频道中继模块和2个频道百叶窗模块"
+        "zh-cn": "支持新的4个频道中继模块 e 和2个频道百叶窗模块"
       },
       "1.6.10": {
         "en": "support for new 4 channel relay module and 2 channel shutter module",
         "de": "unterstützung für neues 4 kanalrelaismodul und 2 kanal shuttermodul",
         "ru": "поддержка нового 4-канального ретрансляционного модуля и 2-канального затворного модуля",
         "pt": "suporte para novo módulo de relé de 4 canais e módulo de obturador de 2 canais",
-        "nl": "ondersteuning voor nieuwe 4 kanaal relais module en 2 kanaal sluiter module",
+        "nl": "ondersteuning für neue 4 kanaal relais module en 2 kanaal sluiter module",
         "fr": "prise en charge du nouveau module relais 4 canaux et du module obturateur 2 canaux",
         "it": "supporto per il nuovo modulo relè a 4 canali e modulo per l'otturatore a 2 canali",
         "es": "soporte para nuevo módulo de relé de 4 canales y módulo de cierre de 2 canales",
         "pl": "obsługa nowego 4-kanałowego modułu przekaźnika i 2-kanałowego modułu migawki",
         "uk": "підтримка нового модуля реле 4 каналу та модуля 2 каналу",
-        "zh-cn": "支持新的4个频道中继模块和2个频道百叶窗模块"
+        "zh-cn": "支持新的4个频道中继模块 e 和2个频道百叶窗模块"
       },
       "1.5.2": {
         "en": "support for WLAN socket",
@@ -57,7 +57,7 @@
         "it": "supporto per presa WLAN",
         "es": "soporte para WLAN socket",
         "pl": "obsługa gniazda WLAN",
-		"uk": "підтримка Wi-Fi розетки",
+        "uk": "підтримка Wi-Fi розетки",
         "zh-cn": "支持 WLAN 套接字"
       },
       "1.4.11": {
@@ -70,7 +70,7 @@
         "it": "rimosso js-controller come dipendenza",
         "es": "eliminado js-controller como dependencia",
         "pl": "usunięty kontroler js- jako zależność",
-		"uk": "js-controller видалено із залежностей",
+        "uk": "js-controller видалено із залежностей",
         "zh-cn": "作为依赖而删除的 js 控制器"
       }
     },
@@ -84,7 +84,7 @@
       "it": "Haus-Bus.de",
       "es": "Haus-Bus.de",
       "pl": "Haus-Bus.de",
-	  "uk": "Haus-Bus.de",
+      "uk": "Haus-Bus.de",
       "zh-cn": "豪斯巴士公司"
     },
     "desc": {
@@ -97,14 +97,14 @@
       "it": "Adattatore per controllare i componenti haus-bus.de.",
       "es": "Adaptador para controlar los componentes de haus-bus.de.",
       "pl": "Adapter do sterowania komponentami haus-bus.de.",
-	  "uk": "Адаптер для керування компонентами haus-bus.de.",
+      "uk": "Адаптер для керування компонентами haus-bus.de.",
       "zh-cn": "用于控制 haus-bus.de 组件的适配器。"
     },
     "authors": [
       "Hermann Hoeschen <info@haus-bus.de>"
     ],
     "keywords": [
-	  "ioBroker",
+      "ioBroker",
       "haus-bus.de",
       "homeserver",
       "relaimodule",
@@ -121,7 +121,7 @@
     "compact": true,
     "connectionType": "local",
     "dataSource": "push",
-	"adminUI": {
+    "adminUI": {
       "config": "json"
     },
     "dependencies": [
