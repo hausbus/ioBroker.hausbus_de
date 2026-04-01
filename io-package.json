@@ -18,7 +18,7 @@
         "it": "supporto per il nuovo modulo relè a 4 canali e modulo per l'otturatore a 2 canali",
         "es": "soporte para nuevo módulo de relé de 4 canales y módulo de cierre de 2 canales",
         "pl": "obsługa nowego 4-kanałowego modułu przekaźnika i 2-kanałowego modułu migawki",
-        "uk": "підтримка нового модуля реле 4 каналу та модуля 2 каналу",
+		"uk": "підтримка нового 4-канального релейного модуля та 2-канального модуля жалюзі"
         "zh-cn": "支持新的4个频道中继模块和2个频道百叶窗模块"
       },
       "1.6.11": {
@@ -57,8 +57,8 @@
         "it": "supporto per presa WLAN",
         "es": "soporte para WLAN socket",
         "pl": "obsługa gniazda WLAN",
-        "uk": "підтримка розетки WLAN",
-        "zh-cn": "支持 WLAN 套接字"
+		"uk": "підтримка Wi-Fi розетки",
+        "zh-cn": "支持 WLAN 套接字",
       },
       "1.4.11": {
         "en": "removed js-controller as dependency",
@@ -70,7 +70,7 @@
         "it": "rimosso js-controller come dipendenza",
         "es": "eliminado js-controller como dependencia",
         "pl": "usunięty kontroler js- jako zależność",
-        "uk": "видалити js-controller як залежність",
+		"uk": "js-controller видалено із залежностей",
         "zh-cn": "作为依赖而删除的 js 控制器"
       }
     },
@@ -84,6 +84,7 @@
       "it": "Haus-Bus.de",
       "es": "Haus-Bus.de",
       "pl": "Haus-Bus.de",
+	  "uk": "Haus-Bus.de",
       "zh-cn": "豪斯巴士公司"
     },
     "desc": {
@@ -96,6 +97,7 @@
       "it": "Adattatore per controllare i componenti haus-bus.de.",
       "es": "Adaptador para controlar los componentes de haus-bus.de.",
       "pl": "Adapter do sterowania komponentami haus-bus.de.",
+	  "uk": "Адаптер для керування компонентами haus-bus.de.",
       "zh-cn": "用于控制 haus-bus.de 组件的适配器。"
     },
     "authors": [
@@ -108,7 +110,6 @@
       "pushbuttons"
     ],
     "platform": "Javascript/Node.js",
-    "main": "main.js",
     "icon": "hausbusde.png",
     "enabled": true,
     "extIcon": "https://haus-bus.de/iobroker/hausbusde.png",
@@ -119,7 +120,9 @@
     "compact": true,
     "connectionType": "local",
     "dataSource": "push",
-    "materialize": true,
+	"adminUI": {
+      "config": "json"
+    },
     "dependencies": [
       {
         "js-controller": ">=6.0.11"
