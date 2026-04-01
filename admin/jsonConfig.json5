@@ -5,48 +5,52 @@
             "type": "panel",
             "label": "settings_label",
             "items": {
-                "_header": {
-                    "type": "row",
-                    "items": {
-                        "logo": {
-                            "type": "staticImage",
-                            "src": "hausbusde.png", 
-                            "sm": 2,
-                            "styles": { "width": "100px" }
-                        },
-                        "title": {
-                            "type": "staticText",
-                            "text": "config_free_text",
-                            "sm": 8,
-                            "styles": {
-                                "textAlign": "center",
-                                "fontWeight": "bold",
-                                "paddingTop": "40px" 
-                            }
-                        },
-                        "thumb": {
-                            "type": "staticImage",
-                            "src": "daumen.png",
-                            "sm": 2,
-                            "styles": { 
-                                "width": "100px",
-                                "textAlign": "right" 
-                            }
-                        }
+                // Wir nutzen hier direkt die Grid-Spalten (sm, md) im Panel, 
+                // ohne das Wort "row" zu benutzen. Das Panel ist bereits ein Grid-Container.
+                "logo": {
+                    "type": "staticImage",
+                    "src": "hausbusde.png", 
+                    "sm": 2,
+                    "styles": { 
+                        "width": "100%",
+                        "maxWidth": "100px" 
                     }
                 },
-                "spacer": {
+                "title": {
                     "type": "staticText",
-                    "text": " ",
-                    "sm": 12,
-                    "styles": { "height": "40px" }
+                    "text": "config_free_text",
+                    "sm": 8,
+                    "styles": {
+                        "textAlign": "center",
+                        "fontWeight": "bold",
+                        "fontSize": "1.2rem",
+                        "marginTop": "20px"
+                    }
+                },
+                "thumb": {
+                    "type": "staticImage",
+                    "src": "daumen.png",
+                    "sm": 2,
+                    "styles": { 
+                        "width": "100%",
+                        "maxWidth": "80px",
+                        "float": "right" 
+                    }
+                },
+                "_divider": {
+                    "type": "divider",
+                    "sm": 12
                 },
                 "description": {
                     "type": "staticLink",
                     "text": "info_documentation_text",
+                    "button": false,
                     "label": "www.haus-bus.de/iobroker",
                     "href": "https://www.haus-bus.de/iobroker",
-                    "sm": 12
+                    "sm": 12,
+                    "styles": {
+                        "marginTop": "20px"
+                    }
                 }
             }
         }
