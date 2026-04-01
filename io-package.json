@@ -104,10 +104,10 @@
       "Hermann Hoeschen <info@haus-bus.de>"
     ],
     "keywords": [
-      "ioBroker",
       "haus-bus.de",
       "homeserver",
-      "relaimodule",
+      "RS485",
+      "relaiymodules",
       "pushbuttons"
     ],
     "platform": "Javascript/Node.js",
