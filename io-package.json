@@ -104,6 +104,7 @@
       "Hermann Hoeschen <info@haus-bus.de>"
     ],
     "keywords": [
+	  "ioBroker",
       "haus-bus.de",
       "homeserver",
       "relaimodule",
