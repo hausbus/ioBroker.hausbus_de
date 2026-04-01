@@ -51,6 +51,9 @@ jobs:
 
   # Deploys the final package to NPM
   deploy:
+    permissions:
+      contents: write
+      id-token: write
     needs: [check-and-lint, adapter-tests]
     
     permissions:
@@ -69,6 +72,10 @@ jobs:
       - uses: ioBroker/testing-action-deploy@v1
         with:
           node-version: '24.x'
+          # Uncomment the following line if your adapter cannot be installed using 'npm ci'
+          # install-command: 'npm install'
+          # npm-token: ${{ secrets.NPM_TOKEN }}  # Commented out for migration to Trusted Publishing
+          
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
           # When using Sentry for error reporting, Sentry can be informed about new releases
