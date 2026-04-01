@@ -1,8 +1,65 @@
 {
   "common": {
     "name": "hausbus_de",
-    "version": "1.4.11",
+    "tier": 2,
+    "version": "1.6.12",
+    "licenseInformation": {
+      "license": "MIT",
+      "type": "free"
+    },
     "news": {
+      "1.6.12": {
+        "en": "support for new 4 channel relay module and 2 channel shutter module",
+        "de": "unterstützung für neues 4 kanalrelaismodul und 2 kanal shuttermodul",
+        "ru": "поддержка нового 4-канального ретрансляционного модуля и 2-канального затворного модуля",
+        "pt": "suporte para novo módulo de relé de 4 canais e módulo de obturador de 2 canais",
+        "nl": "ondersteuning voor neue 4 kanaal relais module en 2 kanaal sluiter module",
+        "fr": "prise en charge du nouveau module relais 4 canaux et du module obturateur 2 canaux",
+        "it": "supporto per il nuovo modulo relè a 4 canali e modulo per l'otturatore a 2 canali",
+        "es": "soporte para nuevo módulo de relé de 4 canales y módulo de cierre de 2 canales",
+        "pl": "obsługa nowego 4-kanałowego modułu przekaźnika i 2-kanałowego modułu migawki",
+        "uk": "підтримка нового 4-канального релейного модуля та 2-канального модуля жалюзі",
+        "zh-cn": "支持新的4个频道中继模块 e 和2个频道百叶窗模块"
+      },
+      "1.6.11": {
+        "en": "support for new 4 channel relay module and 2 channel shutter module",
+        "de": "unterstützung für neues 4 kanalrelaismodul und 2 kanal shuttermodul",
+        "ru": "поддержка нового 4-канального ретрансляционного модуля и 2-канального затворного модуля",
+        "pt": "suporte para novo módulo de relé de 4 canais e módulo de obturador de 2 canais",
+        "nl": "ondersteuning voor neue 4 kanaal relais module en 2 kanaal sluiter module",
+        "fr": "prise en charge du nouveau module relais 4 canaux et du module obturateur 2 canaux",
+        "it": "supporto per il nuovo modulo relè a 4 canali e modulo per l'otturatore a 2 canali",
+        "es": "soporte para nuevo módulo de relé de 4 canales y mdulo de cierre de 2 canales",
+        "pl": "obsługa nowego 4-kanałowego modułu przekaźnika i 2-kanałowego modułu migawki",
+        "uk": "підтримка нового модуля реле 4 каналу та модуля 2 каналу",
+        "zh-cn": "支持新的4个频道中继模块 e 和2个频道百叶窗模块"
+      },
+      "1.6.10": {
+        "en": "support for new 4 channel relay module and 2 channel shutter module",
+        "de": "unterstützung für neues 4 kanalrelaismodul und 2 kanal shuttermodul",
+        "ru": "поддержка нового 4-канального ретрансляционного модуля и 2-канального затворного модуля",
+        "pt": "suporte para novo módulo de relé de 4 canais e módulo de obturador de 2 canais",
+        "nl": "ondersteuning für neue 4 kanaal relais module en 2 kanaal sluiter module",
+        "fr": "prise en charge du nouveau module relais 4 canaux et du module obturateur 2 canaux",
+        "it": "supporto per il nuovo modulo relè a 4 canali e modulo per l'otturatore a 2 canali",
+        "es": "soporte para nuevo módulo de relé de 4 canales y módulo de cierre de 2 canales",
+        "pl": "obsługa nowego 4-kanałowego modułu przekaźnika i 2-kanałowego modułu migawki",
+        "uk": "підтримка нового модуля реле 4 каналу та модуля 2 каналу",
+        "zh-cn": "支持新的4个频道中继模块 e 和2个频道百叶窗模块"
+      },
+      "1.5.2": {
+        "en": "support for WLAN socket",
+        "de": "unterstützung für WLAN-Sockel",
+        "ru": "поддержка WLAN Socket",
+        "pt": "suporte para o soquete WLAN",
+        "nl": "ondersteuning voor WLAN socket",
+        "fr": "prise en charge de la socket WLAN",
+        "it": "supporto per presa WLAN",
+        "es": "soporte para WLAN socket",
+        "pl": "obsługa gniazda WLAN",
+        "uk": "підтримка Wi-Fi розетки",
+        "zh-cn": "支持 WLAN 套接字"
+      },
       "1.4.11": {
         "en": "removed js-controller as dependency",
         "de": "entfernt js-controller als abhängigkeit",
@@ -13,86 +70,8 @@
         "it": "rimosso js-controller come dipendenza",
         "es": "eliminado js-controller como dependencia",
         "pl": "usunięty kontroler js- jako zależność",
-        "uk": "видалити js-controller як залежність",
+        "uk": "js-controller видалено із залежностей",
         "zh-cn": "作为依赖而删除的 js 控制器"
-      },
-      "1.4.10": {
-        "en": "check health for devices that do not respond during search devices",
-        "de": "die gesundheit von geräten überprüfen, die während der suchgeräte nicht reagieren",
-        "ru": "проверить здоровье устройств, которые не реагируют во время поисковых устройств",
-        "pt": "verificar a saúde de dispositivos que não respondem durante os dispositivos de busca",
-        "nl": "de gezondheid controleren van hulpmiddelen die niet reageren tijdens zoekapparatuur",
-        "fr": "vérifier la santé des appareils qui ne répondent pas pendant les appareils de recherche",
-        "it": "controllare la salute dei dispositivi che non rispondono durante i dispositivi di ricerca",
-        "es": "check health for devices that do not respond during search devices",
-        "pl": "sprawdzić stan zdrowia urządzeń, które nie reagują podczas wyszukiwania",
-        "uk": "перевірити здоров'я для пристроїв, які не відповідають під час пошуку",
-        "zh-cn": "检查搜索设备中不响应的设备是否健康"
-      },
-      "1.4.9": {
-        "en": "fixed wrong value of brightness sensor",
-        "de": "fester falscher wert des helligkeitssensors",
-        "ru": "фиксированное неправильное значение датчика яркости",
-        "pt": "valor errado fixo do sensor de brilho",
-        "nl": "vaste foute waarde van de helderheidssensor",
-        "fr": "valeur correcte fixe du capteur de luminosité",
-        "it": "valore sbagliato fisso del sensore di luminosità",
-        "es": "valor incorrecto fijo del sensor de brillo",
-        "pl": "ustalona zła wartość czujnika jasności",
-        "uk": "фіксоване неправильне значення датчика яскравості",
-        "zh-cn": "亮度传感器的固定错误值"
-      },
-      "1.4.8": {
-        "en": "fixed high bus traffic during startup phase",
-        "de": "fester hoher busverkehr während der startphase",
-        "ru": "фиксированный высокий автобусный трафик на этапе запуска",
-        "pt": "tráfego de alto ônibus fixo durante a fase de inicialização",
-        "nl": "vaste hoge busverkeer tijdens de opstartfase",
-        "fr": "trafic de bus fixe pendant la phase de démarrage",
-        "it": "traffico elevato fisso durante la fase di avvio",
-        "es": "tráfico fijo de autobús alto durante la fase de inicio",
-        "pl": "stały duży ruch autobusowy w fazie startowej",
-        "uk": "фіксований великий автобусний трафік під час запуску",
-        "zh-cn": "启动阶段的固定高班车流量"
-      },
-      "1.4.7": {
-        "en": "fixed high bus traffic during startup phase",
-        "de": "fester hoher busverkehr während der startphase",
-        "ru": "фиксированный высокий автобусный трафик на этапе запуска",
-        "pt": "tráfego de alto ônibus fixo durante a fase de inicialização",
-        "nl": "vaste hoge busverkeer tijdens de opstartfase",
-        "fr": "trafic de bus fixe pendant la phase de démarrage",
-        "it": "traffico elevato fisso durante la fase di avvio",
-        "es": "tráfico fijo de autobús alto durante la fase de inicio",
-        "pl": "stały duży ruch autobusowy w fazie startowej",
-        "uk": "фіксований великий автобусний трафік під час запуску",
-        "zh-cn": "启动阶段的固定高班车流量"
-      },
-      "1.4.6": {
-        "en": "support for new 12 channel relay module",
-        "de": "unterstützung für neues 12-kanal-relaismodul",
-        "ru": "поддержка нового 12-канального ретрансляционного модуля",
-        "pt": "suporte para novo módulo de relé de 12 canais",
-        "nl": "ondersteuning voor nieuwe 12 kanaal relais module",
-        "fr": "prise en charge du nouveau module relais 12 canaux",
-        "it": "supporto per il nuovo modulo relè a 12 canali",
-        "es": "soporte para nuevo módulo de relé de 12 canales",
-        "pl": "obsługa nowego modułu przekaźnika 12 kanałów",
-        "uk": "підтримка нового модуля реле 12 каналів",
-        "zh-cn": "支持新的12个频道中继模块"
-      },
-      "1.4.5": {
-        "en": "support for new 12 channel relay module",
-        "de": "unterstützung für neues 12-kanal-relaismodul",
-        "ru": "поддержка нового 12-канального ретрансляционного модуля",
-        "pt": "suporte para novo módulo de relé de 12 canais",
-        "nl": "ondersteuning voor nieuwe 12 kanaal relais module",
-        "fr": "prise en charge du nouveau module relais 12 canaux",
-        "it": "supporto per il nuovo modulo relè a 12 canali",
-        "es": "soporte para nuevo módulo de relé de 12 canales",
-        "pl": "obsługa nowego modułu przekaźnika 12 kanałów",
-        "uk": "підтримка нового модуля реле 12 каналів",
-        "zh-cn": "支持新的12个频道中继模块"
       }
     },
     "titleLang": {
@@ -105,6 +84,7 @@
       "it": "Haus-Bus.de",
       "es": "Haus-Bus.de",
       "pl": "Haus-Bus.de",
+      "uk": "Haus-Bus.de",
       "zh-cn": "豪斯巴士公司"
     },
     "desc": {
@@ -117,6 +97,7 @@
       "it": "Adattatore per controllare i componenti haus-bus.de.",
       "es": "Adaptador para controlar los componentes de haus-bus.de.",
       "pl": "Adapter do sterowania komponentami haus-bus.de.",
+      "uk": "Адаптер для керування компонентами haus-bus.de.",
       "zh-cn": "用于控制 haus-bus.de 组件的适配器。"
     },
     "authors": [
@@ -125,12 +106,11 @@
     "keywords": [
       "haus-bus.de",
       "homeserver",
-      "relaimodule",
+      "RS485",
+      "relaiymodules",
       "pushbuttons"
     ],
-    "license": "MIT",
     "platform": "Javascript/Node.js",
-    "main": "main.js",
     "icon": "hausbusde.png",
     "enabled": true,
     "extIcon": "https://haus-bus.de/iobroker/hausbusde.png",
@@ -141,15 +121,17 @@
     "compact": true,
     "connectionType": "local",
     "dataSource": "push",
-    "materialize": true,
+    "adminUI": {
+      "config": "json"
+    },
     "dependencies": [
       {
-        "js-controller": ">=5.0.19"
+        "js-controller": ">=6.0.11"
       }
     ],
     "globalDependencies": [
       {
-        "admin": ">=5.1.28"
+        "admin": ">=7.6.20"
       }
     ]
   },

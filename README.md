@@ -18,6 +18,12 @@ The HausBus.de adapter is ready to use without further configurations. It is aut
 <br>
 
 ## Changelog
+### 1.6.12 (2026-03-28)  
+* support for new 4 channel relay module and 2 channel shutter module
+
+### 1.5.2 (2025-12-23)
+* support for WLAN socket
+
 ### 1.4.11 (2024-10-01)
 * removed js-controller as dependency
 
@@ -112,7 +118,7 @@ The HausBus.de adapter is ready to use without further configurations. It is aut
 ## License
 MIT License
 
-Copyright (c) 2024 Hermann Hoeschen <info@haus-bus.de>
+Copyright (c) 2026 Hermann Hoeschen <info@haus-bus.de>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
