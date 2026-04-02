@@ -121,6 +121,14 @@
     "compact": true,
     "connectionType": "local",
     "dataSource": "push",
+    "singletonHost": {
+       "description": "Adapter can be installed only once on one host",
+       "type": "boolean"
+    },
+    "singleton": {
+       "description": "Adapter can be installed only once in whole system",
+       "type": "boolean"
+    },
     "adminUI": {
       "config": "json"
     },
