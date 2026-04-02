@@ -2152,7 +2152,7 @@ internal-slot@^1.1.0:
 
 ip@^2.0.1:
   version "2.0.1"
-  resolved "https://registry.yarnpkg.com/ip/-/ip-2.0.1.tgz#e8f3595d33a3ea66490204234b77636965307105"
+  resolved "https://registry.npmjs.org/ip/-/ip-2.0.1.tgz"
   integrity sha512-lJUL9imLTNi1ZfXT+DU6rBBdbiKGBuay9B6xGSPVjUeQwaH1RIGqef8RZkUtHioLmSNpPR5M4HVKJGm1j8FWVQ==
 
 is-array-buffer@^3.0.4, is-array-buffer@^3.0.5:
@@ -2656,7 +2656,7 @@ minimist@^1.2.0, minimist@^1.2.6:
 
 mocha@^11.7.5:
   version "11.7.5"
-  resolved "https://registry.yarnpkg.com/mocha/-/mocha-11.7.5.tgz#58f5bbfa5e0211ce7e5ee6128107cefc2515a627"
+  resolved "https://registry.npmjs.org/mocha/-/mocha-11.7.5.tgz"
   integrity sha512-mTT6RgopEYABzXWFx+GcJ+ZQ32kp4fMf0xvpZIIfSq9Z8lC/++MtcCnQ9t5FP2veYEP95FIYSvW+U9fV4xrlig==
   dependencies:
     browser-stdout "^1.3.1"
