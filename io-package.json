@@ -121,7 +121,6 @@
     "compact": true,
     "connectionType": "local",
     "dataSource": "push",
-    "singletonHost": true,
     "singleton": true,
     "adminUI": {
       "config": "json"
