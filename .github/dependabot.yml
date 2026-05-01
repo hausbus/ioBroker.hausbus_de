@@ -10,7 +10,7 @@ updates:
     schedule:
       interval: 'cron'
       time: '04:22'
-      day-of-week: "wed"
+      day-of-week: 'wed'
       timezone: 'Europe/Berlin'
     open-pull-requests-limit: 20
     assignees:
@@ -18,6 +18,10 @@ updates:
     versioning-strategy: 'increase'
     cooldown:
       default-days: 7
+    ignore:
+      - dependency-name: '@types/node'
+        update-types:
+          - 'version-update:semver-major'
 
   - package-ecosystem: 'github-actions'
     directory: '/'
