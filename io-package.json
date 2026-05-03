@@ -2,12 +2,25 @@
   "common": {
     "name": "hausbus_de",
     "tier": 2,
-    "version": "1.6.12",
+    "version": "1.6.13",
     "licenseInformation": {
       "license": "MIT",
       "type": "free"
     },
     "news": {
+      "1.6.13": {
+        "en": "fixed faulty detection of GIRA multi buttons",
+        "de": "feste fehlerhafte Erkennung von GIRA Multi-Tasten",
+        "ru": "фиксированная неисправность обнаружения мультикнопок GIRA",
+        "pt": "detecção defeituosa de botões multi GIRA",
+        "nl": "vaste defecte detectie van GIRA multi knoppen",
+        "fr": "détection incorrecte fixe de plusieurs boutons GIRA",
+        "it": "rilevamento guasto fisso dei pulsanti GIRA multi",
+        "es": "detección de fallos fijos de botones GIRA multi",
+        "pl": "stałe wadliwe wykrycie wielu przycisków GIRA",
+        "uk": "фіксоване виявлення несправностей багато кнопок GIRA",
+        "zh-cn": "gIRA 多按钮的固定错误检测"
+      },
       "1.6.12": {
         "en": "support for new 4 channel relay module and 2 channel shutter module",
         "de": "unterstützung für neues 4 kanalrelaismodul und 2 kanal shuttermodul",

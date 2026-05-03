@@ -18,9 +18,9 @@ The HausBus.de adapter is ready to use without further configurations. It is aut
 <br>
 
 ## Changelog
-### **WORK IN PROGRESS** 
+### 1.6.13 (2026-05-03) 
   * fixed faulty detection of GIRA multi buttons
-  
+
 ### 1.6.12 (2026-03-28)  
 * support for new 4 channel relay module and 2 channel shutter module
 
