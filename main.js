@@ -48,9 +48,10 @@ var MODUL_ID_8_RELAIS = 5;
 var MODUL_ID_LAN_BRIDGE = 15;
 var MODUL_ID_RGB_DIMMER = 16;
 var MODUL_ID_12_RELAIS = 17;
-var MODUL_ID_13_WLAN = 18;
+var MODUL_ID_13_WLAN_SOCKET = 18;
 var MODUL_ID_4_RELAIS = 19;
 var MODUL_ID_2_ROLLOS = 20;
+var MODUL_ID_6_TASTER_GIRA = 21;
 
 var MODULES = {}; // Alle Haus-Bus Module
 var CLASSES = {}; // Alle Haus-Bus Klassen
@@ -2677,13 +2678,13 @@ function hwSchalterReceivedConfiguration(sender, receiver, message, dataLength) 
 
     var byteOptions = message[pos++];
     var options = '';
-    if (isBitSet(byteEvents, 0)) {
+    if (isBitSet(byteOptions, 0)) {
         options = addToStringList('invert', events);
     }
-    if (isBitSet(byteEvents, 1)) {
+    if (isBitSet(byteOptions, 1)) {
         options = addToStringList('driveOnState', events);
     }
-    if (isBitSet(byteEvents, 2)) {
+    if (isBitSet(byteOptions, 2)) {
         options = addToStringList('driveOffState', events);
     }
     //if (isBitSet(byteEvents, 3)) options = addToStringList("reserved3", events);
@@ -4035,7 +4036,7 @@ function hwControllerReceivedRemoteObjects(sender, receiver, message, dataLength
         } else if (nrRgbDimmer == 2) {
             moduleType = MODUL_ID_RGB_DIMMER;
         } else if (nrRelais == 1 && nrTaster == 1) {
-            moduleType = MODUL_ID_13_WLAN;
+            moduleType = MODUL_ID_13_WLAN_SOCKET;
         } else if (nrRelais == 5 && nrTaster == 4) {
             moduleType = MODUL_ID_4_RELAIS;
         } else if (nrRollos == 2) {
@@ -4215,7 +4216,10 @@ function hwControllerReceivedConfiguration(sender, receiver, message, dataLength
             moduleId = MODUL_ID_2_TASTER;
         } else if (fcke == 0x1b) {
             moduleId = MODUL_ID_1_TASTER;
-        } else if (fcke == 0x20) {
+        } else if (fcke == 0x1c) {
+            moduleId = MODUL_ID_6_TASTER_GIRA;
+        } 
+		else if (fcke == 0x20) {
             moduleId = MODUL_ID_32_IO;
         } else if (fcke == 0x27 || fcke == 0x28 || fcke == 0x29) {
             moduleId = MODUL_ID_8_DIMMER;
@@ -4226,7 +4230,7 @@ function hwControllerReceivedConfiguration(sender, receiver, message, dataLength
         }
     } else if (firmwareType == FIRMWARE_ID_ESP32C3) {
         if (fcke == 105) {
-            moduleId = MODUL_ID_13_WLAN;
+            moduleId = MODUL_ID_13_WLAN_SOCKET;
         }
     } else if (firmwareType == FIRMWARE_ID_SD485) {
         if (fcke == 30) {
@@ -5821,6 +5825,7 @@ function initModulesClassesInstances() {
     MODULES[MODUL_ID_24_UP_IO] = { id: MODUL_ID_24_UP_IO, name: '24 Kanal UP IO-Modul' };
     MODULES[MODUL_ID_4_DIMMER] = { id: MODUL_ID_4_DIMMER, name: '4 Kanal Dimmermodul' };
     MODULES[MODUL_ID_6_TASTER] = { id: MODUL_ID_6_TASTER, name: '6-fach Taster' };
+    MODULES[MODUL_ID_6_TASTER_GIRA] = { id: MODUL_ID_6_TASTER_GIRA, name: '6-fach Taster Gira' };
     MODULES[MODUL_ID_4_TASTER] = { id: MODUL_ID_4_TASTER, name: '4-fach Taster' };
     MODULES[MODUL_ID_2_TASTER] = { id: MODUL_ID_2_TASTER, name: '2-fach Taster' };
     MODULES[MODUL_ID_1_TASTER] = { id: MODUL_ID_1_TASTER, name: '1-fach Taster' };
@@ -5831,7 +5836,7 @@ function initModulesClassesInstances() {
     MODULES[MODUL_ID_4_RELAIS] = { id: MODUL_ID_4_RELAIS, name: '4 Kanal 7A Relaismodul' };
     MODULES[MODUL_ID_2_ROLLOS] = { id: MODUL_ID_2_ROLLOS, name: '2 Kanal Rollomodul' };
     MODULES[MODUL_ID_12_RELAIS] = { id: MODUL_ID_12_RELAIS, name: '12 Kanal 16A Relaismodul' };
-    MODULES[MODUL_ID_13_WLAN] = { id: MODUL_ID_13_WLAN, name: 'WLAN Steckdose' };
+    MODULES[MODUL_ID_13_WLAN_SOCKET] = { id: MODUL_ID_13_WLAN_SOCKET, name: 'WLAN Steckdose' };
 
     for (var key in MODULES) {
         var obj = MODULES[key];
@@ -6064,17 +6069,17 @@ function initModulesClassesInstances() {
     INSTANCES[MODUL_ID_2_ROLLOS]['*'][CLASS_ID_TASTER][99] = 'Eingang_03';
     INSTANCES[MODUL_ID_2_ROLLOS]['*'][CLASS_ID_TASTER][100] = 'Eingang_04';
 
-    // MODUL_ID_13_WLAN
-    INSTANCES[MODUL_ID_13_WLAN] = {};
-    INSTANCES[MODUL_ID_13_WLAN]['*'] = {};
-    INSTANCES[MODUL_ID_13_WLAN]['*'][CLASS_ID_CONTROLLER] = {};
-    INSTANCES[MODUL_ID_13_WLAN]['*'][CLASS_ID_CONTROLLER][1] = 'Maincontroller';
+    // MODUL_ID_13_WLAN_SOCKET
+    INSTANCES[MODUL_ID_13_WLAN_SOCKET] = {};
+    INSTANCES[MODUL_ID_13_WLAN_SOCKET]['*'] = {};
+    INSTANCES[MODUL_ID_13_WLAN_SOCKET]['*'][CLASS_ID_CONTROLLER] = {};
+    INSTANCES[MODUL_ID_13_WLAN_SOCKET]['*'][CLASS_ID_CONTROLLER][1] = 'Maincontroller';
 
-    INSTANCES[MODUL_ID_13_WLAN]['*'][CLASS_ID_SCHALTER] = {};
-    INSTANCES[MODUL_ID_13_WLAN]['*'][CLASS_ID_SCHALTER][97] = 'Relais_01';
+    INSTANCES[MODUL_ID_13_WLAN_SOCKET]['*'][CLASS_ID_SCHALTER] = {};
+    INSTANCES[MODUL_ID_13_WLAN_SOCKET]['*'][CLASS_ID_SCHALTER][97] = 'Relais_01';
 
-    INSTANCES[MODUL_ID_13_WLAN]['*'][CLASS_ID_TASTER] = {};
-    INSTANCES[MODUL_ID_13_WLAN]['*'][CLASS_ID_TASTER][17] = 'Taster_01';
+    INSTANCES[MODUL_ID_13_WLAN_SOCKET]['*'][CLASS_ID_TASTER] = {};
+    INSTANCES[MODUL_ID_13_WLAN_SOCKET]['*'][CLASS_ID_TASTER][17] = 'Taster_01';
 
     // MODUL_ID_8_ROLLO
     INSTANCES[MODUL_ID_8_ROLLO] = {};
@@ -6176,6 +6181,60 @@ function initModulesClassesInstances() {
 
     INSTANCES[MODUL_ID_6_TASTER]['*'][CLASS_ID_FEUCHTESENSOR] = {};
     INSTANCES[MODUL_ID_6_TASTER]['*'][CLASS_ID_FEUCHTESENSOR][1] = 'Feuchtesensor';
+
+     // MODUL_ID_6_TASTER_GIRA
+    INSTANCES[MODUL_ID_6_TASTER_GIRA] = {};
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'] = {};
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_CONTROLLER] = {};
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_CONTROLLER][1] = 'Maincontroller';
+
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_TASTER] = {};
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_TASTER][17] = 'Taster_1';
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_TASTER][18] = 'Taster_2';
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_TASTER][19] = 'Taster_3';
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_TASTER][20] = 'Taster_4';
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_TASTER][21] = 'Taster_5';
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_TASTER][22] = 'Taster_6';
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_TASTER][33] = 'Extern_Taster_1';
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_TASTER][34] = 'Extern_Taster_2';
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_TASTER][35] = 'Extern_Taster_3';
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_TASTER][36] = 'Extern_Taster_4';
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_TASTER][55] = 'Extern_Taster_5';
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_TASTER][56] = 'Extern_Taster_6';
+
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_LED] = {};
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_LED][49] = 'Led_1';
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_LED][50] = 'Led_2';
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_LED][51] = 'Led_3';
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_LED][52] = 'Led_4';
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_LED][53] = 'Led_5';
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_LED][54] = 'Led_6';
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_LED][65] = 'Extern_Led_1';
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_LED][66] = 'Extern_Led_2';
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_LED][67] = 'Extern_Led_3';
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_LED][68] = 'Extern_Led_4';
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_LED][69] = 'Extern_Led_5';
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_LED][70] = 'Hintergrundbeleuchtung Beschriftung';
+
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_LOGICAL_BUTTON] = {};
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_LOGICAL_BUTTON][16] = 'Hintergrundbeleuchtung LEDs';
+
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_SCHALTER] = {};
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_SCHALTER][210] = 'Rote_Modul_LED';
+
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_TEMPERATURSENSOR] = {};
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_TEMPERATURSENSOR][1] = 'Temperatursensor_1';
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_TEMPERATURSENSOR][2] = 'Temperatursensor_2';
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_TEMPERATURSENSOR][3] = 'Temperatursensor_3';
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_TEMPERATURSENSOR][4] = 'Temperatursensor_4';
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_TEMPERATURSENSOR][5] = 'Temperatursensor_5';
+
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_HELLIGKEITSSENSOR] = {};
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_HELLIGKEITSSENSOR][1] = 'Helligkeitssensor';
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_HELLIGKEITSSENSOR][23] = 'Helligkeitssensor';
+
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_FEUCHTESENSOR] = {};
+    INSTANCES[MODUL_ID_6_TASTER_GIRA]['*'][CLASS_ID_FEUCHTESENSOR][1] = 'Feuchtesensor';
 
     // MODUL_ID_4_TASTER
     INSTANCES[MODUL_ID_4_TASTER] = {};
@@ -6556,7 +6615,7 @@ function initModulesClassesInstances() {
     INSTANCES[MODUL_ID_32_IO]['*'][CLASS_ID_CONTROLLER][1] = 'Maincontroller';
 
     INSTANCES[MODUL_ID_32_IO]['*'][CLASS_ID_SCHALTER] = {};
-    INSTANCES[MODUL_ID_32_IO]['*'][CLASS_ID_SCHALTER][210] = 'Rote Modul LED';
+    INSTANCES[MODUL_ID_32_IO]['*'][CLASS_ID_SCHALTER][210] = 'Rote_Modul_LED';
     INSTANCES[MODUL_ID_32_IO]['*'][CLASS_ID_SCHALTER][49] = 'Ausgang_01';
     INSTANCES[MODUL_ID_32_IO]['*'][CLASS_ID_SCHALTER][50] = 'Ausgang_02';
     INSTANCES[MODUL_ID_32_IO]['*'][CLASS_ID_SCHALTER][51] = 'Ausgang_03';
