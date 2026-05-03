@@ -118,6 +118,8 @@ The HausBus.de adapter is ready to use without further configurations. It is aut
 ### 0.1.2 (2020-09-06)
 * (hausbusde) first public version
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## License
 MIT License
 
