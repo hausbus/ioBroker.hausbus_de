@@ -27,6 +27,13 @@
   dependencies:
     execa "^5.1.1"
 
+"@alcalzone/release-script-core@5.2.0":
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@alcalzone/release-script-core/-/release-script-core-5.2.0.tgz#557c0e15a5b458c5465627a498979d5f6af4db5c"
+  integrity sha512-xR09iP7pr9hpkdjvSQBxFTyV1MEvUQ+4ar5p0RUl5ogPqVqTF+r4GYkrOvZsxSFfTrU/Fm0TVC29mJ0UkmFrOw==
+  dependencies:
+    execa "^5.1.1"
+
 "@alcalzone/release-script-plugin-changelog@5.1.1":
   version "5.1.1"
   resolved "https://registry.npmjs.org/@alcalzone/release-script-plugin-changelog/-/release-script-plugin-changelog-5.1.1.tgz"
@@ -50,12 +57,12 @@
   dependencies:
     "@alcalzone/release-script-core" "5.1.1"
 
-"@alcalzone/release-script-plugin-iobroker@^5.1.2":
-  version "5.1.2"
-  resolved "https://registry.npmjs.org/@alcalzone/release-script-plugin-iobroker/-/release-script-plugin-iobroker-5.1.2.tgz"
-  integrity sha512-8mqm95NdFUimy10zjKSkqxBFWMs5NebVFHTGQRUTNGzrUnt8s14Nrt8VBTOJw6YTbjhFe49SJDoQ+S4qipdk6g==
+"@alcalzone/release-script-plugin-iobroker@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@alcalzone/release-script-plugin-iobroker/-/release-script-plugin-iobroker-5.2.0.tgz#883f7df30560e12608bb5a6d8c0b5074f9590531"
+  integrity sha512-xBjEXvleAd3vencWmwLt1BtI8ibueZWWD5Trzf2AyyIpN0LTSAa6oz+MCN9xafgBFYueaKXDmA1OARiKaiupSA==
   dependencies:
-    "@alcalzone/release-script-core" "5.1.1"
+    "@alcalzone/release-script-core" "5.2.0"
     alcalzone-shared "^5.0.0"
     ky "^1.7.5"
     semver "^7.7.2"
