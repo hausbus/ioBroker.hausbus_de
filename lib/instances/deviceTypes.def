@@ -1,0 +1,48 @@
+ESP32,0x65,LAN-RS485 Brückenmodul
+ESP32C3,0x69,WLAN-Steckdose
+ESP32,0x18,6-fach Taster
+ESP32,0x19,4-fach Taster
+ESP32,0x1A,2-fach Taster
+ESP32,0x1B,1-fach Taster
+ESP32,0x1C,6-fach Taster Gira
+ESP32,0x0D,8-fach Motormodul
+ESP32,0x20,32-fach IO Modul
+ESP32,0x0C,16-fach Relais
+ESP32,0x0A,12-fach Relais
+ESP32,0x08,8-fach Relais
+ESP32,0x10,22-fach UP-IO
+ESP32,0x28,8-fach Dimmer
+ESP32,0x30,2-fach RGB Dimmer
+ESP32,0x31,2-fach RGB Dimmer
+ESP32,0x04,4-fach Relais
+ESP32,0x00,4-fach 0-10V Dimmer
+ESP32,0x01,4-fach 1-10V Dimmer
+ESP32,0xFF,LocalBroadcastDevice
+HBC,0x18,6-fach Taster
+HBC,0x19,4-fach Taster
+HBC,0x1A,2-fach Taster
+HBC,0x1B,1-fach Taster
+HBC,0x1C,6-fach Taster Gira
+HBC,0x10,24-fach UP-IO
+HBC,0x0C,16-fach Relais
+HBC,0x08,8-fach Relais
+HBC,0x00,4-fach 0-10V Dimmer
+HBC,0x01,4-fach 1-10V Dimmer
+HBC,0x20,32-fach IO Modul
+HBC,0x28,8-fach Dimmer
+HBC,0x29,8-fach Dimmer
+HBC,0x30,2-fach RGB Dimmer
+SD485,0x28,24-fach UP-IO
+SD485,0x1E,6-fach Taster
+SD485,0x2E,6-fach Taster
+SD485,0x2F,6-fach Taster
+SD485,0x2B,4-fach 0-10V Dimmer
+SD485,0x2C,4-fach Taster
+SD485,0x2D,4-fach 1-10V Dimmer
+SD485,0x2A,2-fach Taster
+SD485,0x29,1-fach Taster
+AR8,0x28,LAN Brückenmodul
+AR8,0x30,8-fach Relais
+AR8,0x20,8-fach Modul
+SD6,0x14,Multitaster
+SD6,0x1E,Multitaster

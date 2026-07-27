@@ -9,6 +9,7 @@ var dgram = require('node:dgram');
 var os = require('node:os');
 var http = require('node:http');
 var fs = require('node:fs');
+var path = require('node:path');
 
 // create the adapter object
 var adapter; // = utils.Adapter('hausbus_de');
@@ -32,6 +33,7 @@ var CLASS_ID_HELLIGKEITSSENSOR = 39;
 var CLASS_ID_ETHERNET = 162;
 var CLASS_ID_ANALOGEINGANG = 36;
 var CLASS_ID_POWER_METER = 41;
+var CLASS_ID_RFID_LESER = 43;
 
 var MODUL_ID_32_IO = 11;
 var MODUL_ID_16_RELAIS_V2 = 10;
@@ -153,6 +155,9 @@ var LOGICAL_BUTTON_FKT_MIN_BRIGHTNESS = 'min_brightness';
 
 var IR_SENSOR_FKT_COMMAND = 'command_code';
 
+var RFID_FKT_TAG_ID = 'tag_id';
+var RFID_FKT_STATE = 'reader_state';
+
 var ROLLO_FKT_START = 'start';
 var ROLLO_FKT_STOP = 'stop';
 var ROLLO_FKT_TOGGLE = 'toggle';
@@ -226,6 +231,7 @@ var myObjectId = getObjectId(MY_DEVICE_ID, CLASS_ID_CONTROLLER, 1);
 var ioBrokerStates = {}; // Alle an IO Broker veröffentlichte States
 var firmwareTypes = {};
 var moduleTypes = {};
+var fckeTypes = {}; // Roher FCKE-Wert je deviceId (Grundlage fuer die Instanz-Templates)
 var moduleVersions = {};
 var onlineVersions = {};
 var objectIds = {};
@@ -356,6 +362,7 @@ function startAdapter(options) {
 function main() {
     loadAllDeviceIds();
     initModulesClassesInstances();
+    loadInstanceTemplates();
 
     // Socket um Broadcast zu empfangen
     udpSocket = dgram.createSocket('udp4');
@@ -767,6 +774,12 @@ function handleIncomingMessage(message, remote) {
         } else if (classIdSender == CLASS_ID_IR_SENSOR) {
             if (functionId >= 200 && functionId < 300) {
                 hwIrSensorReceivedEvents(sender, receiver, functionId, message, dataLength);
+            }
+        } else if (classIdSender == CLASS_ID_RFID_LESER) {
+            if (functionId == 129) {
+                hwRfidReceivedState(sender, receiver, message, dataLength);
+            } else if (functionId >= 200 && functionId < 300) {
+                hwRfidReceivedEvents(sender, receiver, functionId, message, dataLength);
             }
         } else if (classIdSender == CLASS_ID_TEMPERATURSENSOR) {
             if (functionId == 128) {
@@ -2500,6 +2513,57 @@ function hwIrSensorReceivedEvents(sender, receiver, functionId, message, dataLen
     }
 }
 
+// RFID
+function hwRfidGetState(receiverObjectId) {
+    debug(`rfidGetState -> ${objectIdToString(receiverObjectId)}`);
+
+    var data = [];
+    var pos = 0;
+    data[pos++] = 2; // Funktion ID getState
+
+    sendHausbusUdpMessage(receiverObjectId, data, myObjectId);
+}
+
+function hwRfidReceivedEvents(sender, receiver, functionId, message, dataLength) {
+    var instanceId = getInstanceId(sender);
+    var deviceId = getDeviceId(sender);
+
+    var pos = DATA_START;
+
+    if (functionId == 201) {
+        // evData: 4 Bytes Tag-ID als DWord (little-endian wie alle Haus-Bus DWords)
+        var tagId = bytesToDword(message, pos);
+        pos += 4;
+
+        info(`RFID evData, tagId = ${tagId} <- ${objectIdToString(sender)}`);
+
+        var myId = getIoBrokerId(deviceId, CLASS_ID_RFID_LESER, instanceId, RFID_FKT_TAG_ID);
+        // forceUpdate, damit derselbe Tag auch bei erneutem Vorhalten wieder triggert
+        setStateIoBroker(myId, `${tagId}`, true);
+    }
+}
+
+function hwRfidReceivedState(sender, receiver, message, dataLength) {
+    var instanceId = getInstanceId(sender);
+    var deviceId = getDeviceId(sender);
+
+    var pos = DATA_START;
+
+    var byteState = message[pos++];
+    var state = '';
+    if (byteState == 0) state = 'STARTUP';
+    else if (byteState == 1) state = 'STANDBY';
+    else if (byteState == 2) state = 'IDLE';
+    else if (byteState == 3) state = 'CONNECTED';
+    else if (byteState == 4) state = 'DISCONNECTED';
+    else state = `UNKNOWN_${byteState}`;
+
+    info(`RFID state: ${state} <- ${objectIdToString(sender)}`);
+
+    var myId = getIoBrokerId(deviceId, CLASS_ID_RFID_LESER, instanceId, RFID_FKT_STATE);
+    setStateIoBroker(myId, state);
+}
+
 // SCHALTER
 function hwSchalterOff(offDelay, receiverObjectId) {
     info(`relay off offDelay = ${offDelay} -> ${objectIdToString(receiverObjectId)}`);
@@ -4140,35 +4204,12 @@ function hwControllerReceivedRemoteObjects(sender, receiver, message, dataLength
     readStatusForClasses(deviceId, foundClasses);
 }
 
-function hwControllerReceivedConfiguration(sender, receiver, message, dataLength) {
-    var instanceId = getInstanceId(sender);
-    var deviceId = getDeviceId(sender);
-
-    var pos = DATA_START;
-
-    var startupDelay = message[pos++];
-    var logicalButtonMask = message[pos++];
-    var deviceId = bytesToWord(message, pos);
-    pos += 2;
-    var reportMemoryStatusTime = message[pos++];
-    var slotTypeA = message[pos++];
-    var slotTypeB = message[pos++];
-    var slotTypeC = message[pos++];
-    var slotTypeD = message[pos++];
-    var slotTypeE = message[pos++];
-    var slotTypeF = message[pos++];
-    var slotTypeG = message[pos++];
-    var slotTypeH = message[pos++];
-    var timeCorrection = message[pos++];
-    var reserve = bytesToWord(message, pos);
-    pos += 2;
-    var dataBlockSize = bytesToWord(message, pos);
-    pos += 2;
-    var fcke = message[pos++];
-
+// Zentrale FCKE -> moduleId Aufloesung, sowohl fuer die Live-Konfigurationsauswertung
+// als auch fuer den Instanz-Template-Loader (loadInstanceTemplates) genutzt, damit beide
+// Stellen garantiert dieselben (bereits unterstuetzten) Geraetetypen erkennen.
+function resolveModuleIdFromFcke(firmwareType, fcke) {
     var moduleId = -1;
 
-    var firmwareType = firmwareTypes[deviceId];
     if (firmwareType == FIRMWARE_ID_HBC) {
         if (fcke == 0) {
             moduleId = MODUL_ID_4_DIMMER;
@@ -4218,7 +4259,7 @@ function hwControllerReceivedConfiguration(sender, receiver, message, dataLength
             moduleId = MODUL_ID_1_TASTER;
         } else if (fcke == 0x1c) {
             moduleId = MODUL_ID_6_TASTER_GIRA;
-        } 
+        }
 		else if (fcke == 0x20) {
             moduleId = MODUL_ID_32_IO;
         } else if (fcke == 0x27 || fcke == 0x28 || fcke == 0x29) {
@@ -4258,6 +4299,38 @@ function hwControllerReceivedConfiguration(sender, receiver, message, dataLength
         }
     }
 
+    return moduleId;
+}
+
+function hwControllerReceivedConfiguration(sender, receiver, message, dataLength) {
+    var instanceId = getInstanceId(sender);
+    var deviceId = getDeviceId(sender);
+
+    var pos = DATA_START;
+
+    var startupDelay = message[pos++];
+    var logicalButtonMask = message[pos++];
+    var deviceId = bytesToWord(message, pos);
+    pos += 2;
+    var reportMemoryStatusTime = message[pos++];
+    var slotTypeA = message[pos++];
+    var slotTypeB = message[pos++];
+    var slotTypeC = message[pos++];
+    var slotTypeD = message[pos++];
+    var slotTypeE = message[pos++];
+    var slotTypeF = message[pos++];
+    var slotTypeG = message[pos++];
+    var slotTypeH = message[pos++];
+    var timeCorrection = message[pos++];
+    var reserve = bytesToWord(message, pos);
+    pos += 2;
+    var dataBlockSize = bytesToWord(message, pos);
+    pos += 2;
+    var fcke = message[pos++];
+
+    var firmwareType = firmwareTypes[deviceId];
+    var moduleId = resolveModuleIdFromFcke(firmwareType, fcke);
+
     var moduleTypeName = '';
     if (typeof MODULES[moduleId] != 'undefined') {
         moduleTypeName = MODULES[moduleId].name;
@@ -4278,6 +4351,7 @@ function hwControllerReceivedConfiguration(sender, receiver, message, dataLength
     if (moduleId != -1) {
         moduleTypes[deviceId] = moduleId;
     }
+    fckeTypes[deviceId] = fcke;
 
     hwControllerGetRemoteObjects(sender);
 }
@@ -4333,6 +4407,9 @@ function readStatusForClasses(deviceId, foundClasses) {
             debug(`Status broadcast for class ${CLASSES[classId].name}`);
             hwFeuchteSensorGetConfiguration(getObjectId(deviceId, classId, 0));
             hwFeuchteSensorGetStatus(getObjectId(deviceId, classId, 0));
+        } else if (classId == CLASS_ID_RFID_LESER) {
+            debug(`Status broadcast for class ${CLASSES[classId].name}`);
+            hwRfidGetState(getObjectId(deviceId, classId, 0));
         }
     }
 }
@@ -4902,6 +4979,9 @@ function addIoBrokerStatesForInstance(deviceId, classId, instanceId) {
             true,
             false,
         );
+    } else if (classId == CLASS_ID_RFID_LESER) {
+        addStateIoBroker(RFID_FKT_TAG_ID, 'string', 'text', deviceId, classId, instanceId, false, true);
+        addStateIoBroker(RFID_FKT_STATE, 'string', 'text', deviceId, classId, instanceId, false, true);
     } else if (classId == CLASS_ID_IR_SENSOR) {
         addStateIoBroker(IR_SENSOR_FKT_COMMAND, 'number', 'indicator', deviceId, classId, instanceId, false, true);
     } else if (classId == CLASS_ID_TEMPERATURSENSOR) {
@@ -5756,25 +5836,143 @@ function repeatString(str, num) {
     return out;
 }
 
+var INSTANCE_TEMPLATES_DIR = path.join(__dirname, 'lib', 'instances');
+var FILE_INSTANCES = {}; // FILE_INSTANCES[firmwareType][fcke][classId][instanceId] = instanceName
+var INSTANCE_TEMPLATE_FIRMWARE_BY_PREFIX = {
+    ESP32C3: FIRMWARE_ID_ESP32C3,
+    ESP32: FIRMWARE_ID_ESP32,
+    HBC: FIRMWARE_ID_HBC,
+    SD485: FIRMWARE_ID_SD485,
+    AR8: FIRMWARE_ID_AR8,
+};
+
+// Sucht einen bereits vergebenen Namen in der bisherigen INSTANCES Tabelle (firmwarespezifisch,
+// sonst Wildcard-Fallback '*'). Wird sowohl vom Template-Loader (um bestehende Namen 1:1 zu
+// uebernehmen) als auch von getInstanceName() (als letzter Fallback) verwendet.
+function lookupLegacyInstanceName(moduleId, firmwareType, classId, instanceId) {
+    if (
+        typeof INSTANCES[moduleId] != 'undefined' &&
+        typeof INSTANCES[moduleId][firmwareType] != 'undefined' &&
+        typeof INSTANCES[moduleId][firmwareType][classId] != 'undefined' &&
+        typeof INSTANCES[moduleId][firmwareType][classId][instanceId] != 'undefined'
+    ) {
+        return INSTANCES[moduleId][firmwareType][classId][instanceId];
+    }
+    if (
+        typeof INSTANCES[moduleId] != 'undefined' &&
+        typeof INSTANCES[moduleId]['*'] != 'undefined' &&
+        typeof INSTANCES[moduleId]['*'][classId] != 'undefined' &&
+        typeof INSTANCES[moduleId]['*'][classId][instanceId] != 'undefined'
+    ) {
+        return INSTANCES[moduleId]['*'][classId][instanceId];
+    }
+    return null;
+}
+
+// Normalisierung nur fuer Instanzen, die es in der bisherigen INSTANCES Tabelle noch gar nicht
+// gibt (reiner Namens-Zugewinn, es gibt nichts Bestehendes zu treffen/brechen).
+function normalizeGenericInstanceName(rawName) {
+    var name = rawName.replace(/\s+/g, '_');
+    return name.replace(/_(\d+)$/, (match, digits) => `_${digits.padStart(2, '0')}`);
+}
+
+function loadInstanceTemplates() {
+    var files;
+    try {
+        files = fs.readdirSync(INSTANCE_TEMPLATES_DIR);
+    } catch (e) {
+        warn(`Could not read instance template directory ${INSTANCE_TEMPLATES_DIR}: ${e}`);
+        return;
+    }
+
+    var fileRegex = /^(ESP32C3|ESP32|HBC|SD485|AR8)_([0-9A-Fa-f]{2})_.*\.tpl$/;
+
+    files.forEach(file => {
+        var m = file.match(fileRegex);
+        if (!m) {
+            return;
+        }
+        var firmwareType = INSTANCE_TEMPLATE_FIRMWARE_BY_PREFIX[m[1]];
+        var fcke = parseInt(m[2], 16);
+
+        // Nur FCKEs uebernehmen, die der Bestandscode (resolveModuleIdFromFcke) bereits als
+        // Geraetetyp erkennt. Neue/unbekannte Geraetetypen werden bewusst nicht automatisch
+        // hinzugefuegt (dafuer muesste zuerst resolveModuleIdFromFcke erweitert werden).
+        var moduleId = resolveModuleIdFromFcke(firmwareType, fcke);
+        if (moduleId == -1) {
+            return;
+        }
+
+        var lines = fs.readFileSync(path.join(INSTANCE_TEMPLATES_DIR, file), 'utf8').split(/\r?\n/);
+
+        lines.forEach(line => {
+            line = line.trim();
+            if (line.length == 0) {
+                return;
+            }
+            var fields = line.split(',');
+            if (fields.length < 3) {
+                return;
+            }
+            var classId = parseInt(fields[0], 10);
+            var instanceId = parseInt(fields[1], 10);
+            var rawName = fields[2].trim();
+
+            if (classId == CLASS_ID_CONTROLLER || classId == CLASS_ID_RFID_LESER) {
+                // werden an anderer Stelle fest vergeben (Maincontroller / RFID_Reader_<id>)
+                return;
+            }
+            if (typeof CLASSES[classId] == 'undefined') {
+                // Klasse, die es im Bestandscode noch nicht gibt (z.B. Modbus, Taupunkt, WiFi) -> ignorieren
+                return;
+            }
+
+            // Bestehenden Namen unveraendert uebernehmen (das erhaelt automatisch auch historische
+            // Eigenheiten wie vertauschte Eingangsreihenfolgen); nur wenn es dafuer noch gar keine
+            // Definition gibt, wird ein neuer, normalisierter Name vergeben.
+            var name = lookupLegacyInstanceName(moduleId, firmwareType, classId, instanceId);
+            if (name == null) {
+                name = normalizeGenericInstanceName(rawName);
+            }
+
+            if (!FILE_INSTANCES[firmwareType]) {
+                FILE_INSTANCES[firmwareType] = {};
+            }
+            if (!FILE_INSTANCES[firmwareType][fcke]) {
+                FILE_INSTANCES[firmwareType][fcke] = {};
+            }
+            if (!FILE_INSTANCES[firmwareType][fcke][classId]) {
+                FILE_INSTANCES[firmwareType][fcke][classId] = {};
+            }
+            FILE_INSTANCES[firmwareType][fcke][classId][instanceId] = name;
+        });
+    });
+}
+
 function getInstanceName(deviceId, moduleType, classId, instanceId) {
     var firmwareType = firmwareTypes[deviceId];
     var moduleType = moduleTypes[deviceId];
-    var instanceName;
 
+    if (classId == CLASS_ID_RFID_LESER) {
+        return `RFID_Reader_${instanceId}`;
+    }
+
+    var fcke = fckeTypes[deviceId];
     if (
-        typeof INSTANCES[moduleType] != 'undefined' &&
-        typeof INSTANCES[moduleType][firmwareType] != 'undefined' &&
-        typeof INSTANCES[moduleType][firmwareType][classId] != 'undefined' &&
-        typeof INSTANCES[moduleType][firmwareType][classId][instanceId] != 'undefined'
+        typeof fcke != 'undefined' &&
+        typeof FILE_INSTANCES[firmwareType] != 'undefined' &&
+        typeof FILE_INSTANCES[firmwareType][fcke] != 'undefined' &&
+        typeof FILE_INSTANCES[firmwareType][fcke][classId] != 'undefined' &&
+        typeof FILE_INSTANCES[firmwareType][fcke][classId][instanceId] != 'undefined'
     ) {
-        return INSTANCES[moduleType][firmwareType][classId][instanceId];
-    } else if (
-        typeof INSTANCES[moduleType] != 'undefined' &&
-        typeof INSTANCES[moduleType]['*'] != 'undefined' &&
-        typeof INSTANCES[moduleType]['*'][classId] != 'undefined' &&
-        typeof INSTANCES[moduleType]['*'][classId][instanceId] != 'undefined'
-    ) {
-        return INSTANCES[moduleType]['*'][classId][instanceId];
+        return FILE_INSTANCES[firmwareType][fcke][classId][instanceId];
+    }
+
+    // Kein Template-Eintrag gefunden (z.B. FCKE ohne Template-Datei, oder Controller/RFID,
+    // die der Loader bewusst auslaesst) -> auf die bisherige INSTANCES Tabelle zurueckfallen.
+    var legacyName = lookupLegacyInstanceName(moduleType, firmwareType, classId, instanceId);
+    if (legacyName != null) {
+        return legacyName;
     }
 
     return `${getClassName(classId)}_ID${instanceId}`;
@@ -5810,6 +6008,7 @@ function initModulesClassesInstances() {
     CLASSES[CLASS_ID_TASTER] = { id: CLASS_ID_TASTER, name: 'Eingänge' };
     CLASSES[CLASS_ID_TEMPERATURSENSOR] = { id: CLASS_ID_TEMPERATURSENSOR, name: 'Temperatursensoren' };
     CLASSES[CLASS_ID_IR_SENSOR] = { id: CLASS_ID_IR_SENSOR, name: 'IR-Sensoren' };
+    CLASSES[CLASS_ID_RFID_LESER] = { id: CLASS_ID_RFID_LESER, name: 'RFID-Leser' };
     CLASSES[CLASS_ID_ANALOGEINGANG] = { id: CLASS_ID_ANALOGEINGANG, name: 'Analogeingänge' };
     CLASSES[CLASS_ID_POWER_METER] = { id: CLASS_ID_POWER_METER, name: 'Strommessung' };
 

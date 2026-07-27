@@ -1,0 +1,1 @@
+0,1,LAN-RS485 Brückenmodul

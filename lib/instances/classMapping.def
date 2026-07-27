@@ -1,0 +1,8 @@
+LogicalButton,Hintergrundbeleuchtungen
+Led,Ausgänge
+Taster,Eingänge
+Temperatursensor,Temperatursensoren
+Feuchtesensor,Feuchtesensoren
+Helligkeitssensor,Helligkeitssensoren
+RFIDReader,RFID Leser
+AnalogEingang,Eingänge
