@@ -1,4 +1,7 @@
 # Older changes
+## 1.4.10 (2024-09-07)
+* check health for devices that do not respond during search devices
+
 ## 1.4.9 (2024-09-05)
 * fixed wrong value of brightness sensor
 

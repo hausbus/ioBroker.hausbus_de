@@ -2,12 +2,25 @@
   "common": {
     "name": "hausbus_de",
     "tier": 2,
-    "version": "1.6.14",
+    "version": "1.7.0",
     "licenseInformation": {
       "license": "MIT",
       "type": "free"
     },
     "news": {
+      "1.7.0": {
+        "en": "Support for wiegand RFID readers",
+        "de": "Unterstützung für Wiegand-RFID-Lesegeräte",
+        "ru": "Поддержка считывателей RFID Wiegand",
+        "pt": "Suporte para leitores RFID Wiegand",
+        "nl": "Ondersteuning voor Wiegand RFID-lezers",
+        "fr": "Prise en charge des lecteurs RFID Wiegand",
+        "it": "Supporto per lettori RFID Wiegand",
+        "es": "Compatibilidad con lectores RFID Wiegand",
+        "pl": "Wsparcie dla czytników RFID Wiegand",
+        "uk": "Підтримка зчитувачів RFID Wiegand",
+        "zh-cn": "支持韦根RFID读写器"
+      },
       "1.6.14": {
         "en": "fixed faulty detection of GIRA multi buttons",
         "de": "feste fehlerhafte Erkennung von GIRA Multi-Tasten",
@@ -85,19 +98,6 @@
         "pl": "obsługa gniazda WLAN",
         "uk": "підтримка Wi-Fi розетки",
         "zh-cn": "支持 WLAN 套接字"
-      },
-      "1.4.11": {
-        "en": "removed js-controller as dependency",
-        "de": "entfernt js-controller als abhängigkeit",
-        "ru": "удаленный js-контроллер как зависимость",
-        "pt": "remove js-controller como dependência",
-        "nl": "verwijderd js-controller als afhankelijkheid",
-        "fr": "js-controller enlevé comme dépendance",
-        "it": "rimosso js-controller come dipendenza",
-        "es": "eliminado js-controller como dependencia",
-        "pl": "usunięty kontroler js- jako zależność",
-        "uk": "js-controller видалено із залежностей",
-        "zh-cn": "作为依赖而删除的 js 控制器"
       }
     },
     "titleLang": {
