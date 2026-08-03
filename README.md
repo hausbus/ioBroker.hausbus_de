@@ -18,6 +18,9 @@ The HausBus.de adapter is ready to use without further configurations. It is aut
 <br>
 
 ## Changelog
+### **WORK IN PROGRESS**
+  * Support for wiegand RFID readers
+
 ### 1.6.14 (2026-05-03) 
   * fixed faulty detection of GIRA multi buttons
 

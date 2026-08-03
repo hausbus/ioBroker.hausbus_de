@@ -558,6 +558,7 @@ function checkAliveOk(deviceId) {
     if (checkAliveTimeoutTimer && checkAliveControllerDeviceId == deviceId) {
         debug(`checkAlive ok for ${deviceId}`);
         clearInterval(checkAliveTimeoutTimer);
+		checkAliveTimeoutTimer = null
     }
 }
 
