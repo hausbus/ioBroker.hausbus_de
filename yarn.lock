@@ -60,10 +60,10 @@
     ky "^1.7.5"
     semver "^7.7.2"
 
-"@alcalzone/release-script-plugin-license@^5.2.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@alcalzone/release-script-plugin-license/-/release-script-plugin-license-5.2.0.tgz#eaa4fee76a3c972fd94581a384348c4bb7c47fb3"
-  integrity sha512-DeawSM2g9rWF355iQRBIrO69/Yct0Og6yhgFJjFCSGc3WNBq22l0GzalO1yIL84Ln12tnBhT7n9I+aOuJSnUNQ==
+"@alcalzone/release-script-plugin-license@^5.2.2":
+  version "5.2.2"
+  resolved "https://registry.yarnpkg.com/@alcalzone/release-script-plugin-license/-/release-script-plugin-license-5.2.2.tgz#7620ee8bf92f5202b0a08276dce7002a1fbf99ec"
+  integrity sha512-dFvG/QuZWxZ+hRu1nGcqtPHnwnLiPQgBvfRu/NvkYMug7MzYN7SSFN9JkIKNqbxzW/GWjSgrPrrB2bQ9vFYKwQ==
   dependencies:
     "@alcalzone/release-script-core" "5.2.0"
     tiny-glob "^0.2.9"
